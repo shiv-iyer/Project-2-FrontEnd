@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // import components
 import DisplayPost from "./components/DisplayPost";
+import CreatePost from "./components/CreatePost";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -39,6 +40,7 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <CreatePost/>
       <DisplayPost/>
       <div className="App">
         <header className="App-header">
