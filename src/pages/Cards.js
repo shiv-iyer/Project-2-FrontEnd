@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 
-export default class ViewPosts extends React.Component {
+export default class Cards extends React.Component {
     // state
     state = {
 
@@ -12,7 +11,7 @@ export default class ViewPosts extends React.Component {
     render(){
         return (
             <React.Fragment>
-                This is the view posts page.
+                This is the cards page.
             </React.Fragment>
         );
     }

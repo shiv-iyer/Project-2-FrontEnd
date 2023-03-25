@@ -4,16 +4,15 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import all of the page components
-import DisplayPost from "./components/DisplayPost";
-import CreatePost from "./forms/CreatePost";
+import Home from './pages/Home';
+import Creation from './pages/Creation';
+import ViewPosts from './pages/ViewPosts';
+import Cards from './pages/Cards';
 
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Home from './pages/Home';
-import Creation from './pages/Creation';
-import ViewPosts from './pages/ViewPosts';
 
 // Main will be a class-based component, because the state will be the current page
 // Main will render every page
@@ -32,6 +31,7 @@ export default class Main extends React.Component {
     }
 
     renderPage = () => {
+        // switch statement doesn't need breaks because the return statement already ends the function
         switch (this.state.currentPage) {
             case "home":
                 return <Home />
@@ -39,6 +39,8 @@ export default class Main extends React.Component {
                 return <Creation />
             case "posts":
                 return <ViewPosts />
+            case "cards":
+                return <Cards/>
             // case "login":
             //     return <Login />
         }
