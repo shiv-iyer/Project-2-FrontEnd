@@ -11,6 +11,9 @@ import CreatePost from "./components/CreatePost";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Home from './pages/Home';
+import Creation from './pages/Creation';
+import ViewPosts from './pages/ViewPosts';
 
 // Main will be a class-based component, because the state will be the current page
 // Main will render every page
@@ -18,10 +21,29 @@ import Navbar from 'react-bootstrap/Navbar';
 export default class Main extends React.Component {
     // state
     state = {
-        
+        currentPage: "home"
     }
 
     // functions
+    switchPage = (event) => {
+        this.setState({
+            currentPage: event.target.name
+        })
+    }
+
+    renderPage = () => {
+        switch (this.state.currentPage) {
+            case "home":
+                return <Home />
+            case "create":
+                return <Creation />
+            case "posts":
+                return <ViewPosts />
+            // case "login":
+            //     return <Login />
+        }
+    };
+
     render(){
         return (
             <React.Fragment>
@@ -42,16 +64,15 @@ export default class Main extends React.Component {
                     <Navbar.Toggle aria-controls="home-navbar"/>
                     <Navbar.Collapse id="home-navbar">
                         <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#create">Create a Post</Nav.Link>
-                        <Nav.Link href="#posts">View Posts</Nav.Link>
-                        <Nav.Link href="#cards">Cards</Nav.Link>
+                        <Nav.Link name='home' href="#home" onClick={this.switchPage}>Home</Nav.Link>
+                        <Nav.Link name='create' href="#create" onClick={this.switchPage}>Create a Post</Nav.Link>
+                        <Nav.Link name='posts' href="#posts" onClick={this.switchPage}>View Posts</Nav.Link>
+                        <Nav.Link name='cards' href="#cards" onClick={this.switchPage}>Cards</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                     </Container>
                     </Navbar>
-                    <CreatePost/>
-                    <DisplayPost/>
+                    {this.renderPage()}
             </React.Fragment>
         );
     }

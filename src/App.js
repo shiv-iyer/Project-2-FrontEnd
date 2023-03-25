@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Main
 import Main from "./Main";
 
-// App.js is the
+// App.js is the grandparent to render Main
 
 function App() {
   return (
