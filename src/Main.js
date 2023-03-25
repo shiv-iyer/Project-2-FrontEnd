@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // import all of the page components
 import DisplayPost from "./components/DisplayPost";
-import CreatePost from "./components/CreatePost";
+import CreatePost from "./forms/CreatePost";
 
 // import React-Bootstrap components
 import Container from 'react-bootstrap/Container';
