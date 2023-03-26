@@ -53,25 +53,25 @@ export default class Main extends React.Component {
                     <Navbar expand="md" id="main-navbar">
                     <Container>
                     {/* Navbar.Brand is the main element in the navbar */}
-                    <Navbar.Brand href="#home">
-                        <img
-                        src={logo}
-                        width="35"
-                        height="35"
-                        className="d-inline-block align-center"
-                        alt="RoyaleRaves logo"
-                        />
-                        Royale Raves</Navbar.Brand>
-                    {/* Navbar.Toggle creates the 'hamburger menu', controls the collapsible Navbar */}
-                    <Navbar.Toggle aria-controls="home-navbar"/>
-                    <Navbar.Collapse id="home-navbar">
-                        <Nav className="me-auto">
-                        <Nav.Link name='home' href="#home" onClick={this.switchPage}>Home</Nav.Link>
-                        <Nav.Link name='create' href="#create" onClick={this.switchPage}>Create a Post</Nav.Link>
-                        <Nav.Link name='posts' href="#posts" onClick={this.switchPage}>View Posts</Nav.Link>
-                        <Nav.Link name='cards' href="#cards" onClick={this.switchPage}>Cards</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
+                        <Navbar.Brand href="#home">
+                            <img
+                            src={logo}
+                            width="35"
+                            height="35"
+                            className="d-inline-block align-center"
+                            alt="RoyaleRaves logo"
+                            />
+                            Royale Raves</Navbar.Brand>
+                        {/* Navbar.Toggle creates the 'hamburger menu', controls the collapsible Navbar */}
+                        <Navbar.Toggle aria-controls="home-navbar"/>
+                        <Navbar.Collapse id="home-navbar">
+                            <Nav className="me-auto">
+                            <Nav.Link name='home' href="#home" onClick={this.switchPage}>Home</Nav.Link>
+                            <Nav.Link name='create' href="#create" onClick={this.switchPage}>Create a Post</Nav.Link>
+                            <Nav.Link name='posts' href="#posts" onClick={this.switchPage}>View Posts</Nav.Link>
+                            <Nav.Link name='cards' href="#cards" onClick={this.switchPage}>Cards</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
                     </Container>
                     </Navbar>
                     {this.renderPage()}
