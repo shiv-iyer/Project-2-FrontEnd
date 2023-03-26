@@ -10,6 +10,18 @@
 }
 
 .headers {
+    font-size: 18px;
     text-decoration-line: underline;
     text-decoration-style: double;
+}
+
+.side-headers {
+    text-shadow: 2px 2px 5px #FF0800;
+}
+
+.post-card{
+    border: 2px solid gray;
+    border-radius: 10px;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(161,148,233,0.5326724439775911) 100%);
 }
