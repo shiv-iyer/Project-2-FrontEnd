@@ -22,7 +22,9 @@ export default class ViewPosts extends React.Component {
             <React.Fragment>
                 This is the view posts page.
                 <Container id="postsContainer">
-                    <h1>test</h1>
+                    <h1>View all posts</h1>
+                    <Post/>
+                    <Post/>
                     <Post/>
                 </Container>
             </React.Fragment>
