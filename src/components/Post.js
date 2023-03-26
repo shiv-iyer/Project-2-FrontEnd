@@ -23,6 +23,7 @@ export default class Post extends React.Component {
                 <Card.Title>— Post Name —</Card.Title>
                 <Card.Subtitle className="mb-1 text-muted subtitle">by @username</Card.Subtitle>
                 <Card.Subtitle className="mb-3 text-muted subtitle">2023-03-26</Card.Subtitle>
+                {/* Probably need to put the deck here. As well as deck information, maybe deck and card components*/}
                 <Card.Text className="headers mb-1">Overview</Card.Text>
                 <Card.Text className="mb-3">
                     3.0 Xbow Cycle is hfbjdcv hd jnxkmlzjnb jnzkbjfdhknvclxznbhjc lorem ipsum mwhatever.
