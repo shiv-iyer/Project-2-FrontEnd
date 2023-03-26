@@ -1,0 +1,10 @@
+#postsContainer {
+    border: 2px solid black;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: right;
+    margin-right: 15px;
+}
