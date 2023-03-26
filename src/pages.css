@@ -8,3 +8,8 @@
     text-align: right;
     margin-right: 15px;
 }
+
+.headers {
+    text-decoration-line: underline;
+    text-decoration-style: double;
+}

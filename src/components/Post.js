@@ -9,6 +9,10 @@ export default class Post extends React.Component {
             <Card>
                 <Card.Title>Post Name</Card.Title>
                 <Card.Subtitle className="mb-3 text-muted subtitle">by @username</Card.Subtitle>
+                <Card.Text className="headers">Overview </Card.Text>
+                <Card.Text>
+                    3.0 Xbow Cycle is hfbjdcv hd jnxkmlzjnb jnzkbjfdhknvclxznbhjc lorem ipsum mwhatever.
+                </Card.Text>
             </Card>
         </React.Fragment>
     }
