@@ -17,13 +17,25 @@ import "../pages.css";
 export default class CreatePost extends React.Component {
 
     // state
+    // ensure that the state keys match the database's keys!
     state = {
+        name: "",
+        overview: "",
         archetype: "",
+        strategy: "",
         rating: 1,
-        difficulty: 1
+        difficultyLevel: 1
     }
 
     // functions
+
+    // for text fields, can use event.target.name to use one function to perform the updation for all.
+    updateFormField = (event) => {
+        console.log("Event target name: " + event.target.name);
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
     updateArchetype = (event) => {
         this.setState({
@@ -40,7 +52,7 @@ export default class CreatePost extends React.Component {
 
     updateDifficulty = (event) => {
         this.setState({
-            difficulty: event.target.value
+            difficultyLevel: event.target.value
         });
     };
 
@@ -59,7 +71,9 @@ export default class CreatePost extends React.Component {
                             {/* onChange should be here. */}
                             <Form.Control
                                 type="text"
+                                name="name"
                                 aria-describedby="postNameHelp"
+                                onChange={this.updateFormField}
                             />
                             <Form.Text id="postNameHelp" muted>
                                 The name of your post — try to give your deck a descriptive title!
@@ -81,7 +95,9 @@ export default class CreatePost extends React.Component {
                             {/* type=text for plain text; aria-describedby references what describes the form*/}
                             <Form.Control
                                 type="text"
+                                name="overview"
                                 aria-describedby="overviewHelp"
+                                onChange={this.updateFormField}
                             />
                             <Form.Text id="overviewHelp" muted>
                                 The overview of your deck — how would you describe it? What do you like about it? (Min. 30 characters.)
@@ -95,8 +111,10 @@ export default class CreatePost extends React.Component {
                             <Form.Label>Strategy</Form.Label>
                             <Form.Control
                                 type="text"
+                                name="strategy"
                                 as="textarea"
                                 rows={3}
+                                onChange={this.updateFormField}
                             />
                         </Form.Group>
                         {/* Range slider for rating & difficulty! Works, can implement with a hook but use state for now */}
@@ -130,7 +148,7 @@ export default class CreatePost extends React.Component {
                                 <RangeSlider
                                     min={1}
                                     max={5}
-                                    value={this.state.difficulty}
+                                    value={this.state.difficultyLevel}
                                     onChange={this.updateDifficulty}
                                 />
                             </div>
