@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 
 // external import: range-slider
 import RangeSlider from 'react-bootstrap-range-slider';
@@ -24,8 +25,10 @@ export default class CreatePost extends React.Component {
         overview: "",
         strategy: "",
         archetype: "",
-        rating: 1,
-        difficultyLevel: 1
+        rating: 5,
+        difficultyLevel: 3,
+        userThatPosted: "",
+        password: ""
     }
 
     // functions
@@ -57,7 +60,8 @@ export default class CreatePost extends React.Component {
         });
     };
 
-    // placeholder for the submit button, for now log all info, later this will perform the POST request!
+    // placeholder functionality for the submit button, for now log all info, later this will perform the POST request!
+    // can also do validation here, later on.
     submit = () => {
         alert("Submit button was clicked!");
         console.log("post name: " + this.state.name);
@@ -171,6 +175,42 @@ export default class CreatePost extends React.Component {
                         </div>
                     </Form>
                 </div>
+                <h3>User Details</h3>
+                <div className="post-form-group">
+                    <Form>
+                        <Row>
+                            <Col md="6">
+                                <Form.Group className="mb-2" controlId="inputUsername">
+                                    {/* use an input group to style username a bit better!
+                                    the Form.Label has to be outside of the InputGroup. */}
+                                    <Form.Label>Username</Form.Label>
+                                    <InputGroup>
+                                        <InputGroup.Text>@</InputGroup.Text>
+                                        <Form.Control
+                                            type="text"
+                                            name="userThatPosted"
+                                            placeholder="Enter Username"
+                                            onChange={this.updateFormField}
+                                        />
+                                    </InputGroup>
+                                </Form.Group>
+                            </Col>
+                            <Col md="6">
+                                <Form.Group className="mb-2" controlId="inputPassword">
+                                    <Form.Label>Password</Form.Label>
+                                    {/* type=password automatically hashes out the characters! */}
+                                    <Form.Control
+                                        type="password"
+                                        name="password"
+                                        placeholder="Enter Password"
+                                        onChange={this.updateFormField}
+                                    />
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                    </Form>
+                </div>
+
                 <div className="centered mt-3">
                     <Button
                         id="submit-btn"
