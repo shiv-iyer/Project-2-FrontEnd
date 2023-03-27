@@ -75,10 +75,9 @@ export default class CreatePost extends React.Component {
 
     render(){
         return <React.Fragment>
-            <h1>Create a post</h1>
             <div className="container post-form">
 
-                <h3>Main Post Info</h3>
+                <h3 className="header-text">Main Post Info</h3>
                 <div className="post-form-group">
                     <Form>
                         <Form.Group controlId="inputName">
@@ -103,7 +102,7 @@ export default class CreatePost extends React.Component {
                     <p>deck creation stuff goes here...</p>
                 </div>
 
-                <h3>Deck Info</h3>
+                <h3 className="header-text">Deck Info</h3>
                 <div className="post-form-group">
                     <Form>
                         <Form.Group className="mb-2" controlId="inputOverview">
@@ -175,7 +174,7 @@ export default class CreatePost extends React.Component {
                         </div>
                     </Form>
                 </div>
-                <h3>User Details</h3>
+                <h3 className="header-text">User Details</h3>
                 <div className="post-form-group">
                     <Form>
                         <Row>

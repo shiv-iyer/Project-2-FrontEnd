@@ -20,13 +20,15 @@ export default class ViewPosts extends React.Component {
     render(){
         return (
             <React.Fragment>
-                This is the view posts page.
-                <Container id="postsContainer">
-                    <h1>View all posts</h1>
-                    <Post/>
-                    <Post/>
-                    <Post/>
-                </Container>
+                <div className="page-container">
+                    This is the view posts page.
+                    <Container id="postsContainer">
+                        <h1>View all posts</h1>
+                        <Post/>
+                        <Post/>
+                        <Post/>
+                    </Container>     
+                </div>
             </React.Fragment>
         );
     }

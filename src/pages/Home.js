@@ -16,7 +16,6 @@ export default class Home extends React.Component {
     render(){
         return (
             <React.Fragment>
-                This is the home page.
                 {/* Hero image container*/}
                 <div id="heroContainer" className="mb-3">
                     <div id="heroContent">

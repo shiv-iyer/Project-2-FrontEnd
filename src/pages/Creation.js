@@ -14,8 +14,10 @@ export default class Creation extends React.Component {
     render(){
         return (
             <React.Fragment>
-                This is the create posts page.
-                <CreatePost/>
+                <div className="page-container">
+                    <h1 className="centered p-3">Create a post</h1>
+                    <CreatePost/>
+                </div>
             </React.Fragment>
         );
     }
