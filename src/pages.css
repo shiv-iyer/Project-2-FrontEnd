@@ -67,6 +67,16 @@
     text-shadow: 2px 2px 5px plum;
 }
 
+.centered {
+    display: flex;
+    justify-content: center;
+}
+
+#submit-btn {
+    background-color:  rgba(54, 69, 79, 0.88);
+    border-color: black;
+}
+
 /* ------------- 
 * Posts page
 */ 
