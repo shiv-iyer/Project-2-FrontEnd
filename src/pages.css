@@ -49,13 +49,13 @@
     background-color: beige;
     border: 2px solid bone;
     border-radius: 10px;
-    padding: 25px;
+    padding: 30px;
 }
 
 .post-form-group {
     background-color: wheat;
     padding: 15px;
-    margin: 10px;
+    margin: 15px;
     border-radius: 1rem;
 }
 
