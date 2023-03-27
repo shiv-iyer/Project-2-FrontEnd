@@ -1,5 +1,12 @@
 import React from "react";
+
+// react-bootstrap components
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+// external import: range-slider
 import RangeSlider from 'react-bootstrap-range-slider';
 
 // stylesheet
@@ -11,11 +18,20 @@ export default class CreatePost extends React.Component {
 
     // state
     state = {
+        archetype: "",
         rating: 1,
         difficulty: 1
     }
 
     // functions
+
+    updateArchetype = (event) => {
+        this.setState({
+            archetype: event.target.value
+        })
+    }
+
+    // can refactor these into one function updateSlider later, tried but it didn't work for now so leave it
     updateRating = (event) => {
         this.setState({
             rating: event.target.value
@@ -68,7 +84,7 @@ export default class CreatePost extends React.Component {
                                 aria-describedby="overviewHelp"
                             />
                             <Form.Text id="overviewHelp" muted>
-                                The overview of your deck — how would you describe it? What do you like about it? (Max x characters.)
+                                The overview of your deck — how would you describe it? What do you like about it? (Min. 30 characters.)
                             </Form.Text>
                         </Form.Group>
                     </Form>
@@ -85,24 +101,39 @@ export default class CreatePost extends React.Component {
                         </Form.Group>
                         {/* Range slider for rating & difficulty! Works, can implement with a hook but use state for now */}
                         {/* Seems like I can't really customize it well, maybe leave default for now and look into it later. */}
-                        <div className="slider-group">
-                            <row>
-
-                            </row>
-                            <h5>Rating</h5>
-                            <RangeSlider
-                                min={1}
-                                max={10}
-                                value={this.state.rating}
-                                onChange={this.updateRating}
-                            />
-                            <h5>Difficulty</h5>
-                            <RangeSlider
-                                min={1}
-                                max={5}
-                                value={this.state.difficulty}
-                                onChange={this.updateDifficulty}
-                            />
+                        <div className="slider-group mt-3">
+                            <div>
+                                <Form.Select
+                                    aria-label="Archetype selection menu"
+                                    onChange={this.updateArchetype}
+                                >
+                                    <option>— Select an Archetype —</option>
+                                    <option value="Beatdown">Beatdown</option>
+                                    <option value="Control">Control</option>
+                                    <option value="Siege">Siege</option>
+                                    <option value="Spell Bait">Spell Bait</option>
+                                    <option value="Bridge Spam">Bridge Spam</option>
+                                    <option value="Others">Others</option>
+                                </Form.Select>
+                            </div>
+                            <div>
+                                <h5>Rating</h5>
+                                <RangeSlider
+                                     min={1}
+                                    max={10}
+                                    value={this.state.rating}
+                                    onChange={this.updateRating}
+                                />
+                             </div>
+                            <div>
+                                <h5>Difficulty</h5>
+                                <RangeSlider
+                                    min={1}
+                                    max={5}
+                                    value={this.state.difficulty}
+                                    onChange={this.updateDifficulty}
+                                />
+                            </div>
                         </div>
                     </Form>
                 
