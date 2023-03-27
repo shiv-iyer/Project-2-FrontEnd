@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 // external import: range-slider
 import RangeSlider from 'react-bootstrap-range-slider';
@@ -21,8 +22,8 @@ export default class CreatePost extends React.Component {
     state = {
         name: "",
         overview: "",
-        archetype: "",
         strategy: "",
+        archetype: "",
         rating: 1,
         difficultyLevel: 1
     }
@@ -54,6 +55,17 @@ export default class CreatePost extends React.Component {
         this.setState({
             difficultyLevel: event.target.value
         });
+    };
+
+    // placeholder for the submit button, for now log all info, later this will perform the POST request!
+    submit = () => {
+        alert("Submit button was clicked!");
+        console.log("post name: " + this.state.name);
+        console.log("deck overview: " + this.state.overview);
+        console.log("deck strategy: " + this.state.strategy);
+        console.log("deck archetype: " + this.state.archetype);
+        console.log("deck rating: " + this.state.rating);
+        console.log("deck difficulty level: " + this.state.difficultyLevel);
     };
 
 
@@ -116,6 +128,9 @@ export default class CreatePost extends React.Component {
                                 rows={3}
                                 onChange={this.updateFormField}
                             />
+                            <Form.Text id="overviewHelp" muted>
+                                The strategy of your deck — how is it supposed to be played? What kind of tactics can you employ? (Min. 50 characters.)
+                            </Form.Text>
                         </Form.Group>
                         {/* Range slider for rating & difficulty! Works, can implement with a hook but use state for now */}
                         {/* Seems like I can't really customize it well, maybe leave default for now and look into it later. */}
@@ -128,6 +143,7 @@ export default class CreatePost extends React.Component {
                                     <option>— Select an Archetype —</option>
                                     <option value="Beatdown">Beatdown</option>
                                     <option value="Control">Control</option>
+                                    <option value="Cycle">Cycle</option>
                                     <option value="Siege">Siege</option>
                                     <option value="Spell Bait">Spell Bait</option>
                                     <option value="Bridge Spam">Bridge Spam</option>
@@ -154,10 +170,13 @@ export default class CreatePost extends React.Component {
                             </div>
                         </div>
                     </Form>
-                
                 </div>
-
-                <div>
+                <div className="centered mt-3">
+                    <Button
+                        id="submit-btn"
+                        onClick={this.submit}
+                     >
+                    Submit Post</Button>
                 </div>
             </div>
         </React.Fragment>
