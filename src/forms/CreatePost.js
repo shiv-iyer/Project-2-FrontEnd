@@ -87,6 +87,7 @@ export default class CreatePost extends React.Component {
                             <Form.Control
                                 type="text"
                                 name="name"
+                                value={this.state.name}
                                 aria-describedby="postNameHelp"
                                 onChange={this.updateFormField}
                             />
@@ -111,6 +112,7 @@ export default class CreatePost extends React.Component {
                             <Form.Control
                                 type="text"
                                 name="overview"
+                                value={this.state.overview}
                                 aria-describedby="overviewHelp"
                                 onChange={this.updateFormField}
                             />
@@ -127,6 +129,7 @@ export default class CreatePost extends React.Component {
                             <Form.Control
                                 type="text"
                                 name="strategy"
+                                value={this.state.strategy}
                                 as="textarea"
                                 rows={3}
                                 onChange={this.updateFormField}
@@ -188,6 +191,7 @@ export default class CreatePost extends React.Component {
                                         <Form.Control
                                             type="text"
                                             name="userThatPosted"
+                                            value={this.state.userThatPosted}
                                             placeholder="Enter Username"
                                             onChange={this.updateFormField}
                                         />
@@ -201,6 +205,7 @@ export default class CreatePost extends React.Component {
                                     <Form.Control
                                         type="password"
                                         name="password"
+                                        value={this.state.password}
                                         placeholder="Enter Password"
                                         onChange={this.updateFormField}
                                     />
