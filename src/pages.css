@@ -43,6 +43,13 @@
 }
 
 /* ------------- 
+* Creation page & CreatePost form
+*/ 
+.post-form-group {
+    background-color: black;
+}
+
+/* ------------- 
 * Posts page
 */ 
 
