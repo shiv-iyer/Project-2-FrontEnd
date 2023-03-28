@@ -11,6 +11,10 @@ import InputGroup from "react-bootstrap/InputGroup";
 // external import: range-slider
 import RangeSlider from 'react-bootstrap-range-slider';
 
+// API and Axios
+import BASE_API from '../components/BaseApi';
+import axios from "axios";
+
 // stylesheet
 import "../pages.css";
 
