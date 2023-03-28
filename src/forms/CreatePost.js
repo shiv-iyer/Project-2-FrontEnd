@@ -34,7 +34,9 @@ export default class CreatePost extends React.Component {
         rating: 5,
         difficultyLevel: 3,
         userThatPosted: "",
-        password: ""
+        password: "",
+        // empty array of errors
+        errors: []
     }
 
     // functions
@@ -66,35 +68,66 @@ export default class CreatePost extends React.Component {
         });
     };
 
-    // starting functionality for POST request.
-    // can also do validation here, later on.
-    submit = async () => {
-        alert("Submit button was clicked!");
-        // axios.post has two parameters; the api URL, and the request body.
-        const result = await axios.post(`${BASE_API}posts`,
-        {
-            // parameters in the request's body.
-            // cards will be the hardest thing to do... for now hard code the IDs
-            cards: ["6412c055632f110d0e8812d0", "6412c159632f110d0e8ba04d", "6412c19c632f110d0e8c7c19", "6412c1ff632f110d0e8dcc71",
-            "641d4b9d04f85304f52ba96c", "641d4c4a04f85304f52ba96d", "641d5cd86bedf92c58be2d8d", "641d507504f85304f52ba96f"],
-            name: "4.5 Xbow Cycle",
-            userThatPosted: "Alannn",
-            date: "03-28-23",
-            archetype: "test archetype.",
-            overview: "test overview.",
-            strategy: "test strategy.",
-            rating: 9,
-            difficultyLevel: 4
-        });
+    // check errors first, if no errors then call submit function
+    checkErrors = () => {
+        // validation.
 
-        console.log("Result data...");
-        console.log(result.data);
-        console.log("post name: " + this.state.name);
-        console.log("deck overview: " + this.state.overview);
-        console.log("deck strategy: " + this.state.strategy);
-        console.log("deck archetype: " + this.state.archetype);
-        console.log("deck rating: " + this.state.rating);
-        console.log("deck difficulty level: " + this.state.difficultyLevel);
+        // if name field is left blank
+        // this.state.errors.push is not react-like, have to splice and set a new array
+        if (!this.state.name){
+            // 1. create a new array of the og array, slice with no parameters copies
+            const modifiedErrors = this.state.errors.slice();
+
+            // 2. push to the new array
+            modifiedErrors.push("name was left blank");
+
+            // 3. setState from the old errors array to the new array with errors
+            this.setState({
+                errors: modifiedErrors
+            });
+
+            alert("name was left blank");
+        }
+
+        console.log("errors array length: " + this.state.errors.length);
+
+        // if there are no errors, then we can call the submit function
+
+        if (this.state.errors.length === 0) {
+            this.submit();
+        } else {
+            alert("You have errors, plz fix them.");
+        }
+    }
+
+    // starting functionality for POST request.
+    submit = async () => {
+        alert("Submit function was reached!");
+
+            // axios.post has two parameters; the api URL, and the request body.
+            const result = await axios.post(`${BASE_API}posts`,
+            {
+                // parameters in the request's body.
+                // cards will be the hardest thing to do... for now hard code the IDs
+                cards: ["6412c055632f110d0e8812d0", "6412c159632f110d0e8ba04d", "6412c19c632f110d0e8c7c19", "6412c1ff632f110d0e8dcc71",
+                    "641d4b9d04f85304f52ba96c", "641d4c4a04f85304f52ba96d", "641d5cd86bedf92c58be2d8d", "641d507504f85304f52ba96f"],
+                name: "4.5 Xbow Cycle",
+                userThatPosted: "Alannn",
+                date: "03-28-23",
+                archetype: "test archetype.",
+                overview: "test overview.",
+                strategy: "test strategy.",
+                rating: 9,
+                difficultyLevel: 4
+            });
+            console.log("Result data...");
+            console.log(result.data);
+            console.log("post name: " + this.state.name);
+            console.log("deck overview: " + this.state.overview);
+            console.log("deck strategy: " + this.state.strategy);
+            console.log("deck archetype: " + this.state.archetype);
+            console.log("deck rating: " + this.state.rating);
+            console.log("deck difficulty level: " + this.state.difficultyLevel);
     };
 
 
@@ -243,7 +276,7 @@ export default class CreatePost extends React.Component {
                 <div className="centered mt-3">
                     <Button
                         id="submit-btn"
-                        onClick={this.submit}
+                        onClick={this.checkErrors}
                      >
                     Submit Post</Button>
                 </div>
