@@ -36,14 +36,36 @@ export default class CreatePost extends React.Component {
         userThatPosted: "",
         password: "",
         // empty array of errors
-        errors: []
+        errors: [],
+        isValid: false
     }
 
     // functions
 
+    errorValidation = () => {
+        console.log("error checking")
+        const {name, overview, strategy, archetype, userThatPosted, password } = this.state;
+        if (!name || !overview || !strategy || !archetype || !userThatPosted || !password) {
+            console.log(name, overview, strategy, archetype, userThatPosted, password)
+            this.setState(
+                {
+                    isValid: false,
+                }
+            )
+        }
+        else {
+            this.setState(
+                {
+                    isValid: true,
+                }
+            )
+        }
+    }
+
     // for text fields, can use event.target.name to use one function to perform the updation for all.
     updateFormField = (event) => {
         console.log("Event target name: " + event.target.name);
+        this.errorValidation();
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -72,28 +94,36 @@ export default class CreatePost extends React.Component {
     checkErrors = () => {
         // validation.
 
-        // if name field is left blank
-        // this.state.errors.push is not react-like, have to splice and set a new array
-        if (!this.state.name){
-            // 1. create a new array of the og array, slice with no parameters copies
-            const modifiedErrors = this.state.errors.slice();
+        // let errors = 0;
 
-            // 2. push to the new array
-            modifiedErrors.push("name was left blank");
+        // // because setState is async, my old method doesn't work the first time around, so instead,
+        // // create a local variable errors and can push to it, then setState will hold the actual error messages
+        // // but can check from the local variable so we can avoid a setState call before the check
+        // // React fundamental: arrays in the state are immutable, but arrays outside of the state are fine
 
-            // 3. setState from the old errors array to the new array with errors
-            this.setState({
-                errors: modifiedErrors
-            });
+        // // if name field is left blank
+        // // this.state.errors.push is not react-like, have to splice and set a new array
+        // if (!this.state.name){
+        //     errors++;
+        //     // 1. create a new array of the og array, slice with no parameters copies
+        //     const modifiedErrors = this.state.errors.slice();
 
-            alert("name was left blank");
-        }
+        //     // 2. push to the new array
+        //     modifiedErrors.push("name was left blank");
 
-        console.log("errors array length: " + this.state.errors.length);
+        //     // 3. setState from the old errors array to the new array with errors
+        //     this.setState({
+        //         errors: modifiedErrors
+        //     });
+
+        //     alert("name was left blank");
+        // }
+
+        //console.log("errors array length: " + errors.length);
 
         // if there are no errors, then we can call the submit function
 
-        if (this.state.errors.length === 0) {
+        if (this.state.isValid) {
             this.submit();
         } else {
             alert("You have errors, plz fix them.");
@@ -277,6 +307,7 @@ export default class CreatePost extends React.Component {
                     <Button
                         id="submit-btn"
                         onClick={this.checkErrors}
+                        disabled={!this.state.isValid}
                      >
                     Submit Post</Button>
                 </div>
