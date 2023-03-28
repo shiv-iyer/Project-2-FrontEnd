@@ -71,7 +71,7 @@ export default class CreatePost extends React.Component {
     submit = async () => {
         alert("Submit button was clicked!");
         // axios.post has two parameters; the api URL, and the request body.
-        const result = await axios.post(`${BASE_API}create`,
+        const result = await axios.post(`${BASE_API}posts`,
         {
             // parameters in the request's body.
             // cards will be the hardest thing to do... for now hard code the IDs
