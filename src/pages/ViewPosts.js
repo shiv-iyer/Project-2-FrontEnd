@@ -50,7 +50,7 @@ export default class ViewPosts extends React.Component {
         }
     }
 
-    // then, we will use the map function to load the posts
+    // then, we will use the map function to display the content from the posts
 
     render(){
         return (
@@ -59,6 +59,21 @@ export default class ViewPosts extends React.Component {
                     This is the view posts page.
                     <Container id="postsContainer">
                         <h1>View all posts</h1>
+                        <div>{this.state.posts.map(post => (
+                            <div key={post._id}>
+                                <div className="border shadow">
+                                    <h1 className="p-3">Post Name: {post.name}</h1>
+                                    <h5 className="p-1">Posted by: {post.userThatPosted}</h5>
+                                    <h5 className="p-1">Date posted: {post.dateOfCreation}</h5>
+                                    <p className="p-3 mb-2">Overview: {post.postInfo.overview}</p>
+                                    <p className="p-3 mb-2">Strategy: {post.postInfo.strategy}</p>
+                                    <p className="p-3 mb-2">Archetype: {post.archetype}</p>
+                                    <p className="p-1">Rating: {post.postInfo.rating}</p>
+                                    <p className="p-1">Difficulty: {post.postInfo.difficultyLevel}</p>
+                                </div>
+                            </div>
+                        ))}
+                        </div>
                         <Post/>
                         <Post/>
                         <Post/>
