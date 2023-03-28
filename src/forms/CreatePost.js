@@ -1,12 +1,14 @@
 import React from "react";
 
 // react-bootstrap components
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
+// can just do it in one line!
+import {Form, Container, Row, Col, Button, InputGroup} from "react-bootstrap";
+// import Form from "react-bootstrap/Form";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+// import Button from "react-bootstrap/Button";
+// import InputGroup from "react-bootstrap/InputGroup";
 
 // external import: range-slider
 import RangeSlider from 'react-bootstrap-range-slider';
@@ -64,10 +66,29 @@ export default class CreatePost extends React.Component {
         });
     };
 
-    // placeholder functionality for the submit button, for now log all info, later this will perform the POST request!
+    // starting functionality for POST request.
     // can also do validation here, later on.
-    submit = () => {
+    submit = async () => {
         alert("Submit button was clicked!");
+        // axios.post has two parameters; the api URL, and the request body.
+        const result = await axios.post(`${BASE_API}create`,
+        {
+            // parameters in the request's body.
+            // cards will be the hardest thing to do... for now hard code the IDs
+            cards: ["6412c055632f110d0e8812d0", "6412c159632f110d0e8ba04d", "6412c19c632f110d0e8c7c19", "6412c1ff632f110d0e8dcc71",
+            "641d4b9d04f85304f52ba96c", "641d4c4a04f85304f52ba96d", "641d5cd86bedf92c58be2d8d", "641d507504f85304f52ba96f"],
+            name: "4.5 Xbow Cycle",
+            userThatPosted: "Alannn",
+            date: "03-28-23",
+            archetype: "test archetype.",
+            overview: "test overview.",
+            strategy: "test strategy.",
+            rating: 9,
+            difficultyLevel: 4
+        });
+
+        console.log("Result data...");
+        console.log(result.data);
         console.log("post name: " + this.state.name);
         console.log("deck overview: " + this.state.overview);
         console.log("deck strategy: " + this.state.strategy);
