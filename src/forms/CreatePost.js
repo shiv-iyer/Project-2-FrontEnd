@@ -21,7 +21,7 @@ import BASE_API from '../components/BaseApi';
 import axios from "axios";
 
 // validation
-import { validateName } from "../components/validation";
+import { validateName, validateOverview, validateStrategy } from "../components/validation";
 
 // stylesheet
 import "../pages.css";
@@ -85,6 +85,12 @@ export default class CreatePost extends React.Component {
                 if (event.target.name === "name"){
                     this.validateName();
                 }
+                if (event.target.name === "overview"){
+                    this.validateOverview();
+                }
+                if (event.target.name === "strategy"){
+                    this.validateStrategy();
+                }
         }
         )
     }
@@ -92,6 +98,16 @@ export default class CreatePost extends React.Component {
     validateName = () => {
         const error = validateName(this.state.name);
         this.setState({nameError: error});
+    }
+
+    validateOverview = () => {
+        const error = validateOverview(this.state.overview);
+        this.setState({overviewError: error});
+    }
+
+    validateStrategy = () => {
+        const error = validateStrategy(this.state.strategy);
+        this.setState({strategyError: error});
     }
 
     updateArchetype = (event) => {
@@ -194,7 +210,8 @@ export default class CreatePost extends React.Component {
                         <Form.Group controlId="inputName">
                             <Form.Label>Post Name</Form.Label>
                             {/* type=text for plain text; aria-describedby references what describes the form*/}
-                            {/* onChange should be here. */}
+                            {/* isInvalid attribute is set to true or false if nameError exists in the state 
+                            (by default, it's false, because "" is a falsy value */}
                             <Form.Control
                                 type="text"
                                 name="name"
@@ -204,12 +221,13 @@ export default class CreatePost extends React.Component {
                                 onChange={this.updateFormField}
                             />
                             {/* normal form.control.feedback should be valid*/}
+                            {/* if type="invalid" (which gets called if this.state.nameError exists), display this feedback */}
                             <Form.Control.Feedback type="invalid">
                                 {this.state.nameError}
                             </Form.Control.Feedback>
                             <Form.Text id="postNameHelp" muted>
-                                {/* This will conditionally render the muted text based on if there's an error or not */}
-                                {this.state.nameError ? null : "The name of your post — try to give your deck a descriptive title!"}
+                                {/* This will conditionally render the muted text based on nameError's status in the state */}
+                                {this.state.nameError ? null : "The name of your post — try to give your deck a descriptive title! (Max. 55 characters.)"}
                             </Form.Text>
                         </Form.Group>
                     </Form>
@@ -229,12 +247,16 @@ export default class CreatePost extends React.Component {
                             <Form.Control
                                 type="text"
                                 name="overview"
+                                isInvalid={this.state.overviewError}
                                 value={this.state.overview}
                                 aria-describedby="overviewHelp"
                                 onChange={this.updateFormField}
                             />
+                            <Form.Control.Feedback type="invalid">
+                                {this.state.overviewError}
+                            </Form.Control.Feedback>
                             <Form.Text id="overviewHelp" muted>
-                                The overview of your deck — how would you describe it? What do you like about it? (Min. 30 characters.)
+                                {this.state.overviewError ? null : "The overview of your deck — how would you describe it? What do you like about it? (Min. 30 characters.)"}
                             </Form.Text>
                         </Form.Group>
                     </Form>
@@ -246,13 +268,17 @@ export default class CreatePost extends React.Component {
                             <Form.Control
                                 type="text"
                                 name="strategy"
+                                isInvalid={this.state.strategyError}
                                 value={this.state.strategy}
                                 as="textarea"
                                 rows={3}
                                 onChange={this.updateFormField}
                             />
+                            <Form.Control.Feedback type="invalid">
+                                {this.state.strategyError}
+                            </Form.Control.Feedback>
                             <Form.Text id="overviewHelp" muted>
-                                The strategy of your deck — how is it supposed to be played? What kind of tactics can you employ? (Min. 50 characters.)
+                                {this.state.strategyError ? null : "The strategy of your deck — how is it supposed to be played? What kind of tactics can you employ? (Min. 50 characters.)"}
                             </Form.Text>
                         </Form.Group>
                         {/* Range slider for rating & difficulty! Works, can implement with a hook but use state for now */}
