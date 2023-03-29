@@ -56,9 +56,8 @@ export default class ViewPosts extends React.Component {
         return (
             <React.Fragment>
                 <div className="page-container">
-                    This is the view posts page.
-                    <Container id="postsContainer">
-                        <h1>View all posts</h1>
+                    <h1 className="centered p-3">View all posts</h1>
+                    <Container id="postsContainer" className="p-3">
                         <div>{this.state.posts.map(post => (
                             <div key={post._id}>
                                 <div className="border shadow">
