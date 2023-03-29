@@ -67,6 +67,8 @@
 
 @media screen and (max-width: 480px) {
     /* css rules for devices up to 480px */
+
+    /* less padding on the overall form container; this way, there is more space for the sliders to be separated */
     .post-form {
         padding: 10px;
     }
@@ -90,7 +92,9 @@
 }
 
 @media screen and (min-width: 481px) {
-    /* css rules for devices between 481px and 768px */
+    /* css rules for devices with width from 481px and above */
+
+    /* regular padding on larger devices */
     .post-form {
         padding: 30px;
     }
@@ -102,11 +106,6 @@
         text-align: center;
         text-shadow: 2px 2px 5px plum;
     }
-}
-    
-
-#archetype {
-    display: block;
 }
 
 .centered {
