@@ -21,7 +21,7 @@ import BASE_API from '../components/BaseApi';
 import axios from "axios";
 
 // validation
-import { validateName, validateOverview, validateStrategy } from "../components/validation";
+import { validateName, validateOverview, validateStrategy, validateArchetype } from "../components/validation";
 
 // stylesheet
 import "../pages.css";
@@ -91,8 +91,7 @@ export default class CreatePost extends React.Component {
                 if (event.target.name === "strategy"){
                     this.validateStrategy();
                 }
-        }
-        )
+        });
     }
 
     validateName = () => {
@@ -110,10 +109,18 @@ export default class CreatePost extends React.Component {
         this.setState({strategyError: error});
     }
 
+    validateArchetype = () => {
+        const error = validateArchetype(this.state.archetype);
+        this.setState({archetypeError: error});
+    }
+    
+
     updateArchetype = (event) => {
         this.setState({
             archetype: event.target.value
-        })
+        }, () => {
+            this.validateArchetype();
+        });
     }
 
     // can refactor these into one function updateSlider later, tried but it didn't work for now so leave it
@@ -288,6 +295,7 @@ export default class CreatePost extends React.Component {
                                 <Form.Select
                                     aria-label="Archetype selection menu"
                                     onChange={this.updateArchetype}
+                                    isInvalid={this.state.archetypeError}
                                 >
                                     <option>— Select an Archetype —</option>
                                     <option value="Beatdown">Beatdown</option>
@@ -298,6 +306,9 @@ export default class CreatePost extends React.Component {
                                     <option value="Bridge Spam">Bridge Spam</option>
                                     <option value="Others">Others</option>
                                 </Form.Select>
+                                <Form.Control.Feedback type="invalid">
+                                    {this.state.archetypeError}
+                                </Form.Control.Feedback>
                             </div>
                             <div className="sliders rating-container">
                                 <h5>Rating</h5>
