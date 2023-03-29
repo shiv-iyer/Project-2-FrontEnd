@@ -10,12 +10,18 @@ import {Form, Container, Row, Col, Button, InputGroup} from "react-bootstrap";
 // import Button from "react-bootstrap/Button";
 // import InputGroup from "react-bootstrap/InputGroup";
 
+// bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+
 // external import: range-slider
 import RangeSlider from 'react-bootstrap-range-slider';
 
 // API and Axios
 import BASE_API from '../components/BaseApi';
 import axios from "axios";
+
+// validation
+import { validateName } from "../components/validation";
 
 // stylesheet
 import "../pages.css";
@@ -37,7 +43,13 @@ export default class CreatePost extends React.Component {
         password: "",
         // empty array of errors
         errors: [],
-        isValid: false
+        isValid: false,
+        // one item in the state for each possible error
+        nameError: "",
+        overviewError: "",
+        strategyError: "",
+        archetypeError: ""
+
     }
 
     // functions
@@ -68,7 +80,18 @@ export default class CreatePost extends React.Component {
         this.errorValidation();
         this.setState({
             [event.target.name]: event.target.value
-        })
+            //setState has two functions: second one can be a function to be called after state is set
+        }, () => {
+                if (event.target.name === "name"){
+                    this.validateName();
+                }
+        }
+        )
+    }
+
+    validateName = () => {
+        const error = validateName(this.state.name);
+        this.setState({nameError: error});
     }
 
     updateArchetype = (event) => {
@@ -175,12 +198,18 @@ export default class CreatePost extends React.Component {
                             <Form.Control
                                 type="text"
                                 name="name"
+                                isInvalid={this.state.nameError}
                                 value={this.state.name}
                                 aria-describedby="postNameHelp"
                                 onChange={this.updateFormField}
                             />
+                            {/* normal form.control.feedback should be valid*/}
+                            <Form.Control.Feedback type="invalid">
+                                {this.state.nameError}
+                            </Form.Control.Feedback>
                             <Form.Text id="postNameHelp" muted>
-                                The name of your post — try to give your deck a descriptive title!
+                                {/* This will conditionally render the muted text based on if there's an error or not */}
+                                {this.state.nameError ? null : "The name of your post — try to give your deck a descriptive title!"}
                             </Form.Text>
                         </Form.Group>
                     </Form>
@@ -229,7 +258,7 @@ export default class CreatePost extends React.Component {
                         {/* Range slider for rating & difficulty! Works, can implement with a hook but use state for now */}
                         {/* Seems like I can't really customize it well, maybe leave default for now and look into it later. */}
                         <div className="slider-group mt-3">
-                            <div>
+                            <div className="archetype-container">
                                 <Form.Select
                                     aria-label="Archetype selection menu"
                                     onChange={this.updateArchetype}
@@ -244,7 +273,7 @@ export default class CreatePost extends React.Component {
                                     <option value="Others">Others</option>
                                 </Form.Select>
                             </div>
-                            <div>
+                            <div className="sliders rating-container">
                                 <h5>Rating</h5>
                                 <RangeSlider
                                      min={1}
@@ -253,7 +282,7 @@ export default class CreatePost extends React.Component {
                                     onChange={this.updateRating}
                                 />
                              </div>
-                            <div>
+                            <div className="sliders difficulty-container">
                                 <h5>Difficulty</h5>
                                 <RangeSlider
                                     min={1}
