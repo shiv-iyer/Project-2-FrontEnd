@@ -242,6 +242,7 @@ export default class CreatePost extends React.Component {
 
                 <div className="mb-3 post-form-group">
                     <h5>Deck</h5>
+                    
                     <p>deck creation stuff goes here...</p>
                 </div>
 
