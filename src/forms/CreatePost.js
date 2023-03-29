@@ -242,8 +242,72 @@ export default class CreatePost extends React.Component {
 
                 <div className="mb-3 post-form-group">
                     <h5>Deck</h5>
-                    
+
                     <p>deck creation stuff goes here...</p>
+
+                    <Form.Check
+                    inline
+                    label="Xbow"
+                    name="xbow"
+                    value="xbow"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Tesla"
+                    name="tesla"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Archers"
+                    name="archers"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Log"
+                    name="log"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Ice Spirit"
+                    name="ice_Spirit"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Skeletons"
+                    name="skeletons"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Fireball"
+                    name="fireball"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Knight"
+                    name="knight"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Musketeer"
+                    name="musketeer"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Rocket"
+                    name="rocket"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Zap"
+                    name="zap"
+                    type="checkbox"/>
+                    <Form.Check
+                    inline
+                    label="Cannon"
+                    name="cannon"
+                    type="checkbox"/>
+
+                    
                 </div>
 
                 <h3 className="header-text">Deck Info</h3>
