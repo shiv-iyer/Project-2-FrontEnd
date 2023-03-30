@@ -122,7 +122,11 @@ export default class CreatePost extends React.Component {
             this.setState({selectedCards: modifiedCards});
         }
 
-        this.getCards();
+        //this.getCards();
+
+        /*this.state.selectedCards.map((card) => {
+            console.log(card);
+        });*/
     }
 
     validateName = () => {
@@ -288,7 +292,12 @@ export default class CreatePost extends React.Component {
                     <h5>Deck</h5>
 
                     <p>deck creation stuff goes here...</p>
-
+                    
+                    <div>
+                        {this.state.selectedCards.map((card) => 
+                            <p key={card}>{card}</p>
+                        )}
+                    </div>
                     {/* possible improvement: use the map function to render all these checkboxes, instead of hardcoding */}
                     <Form.Check
                         inline
