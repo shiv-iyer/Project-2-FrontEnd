@@ -218,7 +218,7 @@ export default class CreatePost extends React.Component {
                 // cards will be the hardest thing to do... for now hard code the IDs
                 /*cards: ["6412c055632f110d0e8812d0", "6412c159632f110d0e8ba04d", "6412c19c632f110d0e8c7c19", "6412c1ff632f110d0e8dcc71",
                     "641d4b9d04f85304f52ba96c", "641d4c4a04f85304f52ba96d", "641d5cd86bedf92c58be2d8d", "641d507504f85304f52ba96f"],*/
-                cards: this.getCards(),
+                cards: this.getCardIDs(),
                 name: "4.5 Xbow Cycle",
                 userThatPosted: "Alannn",
                 date: "03-28-23",
@@ -238,7 +238,7 @@ export default class CreatePost extends React.Component {
             console.log("deck difficulty level: " + this.state.difficultyLevel);
     };
 
-    getCards = () => {
+    getCardIDs = () => {
         const documentIDs = [];
         this.state.selectedCards.forEach((card) => {
             console.log("current card: " + card);
@@ -247,7 +247,7 @@ export default class CreatePost extends React.Component {
             documentIDs.push(cardIDs[card]);
         });
         
-        // return documentIDs;
+        return documentIDs;
     }
 
 
