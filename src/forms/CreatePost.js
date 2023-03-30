@@ -23,6 +23,9 @@ import axios from "axios";
 // validation
 import { validateName, validateOverview, validateStrategy, validateArchetype } from "../components/validation";
 
+// Card IDs object
+import cardIDs from "../components/CardIDs";
+
 // stylesheet
 import "../pages.css";
 
@@ -118,6 +121,8 @@ export default class CreatePost extends React.Component {
             const modifiedCards = [...this.state.selectedCards, event.target.value];
             this.setState({selectedCards: modifiedCards});
         }
+
+        this.getCards();
     }
 
     validateName = () => {
@@ -211,8 +216,9 @@ export default class CreatePost extends React.Component {
             {
                 // parameters in the request's body.
                 // cards will be the hardest thing to do... for now hard code the IDs
-                cards: ["6412c055632f110d0e8812d0", "6412c159632f110d0e8ba04d", "6412c19c632f110d0e8c7c19", "6412c1ff632f110d0e8dcc71",
-                    "641d4b9d04f85304f52ba96c", "641d4c4a04f85304f52ba96d", "641d5cd86bedf92c58be2d8d", "641d507504f85304f52ba96f"],
+                /*cards: ["6412c055632f110d0e8812d0", "6412c159632f110d0e8ba04d", "6412c19c632f110d0e8c7c19", "6412c1ff632f110d0e8dcc71",
+                    "641d4b9d04f85304f52ba96c", "641d4c4a04f85304f52ba96d", "641d5cd86bedf92c58be2d8d", "641d507504f85304f52ba96f"],*/
+                cards: this.getCards(),
                 name: "4.5 Xbow Cycle",
                 userThatPosted: "Alannn",
                 date: "03-28-23",
@@ -231,6 +237,15 @@ export default class CreatePost extends React.Component {
             console.log("deck rating: " + this.state.rating);
             console.log("deck difficulty level: " + this.state.difficultyLevel);
     };
+
+    getCards = () => {
+        this.state.selectedCards.forEach((card) => {
+            console.log("current card: " + card);
+            // to access the key by using a variable, we need to use square brackets []
+            console.log("corresponding card ID: " + cardIDs[card]);
+            //cardIDs.push()
+        });
+    }
 
 
     render(){
@@ -264,8 +279,8 @@ export default class CreatePost extends React.Component {
                             </Form.Text>
                         </Form.Group>
                     </Form>
-                </div>
-
+                </div>  
+                
                 <div className="mb-3 post-form-group">
                     <h5>Deck</h5>
 
