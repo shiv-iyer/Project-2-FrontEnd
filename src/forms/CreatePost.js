@@ -293,9 +293,17 @@ export default class CreatePost extends React.Component {
 
                     <p>deck creation stuff goes here...</p>
                     
-                    <div>
+                    <div className="mb-3">
                         {this.state.selectedCards.map((card) => 
-                            <p key={card}>{card}</p>
+                            <p 
+                                key={card}
+                                style={{display: "inline-block",
+                                        padding: "10px",
+                                        margin: "2px",
+                                        backgroundColor: "beige",
+                                        border: "2px solid black"}}>
+                                    {card}
+                            </p>
                         )}
                     </div>
                     {/* possible improvement: use the map function to render all these checkboxes, instead of hardcoding */}
