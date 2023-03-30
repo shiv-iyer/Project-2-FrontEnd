@@ -239,12 +239,15 @@ export default class CreatePost extends React.Component {
     };
 
     getCards = () => {
+        const documentIDs = [];
         this.state.selectedCards.forEach((card) => {
             console.log("current card: " + card);
             // to access the key by using a variable, we need to use square brackets []
             console.log("corresponding card ID: " + cardIDs[card]);
-            //cardIDs.push()
+            documentIDs.push(cardIDs[card]);
         });
+        
+        // return documentIDs;
     }
 
 
