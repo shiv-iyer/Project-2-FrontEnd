@@ -48,8 +48,9 @@ export default class CreatePost extends React.Component {
         nameError: "",
         overviewError: "",
         strategyError: "",
-        archetypeError: ""
-
+        archetypeError: "",
+        // empty array to hold the selected cards
+        selectedCards: []
     }
 
     // functions
@@ -92,6 +93,31 @@ export default class CreatePost extends React.Component {
                     this.validateStrategy();
                 }
         });
+    }
+
+    updateCards = (event) => {
+        console.log("card was updated");
+        console.log(event.target.value);
+        // dealing with arrays in the state React: you must use setState, cannont just arrayName.push()
+        // arrays in the state are immutable. Therefore, we need to clone the array and setState with a modified version of it.
+        
+        // first, check if the value exists in the array already — if it does, delete from the array
+        if (this.state.selectedCards.includes(event.target.value)){
+            const indexToDelete = this.state.selectedCards.findIndex(function(currentElement){
+                // condition to return (must be a truthy value): when the element in the array matches the checkbox value
+                return currentElement === event.target.value;
+            });
+
+            // once we have found the index to delete, we can re-build the array in two halves:
+            // 1. slice the array from the starting index to the indexToDelete (slice will not be inclusive of indxeToDelete)
+            // 2. Slice the array from from the element after indexToDelete (hence indexToDelete +1) until the end of the array.
+            const modifiedCards = [...this.state.selectedCards.slice(0, indexToDelete), ...this.state.selectedCards.slice(indexToDelete +1)];
+            this.setState({selectedCards: modifiedCards});
+        } else {
+            // if it doesn't exist, then add to the array in the state. Spread the OG array; append the event's value to the end.
+            const modifiedCards = [...this.state.selectedCards, event.target.value];
+            this.setState({selectedCards: modifiedCards});
+        }
     }
 
     validateName = () => {
@@ -245,69 +271,91 @@ export default class CreatePost extends React.Component {
 
                     <p>deck creation stuff goes here...</p>
 
+                    {/* possible improvement: use the map function to render all these checkboxes, instead of hardcoding */}
                     <Form.Check
-                    inline
-                    label="Xbow"
-                    name="xbow"
-                    value="xbow"
-                    type="checkbox"/>
+                        inline
+                        label="Xbow"
+                        name="cards"
+                        value="xbow"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Tesla"
-                    name="tesla"
-                    type="checkbox"/>
+                        inline
+                        label="Tesla"
+                        name="cards"
+                        value="tesla"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Archers"
-                    name="archers"
-                    type="checkbox"/>
+                        inline
+                        label="Archers"
+                        name="cards"
+                        value="archers"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Log"
-                    name="log"
-                    type="checkbox"/>
+                        inline
+                        label="Log"
+                        name="cards"
+                        value="log"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Ice Spirit"
-                    name="ice_Spirit"
-                    type="checkbox"/>
+                        inline
+                        label="Ice Spirit"
+                        name="cards"
+                        value="ice_Spirit"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Skeletons"
-                    name="skeletons"
-                    type="checkbox"/>
+                        inline
+                        label="Skeletons"
+                        name="cards"
+                        value="skeletons"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Fireball"
-                    name="fireball"
-                    type="checkbox"/>
+                        inline
+                        label="Fireball"
+                        name="cards"
+                        value="fireball"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Knight"
-                    name="knight"
-                    type="checkbox"/>
+                        inline
+                        label="Knight"
+                        name="cards"
+                        value="knight"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Musketeer"
-                    name="musketeer"
-                    type="checkbox"/>
+                        inline
+                        label="Musketeer"
+                        name="cards"
+                        value="musketeer"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Rocket"
-                    name="rocket"
-                    type="checkbox"/>
+                        inline
+                        label="Rocket"
+                        name="cards"
+                        value="rocket"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Zap"
-                    name="zap"
-                    type="checkbox"/>
+                        inline
+                        label="Zap"
+                        name="cards"
+                        value="zap"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                     <Form.Check
-                    inline
-                    label="Cannon"
-                    name="cannon"
-                    type="checkbox"/>
-
-                    
+                        inline
+                        label="Cannon"
+                        name="cards"
+                        value="cannon"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                 </div>
 
                 <h3 className="header-text">Deck Info</h3>
