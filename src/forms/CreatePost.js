@@ -129,6 +129,34 @@ export default class CreatePost extends React.Component {
         });*/
     }
 
+    // need to make a second function for updateCards based on a click from the deck display itself
+    updateCardsFromDeck = (card) => {
+        console.log("card was updated from deck display");
+        console.log(card);
+        // dealing with arrays in the state React: you must use setState, cannont just arrayName.push()
+        // arrays in the state are immutable. Therefore, we need to clone the array and setState with a modified version of it.
+        
+        // first, check if the value exists in the array already — if it does, delete from the array
+        if (this.state.selectedCards.includes(card)){
+            const indexToDelete = this.state.selectedCards.findIndex(function(currentElement){
+                // condition to return (must be a truthy value): when the element in the array matches the checkbox value
+                return currentElement === card;
+            });
+
+            // once we have found the index to delete, we can re-build the array in two halves:
+            // 1. slice the array from the starting index to the indexToDelete (slice will not be inclusive of indxeToDelete)
+            // 2. Slice the array from from the element after indexToDelete (hence indexToDelete +1) until the end of the array.
+            const modifiedCards = [...this.state.selectedCards.slice(0, indexToDelete), ...this.state.selectedCards.slice(indexToDelete +1)];
+            this.setState({selectedCards: modifiedCards});
+
+            // actually we shouldn't need the else statement bc this will be to remove only
+        } /* else {
+            // if it doesn't exist, then add to the array in the state. Spread the OG array; append the event's value to the end.
+            const modifiedCards = [...this.state.selectedCards, card];
+            this.setState({selectedCards: modifiedCards});
+        } */
+    }
+
     validateName = () => {
         const error = validateName(this.state.name);
         this.setState({nameError: error});
@@ -294,6 +322,7 @@ export default class CreatePost extends React.Component {
                     <p>deck creation stuff goes here...</p>
                     
                     <div className="mb-3">
+                        {/* onClick only worked with an anonymous function, not sure why? */}
                         {this.state.selectedCards.map((card) => 
                             <p 
                                 key={card}
@@ -301,7 +330,8 @@ export default class CreatePost extends React.Component {
                                         padding: "10px",
                                         margin: "2px",
                                         backgroundColor: "beige",
-                                        border: "2px solid black"}}>
+                                        border: "2px solid black"}}
+                                onClick={()=> this.updateCardsFromDeck(card)}>
                                     {card}
                             </p>
                         )}
