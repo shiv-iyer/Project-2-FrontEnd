@@ -1,6 +1,6 @@
 // save all of the cards' document IDs; this way, they can be referred to for the POST request
 
-export const cardIDs = {
+const cardIDs = {
     xbow: "6412c055632f110d0e8812d0",
     tesla: "6412c159632f110d0e8ba04d",
     archers: "6412c19c632f110d0e8c7c19",
@@ -14,3 +14,5 @@ export const cardIDs = {
     zap: "641d5d446bedf92c58be2d8e",
     cannon: "641d5e176bedf92c58be2d8f"
 }
+
+export default cardIDs;
