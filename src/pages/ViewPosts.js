@@ -105,6 +105,9 @@ export default class ViewPosts extends React.Component {
     
             console.log("Result data...");
             console.log(updateResponse.data);
+
+            this.setState({editingPost: false});
+            this.loadPosts();
         } catch (error) {
             console.error(error);
         }
