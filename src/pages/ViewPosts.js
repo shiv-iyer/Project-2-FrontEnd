@@ -90,20 +90,24 @@ export default class ViewPosts extends React.Component {
     }
 
     submitEdit = async () => {
-        // PUT request to API: 1st param is url, second param is body
-        const updateResponse = await axios.put(`${BASE_API}posts/${this.state.currentPostID}`,{
-            // save cards for later / cards: this.getCardIDs(),
-            name: this.state.updatedName,
-            date: "04-01-23",
-            archetype: this.state.updatedArchetype,
-            overview: this.state.updatedOverview,
-            strategy: this.state.updatedStrategy,
-            rating: this.state.updatedRating,
-            difficultyLevel: this.state.updatedDifficultyLevel
-        });
-
-        console.log("Result data...");
-        console.log(updateResponse.data);
+        try {
+            // PUT request to API: 1st param is url, second param is body
+            const updateResponse = await axios.put(`${BASE_API}posts/${this.state.currentPostID}`,{
+                // save cards for later / cards: this.getCardIDs(),
+                name: this.state.updatedName,
+                date: "04-01-23",
+                archetype: this.state.updatedArchetype,
+                overview: this.state.updatedOverview,
+                strategy: this.state.updatedStrategy,
+                rating: this.state.updatedRating,
+                difficultyLevel: this.state.updatedDifficultyLevel
+            });
+    
+            console.log("Result data...");
+            console.log(updateResponse.data);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     // load posts function
