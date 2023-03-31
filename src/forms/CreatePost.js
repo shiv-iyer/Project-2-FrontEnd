@@ -54,7 +54,7 @@ export default class CreatePost extends React.Component {
         archetypeError: "",
         // empty array to hold the selected cards
         selectedCards: []
-    }
+    };
 
     // functions
 
@@ -76,7 +76,7 @@ export default class CreatePost extends React.Component {
                 }
             )
         }
-    }
+    };
 
     // for text fields, can use event.target.name to use one function to perform the updation for all.
     updateFormField = (event) => {
@@ -96,7 +96,7 @@ export default class CreatePost extends React.Component {
                     this.validateStrategy();
                 }
         });
-    }
+    };
 
     updateCards = (event) => {
         console.log("card was updated");
@@ -127,7 +127,7 @@ export default class CreatePost extends React.Component {
         /*this.state.selectedCards.map((card) => {
             console.log(card);
         });*/
-    }
+    };
 
     // need to make a second function for updateCards based on a click from the deck display itself
     updateCardsFromDeck = (card) => {
@@ -155,27 +155,27 @@ export default class CreatePost extends React.Component {
             const modifiedCards = [...this.state.selectedCards, card];
             this.setState({selectedCards: modifiedCards});
         } */
-    }
+    };
 
     validateName = () => {
         const error = validateName(this.state.name);
         this.setState({nameError: error});
-    }
+    };
 
     validateOverview = () => {
         const error = validateOverview(this.state.overview);
         this.setState({overviewError: error});
-    }
+    };
 
     validateStrategy = () => {
         const error = validateStrategy(this.state.strategy);
         this.setState({strategyError: error});
-    }
+    };
 
     validateArchetype = () => {
         const error = validateArchetype(this.state.archetype);
         this.setState({archetypeError: error});
-    }
+    };
     
 
     updateArchetype = (event) => {
@@ -184,14 +184,14 @@ export default class CreatePost extends React.Component {
         }, () => {
             this.validateArchetype();
         });
-    }
+    };
 
     // can refactor these into one function updateSlider later, tried but it didn't work for now so leave it
     updateRating = (event) => {
         this.setState({
             rating: event.target.value
         })
-    }
+    };
 
     updateDifficulty = (event) => {
         this.setState({
@@ -237,7 +237,7 @@ export default class CreatePost extends React.Component {
         } else {
             alert("You have errors, plz fix them.");
         }
-    }
+    };
 
     // starting functionality for POST request.
     submit = async () => {
@@ -280,7 +280,7 @@ export default class CreatePost extends React.Component {
         });
         
         return documentIDs;
-    }
+    };
 
 
     render(){
