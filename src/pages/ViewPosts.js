@@ -8,6 +8,12 @@ import Post from "../components/Post";
 import Container from 'react-bootstrap/Container';
 import { Modal, Form } from "react-bootstrap";
 
+// range-slider
+import RangeSlider from 'react-bootstrap-range-slider';
+
+// validation
+import { validateName, validateOverview, validateStrategy, validateArchetype } from "../components/validation";
+
 // API and Axios
 import BASE_API from '../components/BaseApi';
 import axios from "axios";
@@ -27,11 +33,34 @@ export default class ViewPosts extends React.Component {
         updatedStrategy: "",
         updatedRating: 5,
         updatedDifficultyLevel: 3,
-        editingPost: false
+        editingPost: false,
+         // one item in the state for each possible error
+        nameError: "",
+        overviewError: "",
+        strategyError: "",
+        archetypeError: "",
     }
 
     // functions
     // componentDidMount() will probably call the axios get request
+
+    updateFormField = (event) => {
+        console.log("Event target name: " + event.target.name);
+        this.setState({
+            [event.target.name]: event.target.value
+            //setState has two functions: second one can be a function to be called after state is set
+        }, () => {
+                if (event.target.name === "name"){
+                    this.validateName();
+                }
+                if (event.target.name === "overview"){
+                    this.validateOverview();
+                }
+                if (event.target.name === "strategy"){
+                    this.validateStrategy();
+                }
+        });
+    };
 
     updatePost = (post) => {
         /*cards: this.getCardIDs(),
@@ -51,8 +80,8 @@ export default class ViewPosts extends React.Component {
             updatedDate: "04-01-23",
             updatedCards: ["array of cards"],
             updatedArchetype: post.archetype,
-            updatedOverview: post.overview,
-            updatedStrategy: post.strategy,
+            updatedOverview: post.postInfo.overview,
+            updatedStrategy: post.postInfo.strategy,
             updatedRating: post.rating,
             updatedDifficultyLevel: post.difficultyLevel
         });
@@ -82,6 +111,47 @@ export default class ViewPosts extends React.Component {
         console.log("posts: ");
         console.log(this.state.posts);
     }
+
+    validateName = () => {
+        const error = validateName(this.state.name);
+        this.setState({nameError: error});
+    };
+
+    validateOverview = () => {
+        const error = validateOverview(this.state.overview);
+        this.setState({overviewError: error});
+    };
+
+    validateStrategy = () => {
+        const error = validateStrategy(this.state.strategy);
+        this.setState({strategyError: error});
+    };
+
+    validateArchetype = () => {
+        const error = validateArchetype(this.state.archetype);
+        this.setState({archetypeError: error});
+    };
+    
+
+    updateArchetype = (event) => {
+        this.setState({
+            archetype: event.target.value
+        }, () => {
+            this.validateArchetype();
+        });
+    };
+
+    updateRating = (event) => {
+        this.setState({
+            updatedRating: event.target.value
+        })
+    };
+
+    updateDifficulty = (event) => {
+        this.setState({
+            updatedDifficultyLevel: event.target.value
+        });
+    };
 
     // on componentDidMount, call the function to load the posts
 
@@ -153,6 +223,99 @@ export default class ViewPosts extends React.Component {
                                 </Form.Group>
                             </Form>
                         </div>  
+
+                        <div className="mb-3 post-form-group">
+                            <h5>Deck</h5>
+
+                            <p>deck creation stuff goes here...</p>
+                        </div>
+
+                        <h3 className="header-text">Deck Info</h3>
+                        <div className="post-form-group">
+                            <Form>
+                                <Form.Group className="mb-2" controlId="inputOverview">
+                                    <Form.Label>Deck Overview</Form.Label>
+                                    {/* type=text for plain text; aria-describedby references what describes the form*/}
+                                    <Form.Control
+                                        type="text"
+                                        name="updatedOverview"
+                                        isInvalid={this.state.overviewError}
+                                        value={this.state.updatedOverview}
+                                        as="textarea"
+                                        aria-describedby="overviewHelp"
+                                        onChange={this.updateFormField}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {this.state.overviewError}
+                                    </Form.Control.Feedback>
+                                    <Form.Text id="overviewHelp" muted>
+                                        {this.state.overviewError ? null : "The overview of your deck — how would you describe it? What do you like about it? (Min. 30 characters.)"}
+                                    </Form.Text>
+                                </Form.Group>
+                            </Form>
+
+                            {/* By default, Form.Text is an 'input', but can customize to TextArea if needed! */}
+                            <Form>
+                                <Form.Group className="mb-2" controlId="inputStrategy">
+                                    <Form.Label>Strategy</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="updatedStrategy"
+                                        isInvalid={this.state.strategyError}
+                                        value={this.state.updatedStrategy}
+                                        as="textarea"
+                                        rows={3}
+                                        onChange={this.updateFormField}
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        {this.state.strategyError}
+                                    </Form.Control.Feedback>
+                                    <Form.Text id="overviewHelp" muted>
+                                        {this.state.strategyError ? null : "The strategy of your deck — how is it supposed to be played? What kind of tactics can you employ? (Min. 50 characters.)"}
+                                    </Form.Text>
+                                </Form.Group>
+                                <div className="slider-group mt-3">
+                                    <div className="archetype-container">
+                                        <Form.Select
+                                            aria-label="Archetype selection menu"
+                                            onChange={this.updateArchetype}
+                                            isInvalid={this.state.archetypeError}
+                                            value={this.state.updatedArchetype}
+                                        >
+                                            <option>— Select an Archetype —</option>
+                                            <option value="Beatdown">Beatdown</option>
+                                            <option value="Control">Control</option>
+                                            <option value="Cycle">Cycle</option>
+                                            <option value="Siege">Siege</option>
+                                            <option value="Spell Bait">Spell Bait</option>
+                                            <option value="Bridge Spam">Bridge Spam</option>
+                                            <option value="Others">Others</option>
+                                        </Form.Select>
+                                        <Form.Control.Feedback type="invalid">
+                                            {this.state.archetypeError}
+                                        </Form.Control.Feedback>
+                                    </div>
+                                    <div className="sliders rating-container">
+                                        <h5>Rating</h5>
+                                        <RangeSlider
+                                            min={1}
+                                            max={10}
+                                            value={this.state.updatedRating}
+                                            onChange={this.updateRating}
+                                        />
+                                    </div>
+                                    <div className="sliders difficulty-container">
+                                        <h5>Difficulty</h5>
+                                        <RangeSlider
+                                            min={1}
+                                            max={5}
+                                            value={this.state.updatedDifficultyLevel}
+                                            onChange={this.updateDifficulty}
+                                        />
+                                    </div>
+                                </div>
+                            </Form>
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.cancelEdit}>
