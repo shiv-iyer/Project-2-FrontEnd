@@ -39,6 +39,7 @@ export default class ViewPosts extends React.Component {
         overviewError: "",
         strategyError: "",
         archetypeError: "",
+        currentPostID: ""
     }
 
     // functions
@@ -50,28 +51,19 @@ export default class ViewPosts extends React.Component {
             [event.target.name]: event.target.value
             //setState has two functions: second one can be a function to be called after state is set
         }, () => {
-                if (event.target.name === "name"){
+                if (event.target.name === "updatedName"){
                     this.validateName();
                 }
-                if (event.target.name === "overview"){
+                if (event.target.name === "updatedOverview"){
                     this.validateOverview();
                 }
-                if (event.target.name === "strategy"){
+                if (event.target.name === "updatedStrategy"){
                     this.validateStrategy();
                 }
         });
     };
 
     updatePost = (post) => {
-        /*cards: this.getCardIDs(),
-        name: this.state.name,
-        userThatPosted: this.state.userThatPosted,
-        date: "03-31-23",
-        archetype: this.state.archetype,
-        overview: this.state.overview,
-        strategy: this.state.strategy,
-        rating: this.state.rating,
-        difficultyLevel: this.state.difficultyLevel*/
 
         // first step: setState so existing post info isn't lost
         this.setState({
@@ -83,8 +75,11 @@ export default class ViewPosts extends React.Component {
             updatedOverview: post.postInfo.overview,
             updatedStrategy: post.postInfo.strategy,
             updatedRating: post.rating,
-            updatedDifficultyLevel: post.difficultyLevel
+            updatedDifficultyLevel: post.difficultyLevel,
+            currentPostID: post._id
         });
+
+        console.log(post);
 
     }
 
@@ -92,6 +87,23 @@ export default class ViewPosts extends React.Component {
         this.setState({
             editingPost: false
         })
+    }
+
+    submitEdit = async () => {
+        // PUT request to API: 1st param is url, second param is body
+        const updateResponse = await axios.put(`${BASE_API}posts/${this.state.currentPostID}`,{
+            // save cards for later / cards: this.getCardIDs(),
+            name: this.state.updatedName,
+            date: "04-01-23",
+            archetype: this.state.updatedArchetype,
+            overview: this.state.updatedOverview,
+            strategy: this.state.updatedStrategy,
+            rating: this.state.updatedRating,
+            difficultyLevel: this.state.updatedDifficultyLevel
+        });
+
+        console.log("Result data...");
+        console.log(updateResponse.data);
     }
 
     // load posts function
@@ -113,29 +125,29 @@ export default class ViewPosts extends React.Component {
     }
 
     validateName = () => {
-        const error = validateName(this.state.name);
+        const error = validateName(this.state.updatedName);
         this.setState({nameError: error});
     };
 
     validateOverview = () => {
-        const error = validateOverview(this.state.overview);
+        const error = validateOverview(this.state.updatedOverview);
         this.setState({overviewError: error});
     };
 
     validateStrategy = () => {
-        const error = validateStrategy(this.state.strategy);
+        const error = validateStrategy(this.state.updatedStrategy);
         this.setState({strategyError: error});
     };
 
     validateArchetype = () => {
-        const error = validateArchetype(this.state.archetype);
+        const error = validateArchetype(this.state.updatedArchetype);
         this.setState({archetypeError: error});
     };
     
 
     updateArchetype = (event) => {
         this.setState({
-            archetype: event.target.value
+            updatedArchetype: event.target.value
         }, () => {
             this.validateArchetype();
         });
@@ -177,6 +189,7 @@ export default class ViewPosts extends React.Component {
                                     <h1 className="p-3">Post Name: {post.name}</h1>
                                     <h5 className="p-1">Posted by: {post.userThatPosted}</h5>
                                     <h5 className="p-1">Date posted: {post.dateOfCreation}</h5>
+                                    <h6 className="p-1">Date updated: {post.dateOfUpdation}</h6>
                                     <p className="p-3 mb-2">Overview: {post.postInfo.overview}</p>
                                     <p className="p-3 mb-2">Strategy: {post.postInfo.strategy}</p>
                                     <p className="p-3 mb-2">Archetype: {post.archetype}</p>
@@ -321,7 +334,7 @@ export default class ViewPosts extends React.Component {
                         <Button variant="secondary" onClick={this.cancelEdit}>
                                 Close
                         </Button>
-                        <Button variant="primary">
+                        <Button variant="primary" onClick={this.submitEdit}>
                             Save Changes
                         </Button>
                     </Modal.Footer>
