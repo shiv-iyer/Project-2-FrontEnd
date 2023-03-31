@@ -74,8 +74,8 @@ export default class ViewPosts extends React.Component {
             updatedArchetype: post.archetype,
             updatedOverview: post.postInfo.overview,
             updatedStrategy: post.postInfo.strategy,
-            updatedRating: post.rating,
-            updatedDifficultyLevel: post.difficultyLevel,
+            updatedRating: post.postInfo.rating,
+            updatedDifficultyLevel: post.postInfo.difficultyLevel,
             currentPostID: post._id
         });
 
