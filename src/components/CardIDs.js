@@ -12,7 +12,18 @@ const cardIDs = {
     musketeer: "641d5c696bedf92c58be2d8c",
     rocket: "641d5cd86bedf92c58be2d8d",
     zap: "641d5d446bedf92c58be2d8e",
-    cannon: "641d5e176bedf92c58be2d8f"
+    cannon: "641d5e176bedf92c58be2d8f",
+    giant: "",
+    poison: "",
+    balloon: "",
+    hunter: "",
+    miner: "",
+    hog_Rider: "",
+    royal_Giant: "",
+    arrows: "",
+    minions: "",
+    lightning: ""
+
 }
 
 export default cardIDs;
