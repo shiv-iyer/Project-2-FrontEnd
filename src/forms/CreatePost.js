@@ -56,6 +56,15 @@ export default class CreatePost extends React.Component {
         selectedCards: []
     };
 
+    // can just declare a variable; state is just for dynamic variables
+    // no need for const because it's already in the class. to access: this.labels
+    // label key value pairs, as well as value key value pairs
+    // key: value to use in Form.Check; value: value to display as the label in Form.Check
+
+    // can also add in image URL here, but can get all cards (from database) then access it that way.
+    // API returns everything to do with cards
+    labels = {xbow:"Xbow", tesla:"Tesla", archers:"Archers", log:"Log"};
+
     // functions
 
     errorValidation = () => {
@@ -347,7 +356,32 @@ export default class CreatePost extends React.Component {
                         )}
                     </div>
                     {/* possible improvement: use the map function to render all these checkboxes, instead of hardcoding */}
-                    <Form.Check
+                    
+                    {/* have to map in curly braces, because we are trying to use an expression */}
+                    {/* map second argument is the index: we use index because there is no ID to be used. How React works:
+                    if none of the components have a key, React won't know which one is being changed. Performance issue where
+                    it'll try to figure out what is changed. Though, if the user tries to change a component just based on Key #1,
+                    React JUST has to re-render Key #1 instead of looking for it. */}
+
+                    {/* Object.keys iterates through the keys; other way around is Object.values */}
+                    {/* usually we use the programmer-friendly Strings as the key, because we don't use spaces or
+                    special characters in them (which are not valid key names). Whereas for display text we might use
+                    spaces or other special characters, so they should be the value pairs */}
+                    {Object.keys(this.labels).map((key, index) => {
+                        return (
+                            <Form.Check
+                                inline
+                                label={this.labels[key]}
+                                key={index}
+                                name="cards"
+                                value={key}
+                                type="checkbox"
+                                disabled={this.state.selectedCards.length === 8}
+                                onChange={this.updateCards}/>
+                        )
+                    })}
+
+                    {/* <Form.Check
                         inline
                         label="Xbow"
                         name="cards"
@@ -522,7 +556,7 @@ export default class CreatePost extends React.Component {
                         value="lightning"
                         type="checkbox"
                         disabled={this.state.selectedCards.length === 8}
-                        onChange={this.updateCards}/>
+                        onChange={this.updateCards}/> */}
                 </div>
 
                 <h3 className="header-text">Deck Info</h3>
