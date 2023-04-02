@@ -421,6 +421,76 @@ export default class CreatePost extends React.Component {
                         value="cannon"
                         type="checkbox"
                         onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Giant"
+                        name="cards"
+                        value="giant"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Poison"
+                        name="cards"
+                        value="poison"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Balloon"
+                        name="cards"
+                        value="balloon"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Hunter"
+                        name="cards"
+                        value="hunter"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Miner"
+                        name="cards"
+                        value="miner"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Hog Rider"
+                        name="cards"
+                        value="hog_Rider"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Royal Giant"
+                        name="cards"
+                        value="royal_Giant"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Arrows"
+                        name="cards"
+                        value="arrows"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Minions"
+                        name="cards"
+                        value="minions"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
+                    <Form.Check
+                        inline
+                        label="Lightning"
+                        name="cards"
+                        value="lightning"
+                        type="checkbox"
+                        onChange={this.updateCards}/>
                 </div>
 
                 <h3 className="header-text">Deck Info</h3>
