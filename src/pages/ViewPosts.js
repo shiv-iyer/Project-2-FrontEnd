@@ -191,28 +191,36 @@ export default class ViewPosts extends React.Component {
                     <h1 className="centered p-3">View all posts</h1>
                     <Container id="postsContainer" className="p-3">
                         <div>{this.state.posts.map(post => (
-                            <div key={post._id}>
-                                <div className="border shadow">
-                                    <h1 className="p-3">Post Name: {post.name}</h1>
-                                    <h5 className="p-1">Posted by: {post.userThatPosted}</h5>
-                                    <h5 className="p-1">Date posted: {post.dateOfCreation}</h5>
-                                    <h6 className="p-1">Date updated: {post.dateOfUpdation}</h6>
-                                    <p className="p-3 mb-2">Overview: {post.postInfo.overview}</p>
-                                    <p className="p-3 mb-2">Strategy: {post.postInfo.strategy}</p>
-                                    <p className="p-3 mb-2">Archetype: {post.archetype}</p>
-                                    <p className="p-1">Rating: {post.postInfo.rating}</p>
-                                    <p className="p-1">Difficulty: {post.postInfo.difficultyLevel}</p>
-                                    <Button
-                                        variant="secondary"
-                                        onClick={()=> this.updatePost(post)}
-                                        >Edit</Button>
-                                </div>
-                            </div>
+                            // inside the Post component, to access the value of the post object, it will be this.props.key
+                            // we pass in the value of post from the mapping function
+                            // For the mapping function, passing in a key attribute ensures that each post will be unique
+                            // another option: passing in the index as part of the map function
+
+                        //     <div className="border shadow">
+                        //     <h1 className="p-3">Post Name: {this.props.post.name}</h1>
+                        //     <h5 className="p-1">Posted by: {this.props.post.userThatPosted}</h5>
+                        //     <h5 className="p-1">Date posted: {this.props.post.dateOfCreation}</h5>
+                        //     <h6 className="p-1">Date updated: {this.props.post.dateOfUpdation}</h6>
+                        //     <p className="p-3 mb-2">Overview: {this.props.post.postInfo.overview}</p>
+                        //     <p className="p-3 mb-2">Strategy: {this.props.post.postInfo.strategy}</p>
+                        //     <p className="p-3 mb-2">Archetype: {this.props.post.archetype}</p>
+                        //     <p className="p-1">Rating: {this.props.post.postInfo.rating}</p>
+                        //     <p className="p-1">Difficulty: {this.props.post.postInfo.difficultyLevel}</p>
+                        //     <Button
+                        //         variant="secondary"
+                        //         onClick={()=> this.props.updatePost(this.props.post)}
+                        //         >Edit</Button>
+                        // </div>
+
+                            // also pass in the updatePost function
+                            <Post
+                                post={post}
+                                key={post._id}
+                                updatePost={this.updatePost}/>
+                            // <div key={post._id}>
+                            // </div>
                         ))}
                         </div>
-                        <Post/>
-                        <Post/>
-                        <Post/>
                     </Container>     
                 </div>
                 {/* show is linked to the state: only render when shown */}
