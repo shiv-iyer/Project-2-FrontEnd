@@ -149,12 +149,22 @@ export default class CreatePost extends React.Component {
             const modifiedCards = [...this.state.selectedCards.slice(0, indexToDelete), ...this.state.selectedCards.slice(indexToDelete +1)];
             this.setState({selectedCards: modifiedCards});
 
-            // actually we shouldn't need the else statement bc this will be to remove only
-        } /* else {
-            // if it doesn't exist, then add to the array in the state. Spread the OG array; append the event's value to the end.
-            const modifiedCards = [...this.state.selectedCards, card];
-            this.setState({selectedCards: modifiedCards});
-        } */
+            // now, uncheck the checkbox...
+            // first, test to see if this works
+            const checkboxes = document.querySelectorAll('input[type=checkbox');
+
+            // yes it does work
+            console.log(checkboxes);
+
+            // find the checkbox that matches the value of what we just clicked
+            checkboxes.forEach((checkbox) => {
+                // if value matches, uncheck the checkbox!
+                if (checkbox.value === card)
+                    checkbox.checked = false;
+            });
+
+            // this unchecks the checkbox and maintains the selectedCards state. Now, limitation of 8 cards max
+        } 
     };
 
     validateName = () => {
@@ -319,7 +329,7 @@ export default class CreatePost extends React.Component {
                 <div className="mb-3 post-form-group">
                     <h5>Deck</h5>
 
-                    <p>deck creation stuff goes here...</p>
+                    <p>Create your deck! Max 8 cards.</p>
                     
                     <div className="mb-3">
                         {/* onClick only worked with an anonymous function, not sure why? */}
@@ -343,6 +353,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="xbow"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -350,6 +361,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="tesla"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -357,6 +369,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="archers"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -364,6 +377,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="log"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -371,6 +385,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="ice_Spirit"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -378,6 +393,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="skeletons"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -385,6 +401,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="fireball"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -392,6 +409,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="knight"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -399,6 +417,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="musketeer"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -406,6 +425,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="rocket"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -413,6 +433,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="zap"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -420,6 +441,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="cannon"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -427,6 +449,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="giant"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -434,6 +457,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="poison"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -441,6 +465,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="balloon"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -448,6 +473,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="hunter"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -455,6 +481,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="miner"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -462,6 +489,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="hog_Rider"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -469,6 +497,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="royal_Giant"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -476,6 +505,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="arrows"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -483,6 +513,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="minions"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                     <Form.Check
                         inline
@@ -490,6 +521,7 @@ export default class CreatePost extends React.Component {
                         name="cards"
                         value="lightning"
                         type="checkbox"
+                        disabled={this.state.selectedCards.length === 8}
                         onChange={this.updateCards}/>
                 </div>
 
