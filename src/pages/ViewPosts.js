@@ -42,6 +42,8 @@ export default class ViewPosts extends React.Component {
         currentPostID: ""
     }
 
+    // variables
+
     // functions
     // componentDidMount() will probably call the axios get request
 
@@ -123,12 +125,13 @@ export default class ViewPosts extends React.Component {
         // set state from the response
         this.setState({
             // postsResponse.data.posts
-            posts: postsResponse.data
+            posts: postsResponse.data.listings
         })
 
         // console log out to test
         console.log("posts: ");
         console.log(this.state.posts);
+        
     }
 
     validateName = () => {
