@@ -197,7 +197,7 @@ export default class ViewPosts extends React.Component {
             <React.Fragment>
                 <div className="page-container">
                     <h1 className="centered p-3">View all posts</h1>
-                    <SearchBar/>
+                    <SearchBar name="hi"/>
                     <Container id="postsContainer" className="p-3">
                         <div>{this.state.posts.map(post => (
                             // inside the Post component, to access the value of the post object, it will be this.props.key

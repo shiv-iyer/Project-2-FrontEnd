@@ -6,6 +6,6 @@ import {Form, Button, Row, Col} from "react-bootstrap";
 
 export default function SearchBar(props){
     return (
-        <p>1</p>
+        <p>{props.name}</p>
     );
 }
