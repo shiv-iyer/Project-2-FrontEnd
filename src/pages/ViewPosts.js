@@ -125,7 +125,7 @@ export default class ViewPosts extends React.Component {
         // get from API 
         // backtick strings `` and $ are for passing in a parameter as part of the string (axios.get requires a string?)
         // posts: the name of my collection I want to retrieve from, in this case it's posts
-        const postsResponse = await axios.get(`${BASE_API}posts`);
+        const postsResponse = await axios.get(`${BASE_API}posts?name=${this.state.search}`);
 
         // set state from the response
         this.setState({
@@ -193,7 +193,7 @@ export default class ViewPosts extends React.Component {
     }
 
     findSearchResults = () => {
-        
+        this.loadPosts();
     }
 
     // on componentDidMount, call the function to load the posts
