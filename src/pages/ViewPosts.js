@@ -3,6 +3,7 @@ import "../pages.css";
 
 // import components
 import Post from "../components/Post";
+import SearchBar from "../components/SearchBar";
 
 // React Bootstrap imports
 import Container from 'react-bootstrap/Container';
@@ -39,7 +40,11 @@ export default class ViewPosts extends React.Component {
         overviewError: "",
         strategyError: "",
         archetypeError: "",
-        currentPostID: ""
+        currentPostID: "",
+
+        // hold search and filter values
+        search: "",
+        archetypeFilter: ""
     }
 
     // variables
@@ -192,6 +197,7 @@ export default class ViewPosts extends React.Component {
             <React.Fragment>
                 <div className="page-container">
                     <h1 className="centered p-3">View all posts</h1>
+                    <SearchBar/>
                     <Container id="postsContainer" className="p-3">
                         <div>{this.state.posts.map(post => (
                             // inside the Post component, to access the value of the post object, it will be this.props.key
