@@ -180,6 +180,22 @@ export default class ViewPosts extends React.Component {
         });
     };
 
+    handleSearchChange = (event) => {
+        this.setState({
+            search: event.target.value
+        })
+    }
+
+    handleFilterChange = (event) => {
+        this.setState({
+            archetypeFilter: event.target.value
+        })
+    }
+
+    findSearchResults = () => {
+        
+    }
+
     // on componentDidMount, call the function to load the posts
 
     componentDidMount = () => {
@@ -197,29 +213,19 @@ export default class ViewPosts extends React.Component {
             <React.Fragment>
                 <div className="page-container">
                     <h1 className="centered p-3">View all posts</h1>
-                    <SearchBar name="hi"/>
+                    {/* pass in the relevant values as props */}
+                    <SearchBar
+                        search={this.state.search}
+                        handleSearchChange={this.handleSearchChange}
+                        handleFilterChange={this.handleFilterChange}
+                        findResults={this.findSearchResults}
+                    />
                     <Container id="postsContainer" className="p-3">
                         <div>{this.state.posts.map(post => (
                             // inside the Post component, to access the value of the post object, it will be this.props.key
                             // we pass in the value of post from the mapping function
                             // For the mapping function, passing in a key attribute ensures that each post will be unique
                             // another option: passing in the index as part of the map function
-
-                        //     <div className="border shadow">
-                        //     <h1 className="p-3">Post Name: {this.props.post.name}</h1>
-                        //     <h5 className="p-1">Posted by: {this.props.post.userThatPosted}</h5>
-                        //     <h5 className="p-1">Date posted: {this.props.post.dateOfCreation}</h5>
-                        //     <h6 className="p-1">Date updated: {this.props.post.dateOfUpdation}</h6>
-                        //     <p className="p-3 mb-2">Overview: {this.props.post.postInfo.overview}</p>
-                        //     <p className="p-3 mb-2">Strategy: {this.props.post.postInfo.strategy}</p>
-                        //     <p className="p-3 mb-2">Archetype: {this.props.post.archetype}</p>
-                        //     <p className="p-1">Rating: {this.props.post.postInfo.rating}</p>
-                        //     <p className="p-1">Difficulty: {this.props.post.postInfo.difficultyLevel}</p>
-                        //     <Button
-                        //         variant="secondary"
-                        //         onClick={()=> this.props.updatePost(this.props.post)}
-                        //         >Edit</Button>
-                        // </div>
 
                             // also pass in the updatePost function
                             <Post
