@@ -3,6 +3,10 @@ import React from 'react';
 import {Form, Button, Row, Col, Container} from "react-bootstrap";
 import RangeSlider from "react-bootstrap-range-slider";
 
+// trying rc slider
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
 import '../assets/componentStyles.css';
 
 // let's try a function-based component
@@ -19,7 +23,7 @@ export default function SearchBar(props){
                         value={props.search}
                         onChange={props.handleSearchChange}
                         placeholder="Search posts..."
-                        className="rounded-pill searchInput bouncy"
+                        className="rounded-pill searchInput large"
                     />
                     </Col>
                     <Col xs={12} md={6} className="d-flex justify-content-md-start justify-content-center mt-3 mt-md-0">
@@ -38,26 +42,29 @@ export default function SearchBar(props){
                 <Row className="my-4 sliderContainer justify-content-center">
                 <Col xs={12} md="auto" className="d-flex flex-column justify-content-center align-items-center">
                     <label>Min. Rating: </label>
-                    <RangeSlider
-                    className="bouncy"
-                    min={1}
-                    max={10}
-                    value={props.rating}
-                    onChange={props.handleRatingChange}
+                    <Slider
+                        className="bouncy my-2"
+                        min={1}
+                        max={10}
+                        value={props.rating}
+                        onChange={props.handleRatingChange}
                     />
+                    {/* seeing as the rc-slider class doesn't display a value by default, I will have to do it manually */}
+                    <div className="sliderValue">{props.rating}</div>
                 </Col>
                 <Col xs={12} md="auto" className="d-flex flex-column justify-content-center align-items-center">
                     <label>Max. Difficulty: </label>
-                    <RangeSlider
-                    className="bouncy"
-                    min={1}
-                    max={5}
-                    value={props.difficulty}
-                    onChange={props.handleDifficultyChange}
+                    <Slider
+                        className="bouncy my-2"
+                        min={1}
+                        max={5}
+                        value={props.difficulty}
+                        onChange={props.handleDifficultyChange}
                     />
+                    <div className="sliderValue">{props.difficulty}</div>
                 </Col>
                 <Col xs={12} md="auto" className="d-flex justify-content-center mt-3 mt-md-0">
-                    <Button onClick={props.findResults} className="bouncy">
+                    <Button onClick={props.findResults} className="large">
                     Find Results
                     </Button>
                 </Col>

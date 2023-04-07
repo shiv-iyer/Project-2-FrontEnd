@@ -196,15 +196,15 @@ export default class ViewPosts extends React.Component {
         })
     }
 
-    handleRatingChange = (event) => {
+    handleRatingChange = (value) => {
         this.setState({
-            ratingFilter: event.target.value
+            ratingFilter: value
         })
     }
 
-    handleDifficultyChange = (event) => {
+    handleDifficultyChange = (value) => {
         this.setState({
-            difficultyFilter: event.target.value
+            difficultyFilter: value
         })
     }
 
