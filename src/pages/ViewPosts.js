@@ -44,7 +44,9 @@ export default class ViewPosts extends React.Component {
 
         // hold search and filter values
         search: "",
-        archetypeFilter: ""
+        archetypeFilter: "",
+        ratingFilter: 5,
+        difficultyFilter: 3
     }
 
     // variables
@@ -125,7 +127,9 @@ export default class ViewPosts extends React.Component {
         // get from API 
         // backtick strings `` and $ are for passing in a parameter as part of the string (axios.get requires a string?)
         // posts: the name of my collection I want to retrieve from, in this case it's posts
-        const postsResponse = await axios.get(`${BASE_API}posts?name=${this.state.search}&archetype=${this.state.archetypeFilter}`);
+        // &minRating=${this.state.ratingFilter}&maxDifficulty=${this.state.difficultyFilter}
+        const postsResponse = await axios.get(`${BASE_API}posts?name=${this.state.search}&archetype=${this.state.archetypeFilter}
+                                              `);
 
         // set state from the response
         this.setState({
@@ -192,6 +196,18 @@ export default class ViewPosts extends React.Component {
         })
     }
 
+    handleRatingChange = (event) => {
+        this.setState({
+            ratingFilter: event.target.value
+        })
+    }
+
+    handleDifficultyChange = (event) => {
+        this.setState({
+            difficultyFilter: event.target.value
+        })
+    }
+
     findSearchResults = () => {
         this.loadPosts();
     }
@@ -218,6 +234,10 @@ export default class ViewPosts extends React.Component {
                         search={this.state.search}
                         handleSearchChange={this.handleSearchChange}
                         handleFilterChange={this.handleFilterChange}
+                        rating={this.state.ratingFilter}
+                        handleRatingChange={this.handleRatingChange}
+                        difficulty={this.state.difficultyFilter}
+                        handleDifficultyChange={this.handleDifficultyChange}
                         findResults={this.findSearchResults}
                     />
                     <Container id="postsContainer" className="p-3">

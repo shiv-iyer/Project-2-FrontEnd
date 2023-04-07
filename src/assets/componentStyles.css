@@ -45,6 +45,18 @@
     outline: none;
   }
 
+  .sliderContainer {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+  }
+
   .bouncy:hover{
     transform: translateY(-4px);
     transition: all 0.3s ease;
