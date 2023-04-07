@@ -45,8 +45,9 @@ export default class ViewPosts extends React.Component {
         // hold search and filter values
         search: "",
         archetypeFilter: "",
-        ratingFilter: 5,
-        difficultyFilter: 3
+        // set minRating and maxDifficulty to the most extreme values, so that the initial search will always return all of the posts.
+        ratingFilter: 1,
+        difficultyFilter: 5
     }
 
     // variables
@@ -129,7 +130,7 @@ export default class ViewPosts extends React.Component {
         // posts: the name of my collection I want to retrieve from, in this case it's posts
         // &minRating=${this.state.ratingFilter}&maxDifficulty=${this.state.difficultyFilter}
         const postsResponse = await axios.get(`${BASE_API}posts?name=${this.state.search}&archetype=${this.state.archetypeFilter}
-                                              `);
+                                               &minRating=${this.state.ratingFilter}&maxDifficulty=${this.state.difficultyFilter}`);
 
         // set state from the response
         this.setState({
