@@ -16,6 +16,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // external import: range-slider
 import RangeSlider from 'react-bootstrap-range-slider';
 
+// external import: rc-slider
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
 // API and Axios
 import BASE_API from '../components/BaseApi';
 import axios from "axios";
@@ -23,9 +27,10 @@ import axios from "axios";
 // validation
 import { validateName, validateOverview, validateStrategy, validateArchetype } from "../components/validation";
 
-// stylesheet
+// stylesheets
 import "../pages.css";
 import "../assets/create.css";
+import  "../assets/componentStyles.css"
 
 
 // create the component: extend React.Component to have all the functionality of a react component
@@ -159,6 +164,12 @@ export default class CreatePost extends React.Component {
             rating: event.target.value
         })
     };
+
+    handleRatingChange = (value) => {
+        this.setState({
+            rating: value
+        })
+    }
 
     updateDifficulty = (event) => {
         this.setState({
@@ -454,12 +465,20 @@ export default class CreatePost extends React.Component {
                             </div>
                             <div className="sliders rating-container">
                                 <h5>Rating</h5>
-                                <RangeSlider
+                                {/* <RangeSlider
                                      min={1}
                                     max={10}
                                     value={this.state.rating}
                                     onChange={this.updateRating}
-                                />
+                                /> */}
+                                <Slider
+                                    className="bouncy my-2 customSlider"
+                                    min={1}
+                                    max={10}
+                                    value={this.state.rating}
+                                    onChange={this.handleRatingChange}>
+                                </Slider>
+                                <div className="sliderValue">{this.state.rating}</div>
                              </div>
                             <div className="sliders difficulty-container">
                                 <h5>Difficulty</h5>
