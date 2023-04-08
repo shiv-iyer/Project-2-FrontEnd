@@ -1,9 +1,9 @@
 /* display the cards in a perfect grid. Wrap around to the next row when necessary, and center everything. */
-.cardGrid {
+/* .cardGrid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+} */
 
 .deckGrid {
     display: grid;
@@ -32,6 +32,70 @@
           max-width: 50%;
         }
       }
+
+      /* .cardGrid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .customClashCard {
+        box-sizing: border-box;
+        margin: 2px;
+        padding: 2px;
+        transition: padding 0.3s;
+      }
+      
+      @media (max-width: 576px) {
+        .customClashCard {
+          flex: 0 0 calc(25% - 4px);
+        }
+      }
+      
+      @media (min-width: 577px) and (max-width: 768px) {
+        .customClashCard {
+          flex: 0 0 calc(16.666% - 4px);
+        }
+      }
+      
+      @media (min-width: 769px) {
+        .customClashCard {
+          flex: 0 0 calc(12.5% - 4px);
+        }
+      } */
+
+      .cardGrid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: -5px;
+      }
+      
+      .customClashCard {
+        width: calc(100% / 8 - 10px);
+        margin: 5px;
+        box-sizing: border-box;
+      }
+      
+      @media (max-width: 992px) {
+        .customClashCard {
+          width: calc(100% / 6 - 10px);
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .customClashCard {
+          width: calc(100% / 4 - 10px);
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .customClashCard {
+          width: calc(100% / 4 - 10px);
+        }
+      }
+                  
+      
 
 .deckHeader {
     font-family: 'Playfair Display', serif;

@@ -400,7 +400,7 @@ export default class CreatePost extends React.Component {
                             {/* conditional styling based on if selected or not, using the ternary operator */}
                             {/* isSelected = this.state.selectedCards.includes(card) */}
                             return (
-                                <div key={index} className="clashCard larger"
+                                <div key={index} className="clashCard customClashCard larger"
                                  onClick={() => this.selectCard(card)}
                                  style={{
                                      borderColor: this.state.selectedCards.includes(card)
@@ -416,8 +416,9 @@ export default class CreatePost extends React.Component {
                                          ? '0 0 0 0.2rem rgba(0, 123, 255, 0.5)'
                                          : 'initial',
                                      margin: this.state.selectedCards.includes(card)
-                                         ? '4px'
-                                         : '0',
+                                         ? '2px'
+                                         : '4px',
+                                    boxSizing: "border-box",
                                  }}>
                                     <img src={card.cardURL} alt={card.cardName}/>
                                      <p>{card.cardName}</p>
