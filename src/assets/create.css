@@ -1,0 +1,53 @@
+/* display the cards in a perfect grid. Wrap around to the next row when necessary, and center everything. */
+.cardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.deckGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    justify-content: center;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.clashCard {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+  .cardImg {
+    width: 100%;
+    height: auto
+  }
+
+    /* media query to ensure that the deck expands on larger devices */
+    @media (min-width: 768px) {
+        .deckGrid {
+          max-width: 50%;
+        }
+      }
+
+.deckHeader {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #333;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.deckHeader::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 3px;
+    background-color: #333;
+    margin: 0.5rem auto;
+  }
