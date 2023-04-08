@@ -24,14 +24,16 @@ export default class Post extends React.Component {
         console.log(this.props.post);
 
         return <React.Fragment>
-            <div className="border shadow postContainer">
-                <h1 className="p-3">Post Name: {this.props.post.name}</h1>
-                <h5 className="p-1">Posted by: {this.props.post.userThatPosted}</h5>
-                <h5 className="p-1">Date posted: {this.props.post.dateOfCreation}</h5>
-                <h6 className="p-1">Date updated: {this.props.post.dateOfUpdation}</h6>
+            <div className="border shadow">
+                <div className="postHeaderContainer">
+                    <h1 className="p-3">Post Name: {this.props.post.name}</h1>
+                    <h3 className="p-1">Posted by: {this.props.post.userThatPosted}</h3>
+                    <h5 className="p-1">Date posted: {this.props.post.dateOfCreation}</h5>
+                    <h6 className="p-1">Date updated: {this.props.post.dateOfUpdation}</h6>
+                </div>
                 <div className="deckContainer">
                     {this.props.post.deck.cards.map((card) => (
-                        <div key={card.cardID} className="cardItem large">
+                        <div key={card.cardID} className="cardItem larger">
                             <img
                                 src={card.cardURL}
                                 alt="One card in the user's deck of 8 cards"
@@ -42,15 +44,15 @@ export default class Post extends React.Component {
                     ))}
                 </div>
                 <div className="postInfoContainer">
-                    <p className="p-3 mb-2">Overview: {this.props.post.postInfo.overview}</p>
-                    <p className="p-3 mb-2">Strategy: {this.props.post.postInfo.strategy}</p>
-                    <p className="p-3 mb-2">Archetype: {this.props.post.archetype}</p>
+                    <p className="p-2 mb-2">Overview: {this.props.post.postInfo.overview}</p>
+                    <p className="p-2 mb-2">Strategy: {this.props.post.postInfo.strategy}</p>
+                    <p className="p-2 mb-2">Archetype: {this.props.post.archetype}</p>
                     <p className="p-1">Rating: {this.props.post.postInfo.rating}</p>
                     <p className="p-1">Difficulty: {this.props.post.postInfo.difficultyLevel}</p>
                 </div>
                 <Button
-                    variant="secondary"
-                    className="mb-4"
+                    variant="warning"
+                    className="mb-4 larger"
                     onClick={()=> this.props.updatePost(this.props.post)}
                     >Edit</Button>
             </div>

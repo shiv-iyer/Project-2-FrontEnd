@@ -56,6 +56,12 @@
     transition: all 0.3s ease;
   }
 
+
+  .larger:hover {
+    transform: scale(1.17);
+    transition: all 0.3s ease;
+  }
+
   .bouncy:hover{
     transform: translateY(-5.5px);
     transition: all 0.3s ease;

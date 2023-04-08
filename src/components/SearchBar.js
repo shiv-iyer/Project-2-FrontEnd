@@ -64,7 +64,7 @@ export default function SearchBar(props){
                         <div className="sliderValue">{props.difficulty}</div>
                     </Col>
                     <Col xs={12} md="auto" className="d-flex justify-content-center mt-3 mt-md-0">
-                        <Button onClick={props.findResults} className="large">
+                        <Button onClick={props.findResults} className="larger">
                         Find Results
                         </Button>
                     </Col>
