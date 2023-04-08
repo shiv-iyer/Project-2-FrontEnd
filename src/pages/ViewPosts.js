@@ -432,8 +432,11 @@ export default class ViewPosts extends React.Component {
                         <Modal.Title>Delete Post</Modal.Title>
                     </Modal.Header>
                     {/* main body of the modal popup */}
-                    <Modal.Body>
-                        <p>ARE YOU SURE? Deletion is permanent!</p>
+                    <Modal.Body className="deletionContainer">
+                        <div className="deletionItems">
+                            <img src={require("../assets/crying.png")} className="cryingImg"></img>
+                            <p>ARE YOU SURE? Deletion is permanent!</p>
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="primary" onClick={this.cancelDeletion}>

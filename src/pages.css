@@ -169,3 +169,20 @@
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(161,148,233,0.5326724439775911) 100%);
 }
+
+.deletionContainer {
+    background-color: #FFFDD1;
+}
+
+.deletionItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cryingImg {
+    border: 2px solid black;
+    border-radius: 8px;
+}

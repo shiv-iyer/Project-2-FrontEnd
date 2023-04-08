@@ -52,13 +52,13 @@ export default class Post extends React.Component {
                 </div>
                 <Button
                     variant="warning"
-                    className="mb-4 larger"
+                    className="mb-4 me-2 larger"
                     onClick={()=> this.props.updatePost(this.props.post)}
                     >Edit
                 </Button>
                 <Button
                     variant="danger"
-                    className="mb-4 larger"
+                    className="mb-4 ms-2 larger"
                     onClick={()=> this.props.deletePost(this.props.post)}
                     >Delete
                 </Button>
