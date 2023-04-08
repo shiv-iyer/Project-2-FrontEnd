@@ -29,7 +29,9 @@ export default class Post extends React.Component {
                     <h1 className="p-3">Post Name: {this.props.post.name}</h1>
                     <h3 className="p-1">Posted by: {this.props.post.userThatPosted}</h3>
                     <h5 className="p-1">Date posted: {this.props.post.dateOfCreation}</h5>
-                    <h6 className="p-1">Date updated: {this.props.post.dateOfUpdation}</h6>
+                    
+                    {/* conditionally render dateOfUpdation only if it exists! if null do not display!*/}
+                    {this.props.post.dateOfUpdation ? <h6 className="p-1">Date updated: {this.props.post.dateOfUpdation}</h6> : null}
                 </div>
                 <div className="deckContainer">
                     {this.props.post.deck.cards.map((card) => (
