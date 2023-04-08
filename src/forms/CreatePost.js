@@ -420,7 +420,7 @@ export default class CreatePost extends React.Component {
                                          : '4px',
                                     boxSizing: "border-box",
                                  }}>
-                                    <img src={card.cardURL} alt={card.cardName}/>
+                                    <img src={card.cardURL} alt={card.cardName} className="cardImg"/>
                                      <p>{card.cardName}</p>
                                 </div>
                             )
