@@ -53,7 +53,11 @@ export default class CreatePost extends React.Component {
         strategyError: "",
         archetypeError: "",
         // empty array to hold the selected cards
-        selectedCards: []
+        selectedCards: [],
+
+        // hold the cards from the axios.get 
+        cards: [],
+        labels: []
     };
 
     // can just declare a variable; state is just for dynamic variables
@@ -63,10 +67,10 @@ export default class CreatePost extends React.Component {
 
     // can also add in image URL here, but can get all cards (from database) then access it that way.
     // API returns everything to do with cards
-    labels = {xbow: "Xbow", tesla: "Tesla", archers: "Archers", log: "Log", iceSpirit: "Ice Spirit", skeletons: "Skeletons",
-              fireball: "Fireball", knight: "Knight", musketeer: "Musketeer", rocket: "Rocket", zap: "Zap", cannon: "Cannon",
-              giant: "Giant", poison: "Poison", balloon: "Balloon", hunter: "Hunter", miner: "Miner", hogRider: "Hog Rider",
-              royalGiant: "Royal Giant", arrows: "Arrows", minions: "Minions", lightning: "Lightning"};
+    // labels = {xbow: "Xbow", tesla: "Tesla", archers: "Archers", log: "Log", iceSpirit: "Ice Spirit", skeletons: "Skeletons",
+    //           fireball: "Fireball", knight: "Knight", musketeer: "Musketeer", rocket: "Rocket", zap: "Zap", cannon: "Cannon",
+    //           giant: "Giant", poison: "Poison", balloon: "Balloon", hunter: "Hunter", miner: "Miner", hogRider: "Hog Rider",
+    //           royalGiant: "Royal Giant", arrows: "Arrows", minions: "Minions", lightning: "Lightning"};
 
     // functions
 
@@ -304,6 +308,71 @@ export default class CreatePost extends React.Component {
         return documentIDs;
     };
 
+        // load cards function
+        loadCards = async () => {
+            // get from API 
+            const cardsResponse = await axios.get(`${BASE_API}cards`);
+    
+            //console.log("🚀 ~ file: CreatePost.js:312 ~ CreatePost ~ loadCards= ~ postsResponse:", cardsResponse.data.listings)
+            const { cardInfo, cardURL, _id } = cardsResponse.data.listings[0];
+            //console.log("🚀 ~ file: CreatePost.js:317 ~ CreatePost ~ loadCards= ~ _id:", _id)
+            //console.log("🚀 ~ file: CreatePost.js:318 ~ CreatePost ~ loadCards= ~ cardURL:", cardURL)
+            //console.log("🚀 ~ file: CreatePost.js:319 ~ CreatePost ~ loadCards= ~ cardInfo:", cardInfo.name)
+
+            const dataObj = cardsResponse.data.listings;
+            const tempLabel = []
+            //console.log("🚀 ~ file: CreatePost.js:323 ~ CreatePost ~ loadCards= ~ label:", label)
+            dataObj.forEach((element) => {
+                let id = element._id;
+                let cardURL = element.cardURL;
+                let cardInfo = element.cardInfo.name;
+                
+                const output = {
+                        cardInfo,
+                        cardURL,
+                        id
+                    
+                }
+               
+                tempLabel.push(output)
+            })
+
+            this.setState({
+                labels: tempLabel
+            })
+
+            // const out = [
+            //     {
+            //          name: "X-box"
+            //         cardURL : "url...",
+            //         "id" : "5363783929"
+            //     },
+            //     name2 : {
+
+            //     }
+            // ]
+            
+            // set state from the response
+            this.setState({
+                // postsResponse.data.posts
+                cards: cardsResponse.data.listings
+            })
+    
+            // console log out to test
+            console.log("cards: ");
+            console.log(this.state.cards);
+            
+        }
+
+        // on componentDidMount, call the function to load the posts
+
+        componentDidMount = () => {
+            try {
+                this.loadCards();
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
     render(){
         return <React.Fragment>
@@ -370,7 +439,8 @@ export default class CreatePost extends React.Component {
                     {/* usually we use the programmer-friendly Strings as the key, because we don't use spaces or
                     special characters in them (which are not valid key names). Whereas for display text we might use
                     spaces or other special characters, so they should be the value pairs */}
-                    {Object.keys(this.labels).map((key, index) => {
+                    {/* old labels object mapping method */}
+                    {/* {Object.keys(this.labels).map((key, index) => {
                         return (
                             <Form.Check
                                 inline
@@ -381,6 +451,15 @@ export default class CreatePost extends React.Component {
                                 type="checkbox"
                                 disabled={this.state.selectedCards.length === 8}
                                 onChange={this.updateCards}/>
+                        )
+                    })} */}
+                    {this.state.labels.map((element, index) => {
+                        
+                        return (
+                            <div key={index} onClick={() => console.log(element.id)}>
+                                <img src={element.cardURL} alt={element.cardInfo}/>
+                                <p>{element.cardInfo}</p>
+                            </div>
                         )
                     })}
 
