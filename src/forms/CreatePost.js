@@ -2,7 +2,7 @@ import React from "react";
 
 // react-bootstrap components
 // can just do it in one line!
-import {Form, Container, Row, Col, Button, InputGroup, Card} from "react-bootstrap";
+import {Form, Row, Col, Button, InputGroup} from "react-bootstrap";
 // import Form from "react-bootstrap/Form";
 // import Container from "react-bootstrap/Container";
 // import Row from "react-bootstrap/Row";
@@ -22,9 +22,6 @@ import axios from "axios";
 
 // validation
 import { validateName, validateOverview, validateStrategy, validateArchetype } from "../components/validation";
-
-// Card IDs object
-import cardIDs from "../components/CardIDs";
 
 // stylesheet
 import "../pages.css";
@@ -128,44 +125,6 @@ export default class CreatePost extends React.Component {
         }
     };
 
-    // need to make a second function for updateCards based on a click from the deck display itself
-    updateCardsFromDeck = (card) => {
-        console.log("card was updated from deck display");
-        console.log(card);
-        // dealing with arrays in the state React: you must use setState, cannont just arrayName.push()
-        // arrays in the state are immutable. Therefore, we need to clone the array and setState with a modified version of it.
-        
-        // first, check if the value exists in the array already — if it does, delete from the array
-        if (this.state.selectedCards.includes(card)){
-            const indexToDelete = this.state.selectedCards.findIndex(function(currentElement){
-                // condition to return (must be a truthy value): when the element in the array matches the checkbox value
-                return currentElement === card;
-            });
-
-            // once we have found the index to delete, we can re-build the array in two halves:
-            // 1. slice the array from the starting index to the indexToDelete (slice will not be inclusive of indxeToDelete)
-            // 2. Slice the array from from the element after indexToDelete (hence indexToDelete +1) until the end of the array.
-            const modifiedCards = [...this.state.selectedCards.slice(0, indexToDelete), ...this.state.selectedCards.slice(indexToDelete +1)];
-            this.setState({selectedCards: modifiedCards});
-
-            // now, uncheck the checkbox...
-            // first, test to see if this works
-            const checkboxes = document.querySelectorAll('input[type=checkbox');
-
-            // yes it does work
-            console.log(checkboxes);
-
-            // find the checkbox that matches the value of what we just clicked
-            checkboxes.forEach((checkbox) => {
-                // if value matches, uncheck the checkbox!
-                if (checkbox.value === card)
-                    checkbox.checked = false;
-            });
-
-            // this unchecks the checkbox and maintains the selectedCards state. Now, limitation of 8 cards max
-        } 
-    };
-
     validateName = () => {
         const error = validateName(this.state.name);
         this.setState({nameError: error});
@@ -186,7 +145,6 @@ export default class CreatePost extends React.Component {
         this.setState({archetypeError: error});
     };
     
-
     updateArchetype = (event) => {
         this.setState({
             archetype: event.target.value
