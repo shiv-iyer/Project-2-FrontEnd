@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 // stylesheet
 import "../pages.css";
+import "../assets/post.css"
 
 // create the component: extend React.Component to have all the functionality of a react component
 export default class Post extends React.Component {
@@ -23,7 +24,7 @@ export default class Post extends React.Component {
         console.log(this.props.post);
 
         return <React.Fragment>
-            <div className="border shadow">
+            <div className="border shadow postContainer">
                 <h1 className="p-3">Post Name: {this.props.post.name}</h1>
                 <h5 className="p-1">Posted by: {this.props.post.userThatPosted}</h5>
                 <h5 className="p-1">Date posted: {this.props.post.dateOfCreation}</h5>
