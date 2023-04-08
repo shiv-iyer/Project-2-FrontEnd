@@ -2,7 +2,7 @@ import React from "react";
 
 // react-bootstrap components
 // can just do it in one line!
-import {Form, Container, Row, Col, Button, InputGroup} from "react-bootstrap";
+import {Form, Container, Row, Col, Button, InputGroup, Card} from "react-bootstrap";
 // import Form from "react-bootstrap/Form";
 // import Container from "react-bootstrap/Container";
 // import Row from "react-bootstrap/Row";
@@ -419,11 +419,30 @@ export default class CreatePost extends React.Component {
                         {/* map the labels object, creating a clickable card based on the card name and its corresponding image URL */}
                         {/* we avoid hardcoding by mapping everything in this.state.labels. */}
                         {this.state.labels.map((card, index) => {
-                            {/* previous onClick: console.log(element.id) */}
+                            {/* conditional styling based on if selected or not */}
+                            {/* isSelected = this.state.selectedCards.includes(card) */}
                             return (
-                                <div key={index} className="clashCard larger" onClick={() => this.selectCard(card)}>
+                                <div key={index} className="clashCard larger"
+                                 onClick={() => this.selectCard(card)}
+                                 style={{
+                                     borderColor: this.state.selectedCards.includes(card)
+                                         ? 'rgba(0, 123, 255, 0.75)'
+                                         : 'initial',
+                                     borderWidth: this.state.selectedCards.includes(card)
+                                         ? '3px'
+                                         : 'initial',
+                                     borderStyle: this.state.selectedCards.includes(card)
+                                         ? 'solid'
+                                         : 'initial',
+                                     boxShadow: this.state.selectedCards.includes(card)
+                                         ? '0 0 0 0.2rem rgba(0, 123, 255, 0.5)'
+                                         : 'initial',
+                                     margin: this.state.selectedCards.includes(card)
+                                         ? '4px'
+                                         : '0',
+                                 }}>
                                     <img src={card.cardURL} alt={card.cardName}/>
-                                    <p>{card.cardName}</p>
+                                     <p>{card.cardName}</p>
                                 </div>
                             )
                         })}
