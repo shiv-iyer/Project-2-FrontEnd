@@ -28,6 +28,7 @@ import cardIDs from "../components/CardIDs";
 
 // stylesheet
 import "../pages.css";
+import "../assets/create.css";
 
 
 // create the component: extend React.Component to have all the functionality of a react component
@@ -228,34 +229,6 @@ export default class CreatePost extends React.Component {
     // check errors first, if no errors then call submit function
     checkErrors = () => {
         // validation.
-
-        // let errors = 0;
-
-        // // because setState is async, my old method doesn't work the first time around, so instead,
-        // // create a local variable errors and can push to it, then setState will hold the actual error messages
-        // // but can check from the local variable so we can avoid a setState call before the check
-        // // React fundamental: arrays in the state are immutable, but arrays outside of the state are fine
-
-        // // if name field is left blank
-        // // this.state.errors.push is not react-like, have to splice and set a new array
-        // if (!this.state.name){
-        //     errors++;
-        //     // 1. create a new array of the og array, slice with no parameters copies
-        //     const modifiedErrors = this.state.errors.slice();
-
-        //     // 2. push to the new array
-        //     modifiedErrors.push("name was left blank");
-
-        //     // 3. setState from the old errors array to the new array with errors
-        //     this.setState({
-        //         errors: modifiedErrors
-        //     });
-
-        //     alert("name was left blank");
-        // }
-
-        //console.log("errors array length: " + errors.length);
-
         // if there are no errors, then we can call the submit function
 
         if (this.state.isValid) {
@@ -308,76 +281,73 @@ export default class CreatePost extends React.Component {
         return documentIDs;
     };
 
-        // load cards function
-        loadCards = async () => {
-            // get from API 
-            const cardsResponse = await axios.get(`${BASE_API}cards`);
+    // load cards function
+    loadCards = async () => {
+        // get from API 
+        const cardsResponse = await axios.get(`${BASE_API}cards`);
+        // store the data in a separate object
+        const dataObj = cardsResponse.data.listings;
+        // create a temporary array to store the new objects in first, will setState with it later
+        const tempLabel = []
+        // run through the object and extract card id, cardURL and cardName
+        dataObj.forEach((element) => {
+            const id = element._id;
+            const cardURL = element.cardURL;
+            const cardName = element.cardInfo.name;
+            const output = {
+                    cardName,
+                    cardURL,
+                    id
+            } 
+            tempLabel.push(output)
+        })
+
+        this.setState({
+            labels: tempLabel
+        })
+        // set state from the response
+        this.setState({
+            // postsResponse.data.posts
+            cards: cardsResponse.data.listings
+        })
     
-            //console.log("🚀 ~ file: CreatePost.js:312 ~ CreatePost ~ loadCards= ~ postsResponse:", cardsResponse.data.listings)
-            const { cardInfo, cardURL, _id } = cardsResponse.data.listings[0];
-            //console.log("🚀 ~ file: CreatePost.js:317 ~ CreatePost ~ loadCards= ~ _id:", _id)
-            //console.log("🚀 ~ file: CreatePost.js:318 ~ CreatePost ~ loadCards= ~ cardURL:", cardURL)
-            //console.log("🚀 ~ file: CreatePost.js:319 ~ CreatePost ~ loadCards= ~ cardInfo:", cardInfo.name)
-
-            const dataObj = cardsResponse.data.listings;
-            const tempLabel = []
-            //console.log("🚀 ~ file: CreatePost.js:323 ~ CreatePost ~ loadCards= ~ label:", label)
-            dataObj.forEach((element) => {
-                let id = element._id;
-                let cardURL = element.cardURL;
-                let cardInfo = element.cardInfo.name;
-                
-                const output = {
-                        cardInfo,
-                        cardURL,
-                        id
-                    
-                }
-               
-                tempLabel.push(output)
-            })
-
-            this.setState({
-                labels: tempLabel
-            })
-
-            // const out = [
-            //     {
-            //          name: "X-box"
-            //         cardURL : "url...",
-            //         "id" : "5363783929"
-            //     },
-            //     name2 : {
-
-            //     }
-            // ]
-            
-            // set state from the response
-            this.setState({
-                // postsResponse.data.posts
-                cards: cardsResponse.data.listings
-            })
-    
-            // console log out to test
-            console.log("cards: ");
-            console.log(this.state.cards);
-            
+        // console log out to test
+        console.log("cards: ");
+        console.log(this.state.cards);
         }
 
-        // on componentDidMount, call the function to load the posts
-
-        componentDidMount = () => {
-            try {
-                this.loadCards();
-            } catch (error) {
-                console.error(error);
-            }
+    // function for selecting a card
+    selectCard = (card) => {
+        console.log("Card was selected");
+        console.log("state: " + this.state.selectedCards);
+        if (this.state.selectedCards.length < 8 && !this.state.selectedCards.includes(card)){
+            this.setState({
+                selectedCards: [...this.state.selectedCards, card]
+            })
         }
+        console.log("State after edit: " + this.state.selectedCards[0]);
+    }
+
+    // function for unselecting a card
+    unselectCard = (card) => {
+        const filteredArray = this.state.selectedCards.filter((deckCard) => card !== deckCard);
+        this.setState({
+            selectedCards: filteredArray
+        })
+    }
+
+    // on componentDidMount, call the function to load the posts
+    componentDidMount = () => {
+        try {
+            this.loadCards();
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     render(){
         return <React.Fragment>
             <div className="container post-form">
-
                 <h3 className="header-text">Main Post Info</h3>
                 <div className="post-form-group">
                     <Form>
@@ -408,13 +378,22 @@ export default class CreatePost extends React.Component {
                 </div>  
                 
                 <div className="mb-3 post-form-group">
-                    <h5>Deck</h5>
+                    <h4>Deck</h4>
 
                     <p>Create your deck! Max 8 cards.</p>
                     
-                    <div className="mb-3">
-                        {/* onClick only worked with an anonymous function, not sure why? */}
-                        {this.state.selectedCards.map((card) => 
+                    <h5 className="deckHeader">Selected Deck ({this.state.selectedCards.length})</h5>
+                    <div className="deckGrid mb-3">
+                        {this.state.selectedCards.map((card, index) => {
+                            return (
+                                <div key={index} className="clashCard larger" onClick={() => this.unselectCard(card)}>
+                                    <img className="cardImg" src={card.cardURL} alt={card.cardName}/>
+                                    <p>{card.cardName}</p>
+                            </div>
+                            )
+                        })
+                        }
+                        {/* {this.state.selectedCards.map((card) => 
                             <p 
                                 key={card}
                                 style={{display: "inline-block",
@@ -425,9 +404,8 @@ export default class CreatePost extends React.Component {
                                 onClick={()=> this.updateCardsFromDeck(card)}>
                                     {card}
                             </p>
-                        )}
+                        )} */}
                     </div>
-                    {/* possible improvement: use the map function to render all these checkboxes, instead of hardcoding */}
                     
                     {/* have to map in curly braces, because we are trying to use an expression */}
                     {/* map second argument is the index: we use index because there is no ID to be used. How React works:
@@ -435,33 +413,21 @@ export default class CreatePost extends React.Component {
                     it'll try to figure out what is changed. Though, if the user tries to change a component just based on Key #1,
                     React JUST has to re-render Key #1 instead of looking for it. */}
 
-                    {/* Object.keys iterates through the keys; other way around is Object.values */}
-                    {/* usually we use the programmer-friendly Strings as the key, because we don't use spaces or
-                    special characters in them (which are not valid key names). Whereas for display text we might use
-                    spaces or other special characters, so they should be the value pairs */}
-                    {/* old labels object mapping method */}
-                    {/* {Object.keys(this.labels).map((key, index) => {
-                        return (
-                            <Form.Check
-                                inline
-                                label={this.labels[key]}
-                                key={index}
-                                name="cards"
-                                value={key}
-                                type="checkbox"
-                                disabled={this.state.selectedCards.length === 8}
-                                onChange={this.updateCards}/>
-                        )
-                    })} */}
-                    {this.state.labels.map((element, index) => {
-                        
-                        return (
-                            <div key={index} onClick={() => console.log(element.id)}>
-                                <img src={element.cardURL} alt={element.cardInfo}/>
-                                <p>{element.cardInfo}</p>
-                            </div>
-                        )
-                    })}
+                    <h5 className="deckHeader">Card Selector</h5>
+                    {/* wrap everything in a parent div, that way it can be formatted and ordered nicely. */}
+                    <div className="cardGrid">
+                        {/* map the labels object, creating a clickable card based on the card name and its corresponding image URL */}
+                        {/* we avoid hardcoding by mapping everything in this.state.labels. */}
+                        {this.state.labels.map((card, index) => {
+                            {/* previous onClick: console.log(element.id) */}
+                            return (
+                                <div key={index} className="clashCard larger" onClick={() => this.selectCard(card)}>
+                                    <img src={card.cardURL} alt={card.cardName}/>
+                                    <p>{card.cardName}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
 
                 </div>
 
