@@ -28,6 +28,7 @@ export default class Post extends React.Component {
                                     <h5 className="p-1">Posted by: {this.props.post.userThatPosted}</h5>
                                     <h5 className="p-1">Date posted: {this.props.post.dateOfCreation}</h5>
                                     <h6 className="p-1">Date updated: {this.props.post.dateOfUpdation}</h6>
+                                    <p className="p-3 mb-2">Deck: {this.props.post.deck.cards.map((card) => card.cardName)}</p>
                                     <p className="p-3 mb-2">Overview: {this.props.post.postInfo.overview}</p>
                                     <p className="p-3 mb-2">Strategy: {this.props.post.postInfo.strategy}</p>
                                     <p className="p-3 mb-2">Archetype: {this.props.post.archetype}</p>
