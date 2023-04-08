@@ -75,11 +75,17 @@ export default class ViewPosts extends React.Component {
 
     updatePost = (post) => {
 
+        // get the current date
+        const date = new Date();
+        // date.getMonth() starts from 0, so we need to add 1 to get the current month
+        const currentDate = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
+
+
         // first step: setState so existing post info isn't lost
         this.setState({
             editingPost: true,
             updatedName: post.name,
-            updatedDate: "04-01-23",
+            updatedDate: currentDate,
             updatedCards: ["array of cards"],
             updatedArchetype: post.archetype,
             updatedOverview: post.postInfo.overview,
@@ -105,7 +111,7 @@ export default class ViewPosts extends React.Component {
             const updateResponse = await axios.put(`${BASE_API}posts/${this.state.currentPostID}`,{
                 // save cards for later / cards: this.getCardIDs(),
                 name: this.state.updatedName,
-                date: "04-01-23",
+                date: this.state.updatedDate,
                 archetype: this.state.updatedArchetype,
                 overview: this.state.updatedOverview,
                 strategy: this.state.updatedStrategy,

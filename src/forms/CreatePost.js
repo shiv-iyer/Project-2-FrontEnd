@@ -61,18 +61,6 @@ export default class CreatePost extends React.Component {
         labels: []
     };
 
-    // can just declare a variable; state is just for dynamic variables
-    // no need for const because it's already in the class. to access: this.labels
-    // label key value pairs, as well as value key value pairs
-    // key: value to use in Form.Check; value: value to display as the label in Form.Check
-
-    // can also add in image URL here, but can get all cards (from database) then access it that way.
-    // API returns everything to do with cards
-    // labels = {xbow: "Xbow", tesla: "Tesla", archers: "Archers", log: "Log", iceSpirit: "Ice Spirit", skeletons: "Skeletons",
-    //           fireball: "Fireball", knight: "Knight", musketeer: "Musketeer", rocket: "Rocket", zap: "Zap", cannon: "Cannon",
-    //           giant: "Giant", poison: "Poison", balloon: "Balloon", hunter: "Hunter", miner: "Miner", hogRider: "Hog Rider",
-    //           royalGiant: "Royal Giant", arrows: "Arrows", minions: "Minions", lightning: "Lightning"};
-
     // functions
 
     errorValidation = () => {
@@ -138,12 +126,6 @@ export default class CreatePost extends React.Component {
             const modifiedCards = [...this.state.selectedCards, event.target.value];
             this.setState({selectedCards: modifiedCards});
         }
-
-        //this.getCards();
-
-        /*this.state.selectedCards.map((card) => {
-            console.log(card);
-        });*/
     };
 
     // need to make a second function for updateCards based on a click from the deck display itself
@@ -242,17 +224,24 @@ export default class CreatePost extends React.Component {
     submit = async () => {
         alert("Submit function was reached!");
 
+        const date = new Date();
+        // date.getMonth() starts from 0, so we need to add 1 to get the current month
+        const currentDate = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
+        console.log("Current date: " + currentDate);
+
+        // don't submit if the user has not selected a deck of 8 cards
+        if (this.state.selectedCards.length !== 8){
+            alert("Please select all 8 cards!");
+        } else {
+            alert("Doing post request!");
             // axios.post has two parameters; the api URL, and the request body.
             const result = await axios.post(`${BASE_API}posts`,
             {
                 // parameters in the request's body.
-                // cards will be the hardest thing to do... for now hard code the IDs
-                /*cards: ["6412c055632f110d0e8812d0", "6412c159632f110d0e8ba04d", "6412c19c632f110d0e8c7c19", "6412c1ff632f110d0e8dcc71",
-                    "641d4b9d04f85304f52ba96c", "641d4c4a04f85304f52ba96d", "641d5cd86bedf92c58be2d8d", "641d507504f85304f52ba96f"],*/
                 cards: this.getCardIDs(),
                 name: this.state.name,
                 userThatPosted: this.state.userThatPosted,
-                date: "03-31-23",
+                date: currentDate,
                 archetype: this.state.archetype,
                 overview: this.state.overview,
                 strategy: this.state.strategy,
@@ -267,17 +256,15 @@ export default class CreatePost extends React.Component {
             console.log("deck archetype: " + this.state.archetype);
             console.log("deck rating: " + this.state.rating);
             console.log("deck difficulty level: " + this.state.difficultyLevel);
+        }
     };
 
     getCardIDs = () => {
         const documentIDs = [];
         this.state.selectedCards.forEach((card) => {
-            console.log("current card: " + card);
-            // to access the key by using a variable, we need to use square brackets []
-            console.log("corresponding card ID: " + cardIDs[card]);
-            documentIDs.push(cardIDs[card]);
-        });
-        
+            // push the card's MongoDB Document ID for the API post request
+            documentIDs.push(card.id);
+        })
         return documentIDs;
     };
 
@@ -326,6 +313,9 @@ export default class CreatePost extends React.Component {
             })
         }
         console.log("State after edit: " + this.state.selectedCards[0]);
+
+        console.log("doing card ids function");
+        this.getCardIDs();
     }
 
     // function for unselecting a card
@@ -380,7 +370,7 @@ export default class CreatePost extends React.Component {
                 <div className="mb-3 post-form-group">
                     <h4>Deck</h4>
 
-                    <p>Create your deck! Max 8 cards.</p>
+                    <p>Create your deck! Maximum of 8 cards.</p>
                     
                     <h5 className="deckHeader">Selected Deck ({this.state.selectedCards.length})</h5>
                     <div className="deckGrid mb-3">
@@ -393,18 +383,6 @@ export default class CreatePost extends React.Component {
                             )
                         })
                         }
-                        {/* {this.state.selectedCards.map((card) => 
-                            <p 
-                                key={card}
-                                style={{display: "inline-block",
-                                        padding: "10px",
-                                        margin: "2px",
-                                        backgroundColor: "beige",
-                                        border: "2px solid black"}}
-                                onClick={()=> this.updateCardsFromDeck(card)}>
-                                    {card}
-                            </p>
-                        )} */}
                     </div>
                     
                     {/* have to map in curly braces, because we are trying to use an expression */}
@@ -419,7 +397,7 @@ export default class CreatePost extends React.Component {
                         {/* map the labels object, creating a clickable card based on the card name and its corresponding image URL */}
                         {/* we avoid hardcoding by mapping everything in this.state.labels. */}
                         {this.state.labels.map((card, index) => {
-                            {/* conditional styling based on if selected or not */}
+                            {/* conditional styling based on if selected or not, using the ternary operator */}
                             {/* isSelected = this.state.selectedCards.includes(card) */}
                             return (
                                 <div key={index} className="clashCard larger"
