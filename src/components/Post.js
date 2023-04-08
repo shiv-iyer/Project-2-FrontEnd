@@ -54,7 +54,14 @@ export default class Post extends React.Component {
                     variant="warning"
                     className="mb-4 larger"
                     onClick={()=> this.props.updatePost(this.props.post)}
-                    >Edit</Button>
+                    >Edit
+                </Button>
+                <Button
+                    variant="danger"
+                    className="mb-4 larger"
+                    onClick={()=> this.props.deletePost(this.props.post)}
+                    >Delete
+                </Button>
             </div>
         </React.Fragment>
     }

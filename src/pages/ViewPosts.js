@@ -35,6 +35,7 @@ export default class ViewPosts extends React.Component {
         updatedRating: 5,
         updatedDifficultyLevel: 3,
         editingPost: false,
+        deletingPost: false,
          // one item in the state for each possible error
         nameError: "",
         overviewError: "",
@@ -123,6 +124,32 @@ export default class ViewPosts extends React.Component {
             console.log(updateResponse.data);
 
             this.setState({editingPost: false});
+            this.loadPosts();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    deletionInterim = (post) => {
+        this.setState({
+            deletingPost: true,
+            currentPostID: post._id
+        })
+    }
+
+    cancelDeletion = () => {
+        this.setState({
+            deletingPost: false
+        })
+    }
+
+    deletePost = async () => {
+        try {
+            const deleteResponse = await axios.delete(`${BASE_API}posts/${this.state.currentPostID}`)
+            console.log("Result data...");
+            console.log(deleteResponse.data);
+
+            this.setState({deletingPost: false});
             this.loadPosts();
         } catch (error) {
             console.error(error);
@@ -258,13 +285,15 @@ export default class ViewPosts extends React.Component {
                             <Post
                                 post={post}
                                 key={post._id}
-                                updatePost={this.updatePost}/>
+                                updatePost={this.updatePost}
+                                deletePost={this.deletionInterim}/>
                             // <div key={post._id}>
                             // </div>
                         ))}
                         </div>
                     </Container>     
                 </div>
+                {/* Modal for editing post */}
                 {/* show is linked to the state: only render when shown */}
                 <Modal show={this.state.editingPost} onHide={this.cancelEdit}>
                     <Modal.Header closeButton>
@@ -393,6 +422,25 @@ export default class ViewPosts extends React.Component {
                         </Button>
                         <Button variant="primary" onClick={this.submitEdit}>
                             Save Changes
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+
+                {/* Modal for deleting post */}
+                <Modal show={this.state.deletingPost} onHide={this.cancelDeletion}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Delete Post</Modal.Title>
+                    </Modal.Header>
+                    {/* main body of the modal popup */}
+                    <Modal.Body>
+                        <p>ARE YOU SURE? Deletion is permanent!</p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={this.cancelDeletion}>
+                                Don't Delete
+                        </Button>
+                        <Button variant="danger" onClick={this.deletePost}>
+                            Delete
                         </Button>
                     </Modal.Footer>
                 </Modal>
