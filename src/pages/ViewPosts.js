@@ -79,7 +79,7 @@ export default class ViewPosts extends React.Component {
         // get the current date
         const date = new Date();
         // date.getMonth() starts from 0, so we need to add 1 to get the current month
-        const currentDate = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
+        const currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
 
         // first step: setState so existing post info isn't lost
