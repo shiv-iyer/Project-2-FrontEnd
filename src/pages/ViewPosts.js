@@ -434,7 +434,7 @@ export default class ViewPosts extends React.Component {
                     {/* main body of the modal popup */}
                     <Modal.Body className="deletionContainer">
                         <div className="deletionItems">
-                            <img src={require("../assets/crying.png")} className="cryingImg"></img>
+                            <img src={require("../assets/crying.png")} className="cryingImg mb-4"></img>
                             <p>ARE YOU SURE? Deletion is permanent!</p>
                         </div>
                     </Modal.Body>
