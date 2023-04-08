@@ -126,33 +126,3 @@
   .sliderValue {
     font-weight: bold;
   }
-
-  /* deck display styling for posts */
-
-  .deckContainer {
-    /* display as grid, with 4 columns (so two rows of 4 cards each) */
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
-    justify-content: center;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  .cardItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cardImage {
-    width: 100%;
-    height: auto;
-  }
-
-  /* media query to ensure that the deck expands on larger devices */
-  @media (min-width: 768px) {
-    .deckContainer {
-      max-width: 50%;
-    }
-  }
