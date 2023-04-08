@@ -41,13 +41,16 @@ export default class Post extends React.Component {
                         </div>
                     ))}
                 </div>
-                <p className="p-3 mb-2">Overview: {this.props.post.postInfo.overview}</p>
-                <p className="p-3 mb-2">Strategy: {this.props.post.postInfo.strategy}</p>
-                <p className="p-3 mb-2">Archetype: {this.props.post.archetype}</p>
-                <p className="p-1">Rating: {this.props.post.postInfo.rating}</p>
-                <p className="p-1">Difficulty: {this.props.post.postInfo.difficultyLevel}</p>
+                <div className="postInfoContainer">
+                    <p className="p-3 mb-2">Overview: {this.props.post.postInfo.overview}</p>
+                    <p className="p-3 mb-2">Strategy: {this.props.post.postInfo.strategy}</p>
+                    <p className="p-3 mb-2">Archetype: {this.props.post.archetype}</p>
+                    <p className="p-1">Rating: {this.props.post.postInfo.rating}</p>
+                    <p className="p-1">Difficulty: {this.props.post.postInfo.difficultyLevel}</p>
+                </div>
                 <Button
                     variant="secondary"
+                    className="mb-4"
                     onClick={()=> this.props.updatePost(this.props.post)}
                     >Edit</Button>
             </div>

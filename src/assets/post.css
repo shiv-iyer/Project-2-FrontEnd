@@ -1,5 +1,10 @@
 .postContainer {
     font-family: 'Roboto Condensed', sans-serif;
+    font-size: 24px;
+}
+
+.postInfoContainer {
+    font-size: 20px;
 }
 
   /* deck display styling for posts */
