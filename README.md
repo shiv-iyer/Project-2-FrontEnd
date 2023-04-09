@@ -58,7 +58,7 @@ All in all, the selected fonts are directly in-line with the goal of making the 
 - User authentication system
     - Currently, the website . An example of a method to implement such a system would be the [JSON Web Token](https://jwt.io/).
 - Available selection of cards
-    - The website's deck system (including the deck builder) is centralized around the Cards collection in the MongoDB Database for this project. However, seeing as each card and its info is stored as an individual document manually inputted into the collection, the entire selection of cards in Clash Royale is unavailable, as I would have had to create 109 differnet documents. There are 24 fully-fledged cards available in the database at the moment.
+    - The website's deck system (including the deck builder) is centralized around the Cards collection in the MongoDB Database for this project. However, seeing as each card and its info is stored as an individual document manually inputted into the collection, the entire selection of cards in Clash Royale is unavailable. There are 109 total cards in Clash Royale, which means I would have to create 109 different documents. There are 24 fully-fledged cards available in the database at the moment.
     - Champion cards from Clash Royale have also not been implemented with the website and its deck builder. If they were to be included, the logic for the deck builder would have to be updated, as only one Champion card can be included in each deck at any given time.
 - Integration with the official Clash Royale API
 
