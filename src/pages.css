@@ -138,6 +138,7 @@
     text-decoration-style: double;
     /* text-underline-offset pushes the underline down (offsets it) from the text! */
     text-underline-offset: 5px;
+    font-family: 'Play', sans-serif;
 }
 
 .page-container {
@@ -224,4 +225,8 @@
     height: 3px;
     background-color: #333;
     margin: 0.5rem auto;
+}
+
+.bodyText {
+    font-family: 'Play', sans-serif;
 }
