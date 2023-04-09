@@ -6,11 +6,11 @@ Live link to demo: [Fluff Finder](https://fluff-finder.netlify.app/)
 ## Project Summary
 
 ### Overview 
-Royale Raves is the #1 destination for Clash Royale lovers. The site's primary feature is a forum of sorts where users can create posts on their own Clash Royale decks.
+Royale Raves is the #1 destination for lovers of the popular Supercell mobile game: Clash Royale. The site's primary feature is a forum of sorts, where users can create posts that feature their very own Clash Royale decks. In order to create a post, users can create their own individualized deck with a custom deck builder that features many of the cards found in Clash Royale. 
+
+The site also features a 'Cards' page, where users can browse the entire selection of available cards integrated with the website. On this page, users can click on the different cards to view various pieces of information and key artwork of each card!
 
 Fluff Finder is the perfect website for any pet lovers in Singapore! The site's primary feature is an interactive map, enabling users to discover various pet-friendly locations in Singapore. The website allows for the seamless discovery of any pet-related locales in Singapore: Pet Cafés, Pet Groomers, Pet Supplies Stores, and Dog Parks. By displaying the name and address of each individual location on the map, users can identify locations they would like to learn more about or even travel to with ease. Each location category is also separated via different icons, enabling easy differentiation between the various locations the map displays.
-
-The site also features a relaxing second page where users can enjoy randomly-generated images of dogs!
 
 ### Target Audience & User Goals
 
