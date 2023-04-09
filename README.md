@@ -1,7 +1,7 @@
 # Royale Raves
 ![Mobile-Responsive Mockup image](assets/resources/mockup.png)
 
-Live link to demo: [Fluff Finder](https://fluff-finder.netlify.app/)
+Live link to demo: [Royale Raves](https://royale-raves.netlify.app/)
 
 ## Project Summary
 
@@ -12,9 +12,11 @@ The site also features a 'Cards' page, where users can browse the entire selecti
 
 ### Target Audience & User Goals
 
-All in all, the main goal of the website is to assist Singaporeans in finding any relevant locations for their pets. This website will be useful for any dog & cat owners in Singapore, as many animal-friendly locations fly under the radar and can be quite difficult to pinpoint. As an example, it is relatively common for dog owners to ask online groups about where they can discover new and fun dog-friendly locations, especially dog cafés. Generally, no one memorizes a list of every single mall that allows dogs. Sometimes, you just want to go for a nice outing and enjoy the company of your pet, but limited information makes this task a bit more difficult.
+All in all, the main goal of the website is to provide a platform for Clash Royale players to share and discuss different decks and strategies. This website will be useful for any Clash Royale player, as they can either spread the word about their own unique deck that they would like others to know about, or they can discover new decks and strategies previously unbeknownst to them. Existing Clash Royale websites are usually more data-oriented and display useful information about existing decks and card statistics — however, they are lacking in user freedom and options, since users generally aren't able to create their own decks to be archived and saved on these websites. 
 
-Fluff Finder enables easy and near-instantaneous access to crucial information - such as names and addresses - about any relevant areas & services pet owners might require. Ultimately, this saves users time and hassle, enriching the overall experience for all pet owners and their fluffy friends!
+Royale Raves enables easy and enjoyable access to a platform where Clash Royale lovers can freely create as many posts about any number of decks they'd like. Ultimately, this allows for these players to have fun and be creative, without being limited by any constraints or restrictions. The existence of a custom deck builder and an individual cards page also allows users to interact with elements from Clash Royale outside of the game itself, enriching their website experience and making it all the more enjoyable.
+
+On the design end of the website, users should be able to engage in full CRUD functionality with posts — being able to Create, Read, Update and Delete posts to and from the BackEnd database (through the Express server) whenever relevant.
 
 ## UI/UX Elements
 
