@@ -194,6 +194,14 @@
     text-align: center;
 }
 
+.headerText:hover {
+    text-decoration: underline;
+    text-decoration-color:#e23d71;
+    text-decoration-style:dashed;
+    text-decoration-thickness: 4px;
+    transition: 1s;
+}
+
 .headerText::after {
     content: "";
     display: block;
