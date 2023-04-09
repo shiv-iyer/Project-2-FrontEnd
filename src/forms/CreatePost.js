@@ -337,7 +337,7 @@ export default class CreatePost extends React.Component {
                             </Form.Control.Feedback>
                             <Form.Text id="postNameHelp" muted>
                                 {/* This will conditionally render the muted text based on nameError's status in the state */}
-                                {this.state.nameError ? null : "The name of your post — try to give your deck a descriptive title! (Max. 55 characters.)"}
+                                {this.state.nameError ? null : "The name of your post — try to give your deck a descriptive title! (Max. 50 characters.)"}
                             </Form.Text>
                         </Form.Group>
                     </Form>
