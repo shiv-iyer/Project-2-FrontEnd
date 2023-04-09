@@ -19,7 +19,7 @@ export default class Home extends React.Component {
                 {/* Hero image container*/}
                 <div id="heroContainer" className="mb-3">
                     <div id="heroContent">
-                        <h1>Welcome to Royale Raves</h1>
+                        <h1 className="headerText">Welcome to Royale Raves</h1>
                     </div>
                 </div>
                 <div>

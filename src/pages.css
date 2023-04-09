@@ -186,3 +186,7 @@
     border: 2px solid black;
     border-radius: 8px;
 }
+
+.headerText {
+    font-family: 'Yusei Magic', sans-serif;
+}

@@ -28,7 +28,6 @@ export default class ViewPosts extends React.Component {
         numPosts: 1,
         updatedName: "",
         updatedDate: "04-01-23",
-        updatedCards: ["array of cards"],
         updatedArchetype: "",
         updatedOverview: "",
         updatedStrategy: "",
@@ -48,7 +47,14 @@ export default class ViewPosts extends React.Component {
         archetypeFilter: "",
         // set minRating and maxDifficulty to the most extreme values, so that the initial search will always return all of the posts.
         ratingFilter: 1,
-        difficultyFilter: 5
+        difficultyFilter: 5,
+
+        // empty array to hold the selected cards
+        selectedCards: [],
+        // hold the cards from the axios.get, for use in the editing modal...
+        
+        cards: [],
+        labels: []
     }
 
     // variables
@@ -73,6 +79,38 @@ export default class ViewPosts extends React.Component {
                 }
         });
     };
+
+        // function for selecting a card
+        selectCard = (card) => {
+            console.log("Card was selected");
+            console.log("state: " + this.state.selectedCards);
+            if (this.state.selectedCards.length < 8 && !this.state.selectedCards.includes(card)){
+                this.setState({
+                    selectedCards: [...this.state.selectedCards, card]
+                })
+            }
+            console.log("State after edit: " + this.state.selectedCards[0]);
+    
+            console.log("doing card ids function");
+            this.getCardIDs();
+        }
+    
+        // function for unselecting a card
+        unselectCard = (card) => {
+            const filteredArray = this.state.selectedCards.filter((deckCard) => card !== deckCard);
+            this.setState({
+                selectedCards: filteredArray
+            })
+        }
+
+        getCardIDs = () => {
+            const documentIDs = [];
+            this.state.selectedCards.forEach((card) => {
+                // push the card's MongoDB Document ID for the API post request
+                documentIDs.push(card.id);
+            })
+            return documentIDs;
+        };
 
     updatePost = (post) => {
 
@@ -102,7 +140,9 @@ export default class ViewPosts extends React.Component {
 
     cancelEdit = () => {
         this.setState({
-            editingPost: false
+            editingPost: false,
+            // clear selectedCards array
+            selectedCards: []
         })
     }
 
@@ -177,6 +217,41 @@ export default class ViewPosts extends React.Component {
         
     }
 
+    loadCards = async () => {
+        // get cards from API
+        // get from API 
+        const cardsResponse = await axios.get(`${BASE_API}cards`);
+        // store the data in a separate object
+        const dataObj = cardsResponse.data.listings;
+        // create a temporary array to store the new objects in first, will setState with it later
+        const tempLabel = []
+        // run through the object and extract card id, cardURL and cardName
+        dataObj.forEach((element) => {
+            const id = element._id;
+            const cardURL = element.cardURL;
+            const cardName = element.cardInfo.name;
+            const output = {
+                    cardName,
+                    cardURL,
+                    id
+            } 
+            tempLabel.push(output)
+        })
+
+        this.setState({
+            labels: tempLabel
+        })
+        // set state from the response
+        this.setState({
+            // postsResponse.data.posts
+            cards: cardsResponse.data.listings
+        })
+    
+        // console log out to test
+        console.log("cards: ");
+        console.log(this.state.cards);
+    }
+
     validateName = () => {
         const error = validateName(this.state.updatedName);
         this.setState({nameError: error});
@@ -246,11 +321,12 @@ export default class ViewPosts extends React.Component {
         this.loadPosts();
     }
 
-    // on componentDidMount, call the function to load the posts
+    // on componentDidMount, call the function to load the posts and cards
 
     componentDidMount = () => {
         try {
             this.loadPosts();
+            this.loadCards();
         } catch (error) {
             console.error(error);
         }
@@ -262,7 +338,7 @@ export default class ViewPosts extends React.Component {
         return (
             <React.Fragment>
                 <div className="page-container">
-                    <h1 className="centered p-3">View all posts</h1>
+                    <h1 className="headerText centered p-3">View all posts</h1>
                     {/* pass in the relevant values as props */}
                     <SearchBar
                         search={this.state.search}
@@ -300,7 +376,7 @@ export default class ViewPosts extends React.Component {
                         <Modal.Title>Update Post</Modal.Title>
                     </Modal.Header>
                     {/* main body of the modal popup */}
-                    <Modal.Body>
+                    <Modal.Body className="editingModal">
                         <div className="post-form-group">
                             <Form>
                                 <Form.Group controlId="inputName">
@@ -326,7 +402,52 @@ export default class ViewPosts extends React.Component {
                         <div className="mb-3 post-form-group">
                             <h5>Deck</h5>
 
-                            <p>deck creation stuff goes here...</p>
+                            <p>Edit your deck! Still a maximum of 8 cards.</p>
+                    
+                                <h5 className="deckHeader">Selected Deck ({this.state.selectedCards.length})</h5>
+                                <div className="deckGrid mb-3">
+                                    {this.state.selectedCards.map((card, index) => {
+                                        return (
+                                            <div key={index} className="clashCard larger" onClick={() => this.unselectCard(card)}>
+                                                <img className="cardImg" src={card.cardURL} alt={card.cardName}/>
+                                                <p>{card.cardName}</p>
+                                        </div>
+                                        )
+                                    })
+                                    }
+                                </div>
+
+                                <h5 className="deckHeader">Card Selector</h5>
+                                <div className="cardGrid">
+                                    {this.state.labels.map((card, index) => {
+                                        return (
+                                            <div key={index} className="clashCard customClashCard larger"
+                                            onClick={() => this.selectCard(card)}
+                                            style={{
+                                                borderColor: this.state.selectedCards.includes(card)
+                                                    ? 'rgba(0, 123, 255, 0.75)'
+                                                    : 'initial',
+                                                borderWidth: this.state.selectedCards.includes(card)
+                                                    ? '3px'
+                                                    : 'initial',
+                                                borderStyle: this.state.selectedCards.includes(card)
+                                                    ? 'solid'
+                                                    : 'initial',
+                                                boxShadow: this.state.selectedCards.includes(card)
+                                                    ? '0 0 0 0.2rem rgba(0, 123, 255, 0.5)'
+                                                    : 'initial',
+                                                margin: this.state.selectedCards.includes(card)
+                                                    ? '2px'
+                                                    : '4px',
+                                                boxSizing: "border-box",
+                                            }}>
+                                                <img src={card.cardURL} alt={card.cardName} className="cardImg"/>
+                                                <p>{card.cardName}</p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+
                         </div>
 
                         <h3 className="header-text">Deck Info</h3>
@@ -434,7 +555,7 @@ export default class ViewPosts extends React.Component {
                     {/* main body of the modal popup */}
                     <Modal.Body className="deletionContainer">
                         <div className="deletionItems">
-                            <img src={require("../assets/crying.png")} className="cryingImg mb-4"></img>
+                            <img src={require("../assets/crying.png")} className="cryingImg mb-4" alt="crying king face"></img>
                             <p>ARE YOU SURE? Deletion is permanent!</p>
                         </div>
                     </Modal.Body>
