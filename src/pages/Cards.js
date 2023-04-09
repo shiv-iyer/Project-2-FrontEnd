@@ -111,7 +111,7 @@ export default class Cards extends React.Component {
                         {/* conditional rendering: if the current card render URL exists, display it as an image, else don't display anything */}
                         {/* split the current card categories by a comma anad a space, in the event that there are multiple values (ex. Xbow) */}
                         {this.state.currentCardRenderURL ? <img src={this.state.currentCardRenderURL} alt={this.state.currentCard} className="renderImg largeish"/> : null}
-                        <div className="infoBody">
+                        <div className="infoBody largeish">
                             <p>{this.state.currentCardDescription}</p>
                             <p>Rarity: {this.state.currentCardRarity}</p>
                             <p>Card categories: {this.state.currentCardCategories.join(", ")}</p>
