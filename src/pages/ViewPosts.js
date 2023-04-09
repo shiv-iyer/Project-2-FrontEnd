@@ -80,37 +80,37 @@ export default class ViewPosts extends React.Component {
         });
     };
 
-        // function for selecting a card
-        selectCard = (card) => {
-            console.log("Card was selected");
-            console.log("state: " + this.state.selectedCards);
-            if (this.state.selectedCards.length < 8 && !this.state.selectedCards.includes(card)){
-                this.setState({
-                    selectedCards: [...this.state.selectedCards, card]
-                })
-            }
-            console.log("State after edit: " + this.state.selectedCards[0]);
-    
-            console.log("doing card ids function");
-            this.getCardIDs();
-        }
-    
-        // function for unselecting a card
-        unselectCard = (card) => {
-            const filteredArray = this.state.selectedCards.filter((deckCard) => card !== deckCard);
+    // function for selecting a card
+    selectCard = (card) => {
+        console.log("Card was selected");
+        console.log("state: " + this.state.selectedCards);
+        if (this.state.selectedCards.length < 8 && !this.state.selectedCards.includes(card)){
             this.setState({
-                selectedCards: filteredArray
+                selectedCards: [...this.state.selectedCards, card]
             })
         }
+        console.log("State after edit: " + this.state.selectedCards[0]);
 
-        getCardIDs = () => {
-            const documentIDs = [];
-            this.state.selectedCards.forEach((card) => {
-                // push the card's MongoDB Document ID for the API post request
-                documentIDs.push(card.id);
-            })
-            return documentIDs;
-        };
+        console.log("doing card ids function");
+        this.getCardIDs();
+    }
+    
+    // function for unselecting a card
+    unselectCard = (card) => {
+        const filteredArray = this.state.selectedCards.filter((deckCard) => card !== deckCard);
+        this.setState({
+            selectedCards: filteredArray
+        })
+    }
+
+    getCardIDs = () => {
+        const documentIDs = [];
+        this.state.selectedCards.forEach((card) => {
+            // push the card's MongoDB Document ID for the API post request
+            documentIDs.push(card.id);
+        })
+        return documentIDs;
+    };
 
     updatePost = (post) => {
 
@@ -119,19 +119,40 @@ export default class ViewPosts extends React.Component {
         // date.getMonth() starts from 0, so we need to add 1 to get the current month
         const currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
+        // retrieve all selected cards from the existing post...
+        console.log("Current post info: ");
+        console.log(post);
+
+        // cardName, cardURL, id
+        const tempDeck = [];
+        post.deck.cards.forEach((card) => {
+            const id = card._id;
+            const cardURL = card.cardURL;
+            const cardName = card.cardName;
+            const output = {
+                cardName,
+                cardURL,
+                id
+            }
+            tempDeck.push(output)
+        });
+
+        console.log(tempDeck);
 
         // first step: setState so existing post info isn't lost
         this.setState({
             editingPost: true,
             updatedName: post.name,
             updatedDate: currentDate,
-            updatedCards: ["array of cards"],
             updatedArchetype: post.archetype,
             updatedOverview: post.postInfo.overview,
             updatedStrategy: post.postInfo.strategy,
             updatedRating: post.postInfo.rating,
             updatedDifficultyLevel: post.postInfo.difficultyLevel,
-            currentPostID: post._id
+            currentPostID: post._id,
+
+            // selected cards...
+            selectedCards: tempDeck
         });
 
         console.log(post);
