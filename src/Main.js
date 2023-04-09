@@ -71,10 +71,10 @@ export default class Main extends React.Component {
                         <Navbar.Toggle aria-controls="home-navbar"/>
                         <Navbar.Collapse id="home-navbar">
                             <Nav className="me-auto">
-                            <Nav.Link name='home' href="#home" onClick={this.switchPage}>Home</Nav.Link>
-                            <Nav.Link name='create' href="#create" onClick={this.switchPage}>Create a Post</Nav.Link>
-                            <Nav.Link name='posts' href="#posts" onClick={this.switchPage}>View Posts</Nav.Link>
-                            <Nav.Link name='cards' href="#cards" onClick={this.switchPage}>Cards</Nav.Link>
+                            <Nav.Link name='home' href="#home" className="navItem" onClick={this.switchPage}>Home</Nav.Link>
+                            <Nav.Link name='create' href="#create" className="navItem" onClick={this.switchPage}>Create a Post</Nav.Link>
+                            <Nav.Link name='posts' href="#posts" className="navItem" onClick={this.switchPage}>View Posts</Nav.Link>
+                            <Nav.Link name='cards' href="#cards" className="navItem" onClick={this.switchPage}>Cards</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
