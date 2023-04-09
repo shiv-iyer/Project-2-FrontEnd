@@ -23,7 +23,9 @@ On the design end of the website, users should be able to engage in full CRUD fu
 ### Structure & Wireframes
 ![Structure Diagram image](src/assets/resources/structure.png)
 
-[!Wireframe image](src/assets/resources/wireframes.png)
+[!Wireframe image 1](src/assets/resources/wireframes.png)
+
+[!Wireframe image 2](src/assets/resources/wireframes2.png)
 
 ### Design Decisions
 
