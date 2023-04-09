@@ -7,10 +7,23 @@ import axios from "axios";
 // components
 import CardGrid from "../components/CardGrid";
 
+// react-bootstrap
+import { Modal, Button } from "react-bootstrap";
+
+// stylesheet
+import "../assets/cards.css"
+
 export default class Cards extends React.Component {
     // state
     state = {
-        cards: []
+        cards: [],
+        showingPopup: false,
+        currentCard: "",
+        currentCardRenderURL: "",
+        currentCardDescription: "",
+        currentCardElixirCost: 0,
+        currentCardRarity: "",
+        currentCardCategories: []
     }
 
     // functions
@@ -28,6 +41,7 @@ export default class Cards extends React.Component {
             const cardName = element.cardInfo.name;
             const cardURL = element.cardURL;
             const cardRenderURL = element.renderURL;
+            const cardDescription = element.cardInfo.description;
             const cardRarity = element.cardInfo.rarity;
             const elixirCost = element.cardInfo.elixirCost;
             const cardCategories = element.cardInfo.category;
@@ -35,6 +49,7 @@ export default class Cards extends React.Component {
                     cardName,
                     cardURL,
                     cardRenderURL,
+                    cardDescription,
                     cardRarity,
                     elixirCost,
                     cardCategories
@@ -50,8 +65,29 @@ export default class Cards extends React.Component {
         console.log(this.state.cards);
     }
 
-    loadCardPopup = (card) => {
+    loadCardPopup = (card, cardName, cardURL, cardDescription, cardElixirCost, cardRarity, cardCategories) => {
+        this.setState({
+            showingPopup: true,
+            currentCard: cardName,
+            currentCardRenderURL: cardURL,
+            currentCardDescription: cardDescription,
+            currentCardElixirCost: cardElixirCost,
+            currentCardRarity: cardRarity,
+            currentCardCategories: cardCategories
+        })
         console.log(card);
+    }
+
+    hideCardPopup = () => {
+        this.setState({
+            showingPopup: false,
+            currentCard: "",
+            currentCardRenderUrl: "",
+            currentCardDescription: "",
+            currentCardElixirCost: 0,
+            currentCardRarity: "",
+            currentCardCategories: []
+        })
     }
 
     componentDidMount = () => {
@@ -67,6 +103,26 @@ export default class Cards extends React.Component {
             <React.Fragment>
                 <h5 className="deckHeader my-3">View Cards</h5>
                 <CardGrid cards={this.state.cards} click={this.loadCardPopup}/>
+                <Modal show={this.state.showingPopup} onHide={this.hideCardPopup}>
+                    <Modal.Header className="header modalMain">
+                        <Modal.Title>{this.state.currentCard}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="modalBody">
+                        {/* conditional rendering: if the current card render URL exists, display it as an image, else don't display anything */}
+                        {/* split the current card categories by a comma anad a space, in the event that there are multiple values (ex. Xbow) */}
+                        {this.state.currentCardRenderURL ? <img src={this.state.currentCardRenderURL} alt={this.state.currentCard} className="renderImg largeish"/> : null}
+                        <div className="infoBody">
+                            <p>{this.state.currentCardDescription}</p>
+                            <p>Rarity: {this.state.currentCardRarity}</p>
+                            <p>Card categories: {this.state.currentCardCategories.join(", ")}</p>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer className="modalMain">
+                        <Button variant="primary" className="moreBtnStyles larger" onClick={this.hideCardPopup}>
+                            Cool!
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </React.Fragment>
         );
     }

@@ -1,0 +1,33 @@
+.header {
+    font-family: 'Alkatra', cursive;
+}
+
+.renderImg {
+    max-width: 100%;
+    max-height: 100%;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.infoBody {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    background-color: #FFE4C4;
+}
+
+.modalBody {
+    background-color: #FFE4C4;
+}
+
+.modalMain {
+    background-color: beige;
+}
+
+.largeish:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}

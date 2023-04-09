@@ -17,7 +17,8 @@ export default function CardGrid(props){
                         {props.cards.map((card, index) => {
                             return (
                                 <div key={index} className="clashCard customClashCard larger"
-                                 onClick={() => props.click(card)}>
+                                 onClick={() => props.click(card, card.cardName, card.cardRenderURL, card.cardDescription,
+                                          card.elixirCost, card.cardRarity, card.cardCategories)}>
                                     <img src={card.cardURL} alt={card.cardName} className="cardImg"/>
                                      <p>{card.cardName}</p>
                                 </div>
