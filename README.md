@@ -28,7 +28,7 @@ On the design end of the website, users should be able to engage in full CRUD fu
 ### Design Decisions
 
 #### Color Scheme
-![Color Scheme image](assets/resources/color-palette.jpg)
+![Color Scheme image](assets/resources/color-palette.png)
 
 The main color scheme of the website revolves around cream/bisque & beige-colored components and forms, with additional accents of gold and blue. The cream and beige colors provide a clean, light look to the website, allowing for clear, coherent elements. These light colors are also easy on the eyes, avoiding any jarring effects and creating an affable atmosphere to the website.
 
