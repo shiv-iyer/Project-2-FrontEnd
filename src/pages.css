@@ -61,6 +61,20 @@
     border-radius: 1rem;
 }
 
+.post-form:hover {
+    border: 3px solid #AB7E4C;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    transition: all 0.3s ease-in-out;
+}
+
+.post-form-group:hover {
+  border: 3px solid #AB7E4C;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  transition: all 0.3s ease-in-out;
+}
+
 .slider-group {
     text-align: center;
 }
@@ -196,10 +210,11 @@
 
 .headerText:hover {
     /* nice pink #e23d71; */
+    transform: scale(1.05);
     text-decoration: underline;
     text-decoration-color:#1919d8;
     text-decoration-thickness: 4px;
-    transition: 1s;
+    transition: all 1s ease;
 }
 
 .headerText::after {

@@ -99,6 +99,11 @@
     background-color: rgba(255, 253, 208, 0.3);
   }
 
+  .searchSectionWrapper:hover {
+    transform: scale(1.015);
+    transition: all 0.5s ease;
+  }
+
   .rc-slider-handle {
     background-color: #4a4a4a;
     border: solid 2px #4a4a4a;
