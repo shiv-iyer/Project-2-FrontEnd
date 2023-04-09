@@ -151,3 +151,7 @@
     background-color: #FFE4C4;
     border: 1px dashed gray;
   }
+
+  .moreBtnStyles {
+    border: 2px solid black;
+  }
