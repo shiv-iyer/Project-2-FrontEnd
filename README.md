@@ -63,16 +63,17 @@ The website features a range of animations to make it more interactive and engag
 ---
 
 ## Limitations and Future Implementations
-- User authentication system
-    - Currently, the website . An example of a method to implement such a system would be the [JSON Web Token](https://jwt.io/).
+- User login & authentication system
+    - Currently, the website has certain elements and pages that are tied to a user login system, but no actual processes to enable such functionality. Authentication could be incorporated to enable posts to be tied to individual user accounts, which opens up a range of possibilites features-wise: a post can only be edited/deleted by the user that created it (currently, anyone can perform both operations on a post), and users could also have profile pages that display all of their created posts. An example of a method to implement such a system would be the [JSON Web Token](https://jwt.io/).
+- Comments section & functionality
+    - The website could feature a comments section under each post, allowing other users to leave their own remarks and ratings on all of the different decks featured in posts on the website. This would result in more interaction between users of the website. Comments could also be tied to users, which once again goes back to the user login & authentication system.
+    - Currently, routes for comment functionality have already been written in the Express server, however they were not integrated in time with the website's frontend display.
 - Available selection of cards
     - The website's deck system (including the deck builder) is centralized around the Cards collection in the MongoDB Database for this project. However, seeing as each card and its info is stored as an individual document manually inputted into the collection, the entire selection of cards in Clash Royale is unavailable. There are 109 total cards in Clash Royale, which means I would have to create 109 different documents. There are 24 fully-fledged cards available in the database at the moment.
     - Champion cards from Clash Royale have also not been implemented with the website and its deck builder. If they were to be included, the logic for the deck builder would have to be updated, as only one Champion card can be included in each deck at any given time.
-- Comments section & functionality
-    - comments backend routes in Express complete
 - Integration with the official Clash Royale API
-    - Clash Royale provides an [official API for developers](https://developer.clashroyale.com/), which can be used to retrieve data and various statistics from the game & its players. 
-    
+    - Clash Royale provides an [official API for developers](https://developer.clashroyale.com/), which can be used to retrieve data and various statistics from the game & its players. This API could be utilized by the website, opening up the possibility of more pages and functionality for the website. For example, graphs and charts of aggregate user data (cards and decks used, or other statistics from special gamemodes in the game) could be displayed using [Recharts](https://recharts.org/en-US/).
+
 ---
 
 ## Technologies Used
@@ -125,22 +126,22 @@ The website features a range of animations to make it more interactive and engag
 ---
 
 ## Deployment
-The web application is hosted on and was deployed through [Netlify](https://www.netlify.com/).
+
+### Front-End
+The web application is hosted on and was deployed through [Netlify](https://www.netlify.com/), directly from this GitHub repository.
+
+### Back-End
+The Express server is hosted on and was deployed through [Render](https://render.com/), directly from the main branch of [this GitHub repository](https://github.com/shiv-iyer/Project-2-BackEnd).
 
 ---
 
 ## Credits and Acknowledgment
 
-### Data
-- [FourSquare API](https://foursquare.com/) — Used for all location data (lat/long coordinates, names, addresses)
-- [RandomDog API](https://random.dog/woof.json) — Used for retrieving random dog images
-
 ### Icons
 
 - [FlatIcon](https://www.flaticon.com/) — Used for map marker icons on the website
-- [FontAwesome](https://fontawesome.com/icons) - Used for inline button icons on the website
 
-#### Custom Fonts from Google Fonts
+### Custom Fonts from Google Fonts
 
 - [Play](https://fonts.google.com/specimen/Play)
 - [Roboto Condensed](https://fonts.google.com/specimen/Roboto+Condensed)
