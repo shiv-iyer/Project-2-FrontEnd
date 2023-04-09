@@ -371,7 +371,7 @@ export default class ViewPosts extends React.Component {
                 </div>
                 {/* Modal for editing post */}
                 {/* show is linked to the state: only render when shown */}
-                <Modal show={this.state.editingPost} onHide={this.cancelEdit}>
+                <Modal show={this.state.editingPost} onHide={this.cancelEdit} fullscreen={true}>
                     <Modal.Header closeButton>
                         <Modal.Title>Update Post</Modal.Title>
                     </Modal.Header>
