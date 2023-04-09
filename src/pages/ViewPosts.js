@@ -90,9 +90,6 @@ export default class ViewPosts extends React.Component {
             })
         }
         console.log("State after edit: " + this.state.selectedCards[0]);
-
-        console.log("doing card ids function");
-        this.getCardIDs();
     }
     
     // function for unselecting a card
@@ -101,14 +98,23 @@ export default class ViewPosts extends React.Component {
         this.setState({
             selectedCards: filteredArray
         })
+        console.log("State after edit: " + this.state.selectedCards);
     }
 
     getCardIDs = () => {
+        console.log("Get card IDs was reached");
+        console.log("this.state.selected cards: ");
+        console.log(this.state.selectedCards);
+        let x = 0;
         const documentIDs = [];
         this.state.selectedCards.forEach((card) => {
             // push the card's MongoDB Document ID for the API post request
             documentIDs.push(card.id);
+            x++;
+            console.log("card ID #" + x + " : " + card.id);
         })
+        console.log("documet\ntIDs:");
+        console.log(documentIDs);
         return documentIDs;
     };
 
@@ -126,7 +132,9 @@ export default class ViewPosts extends React.Component {
         // cardName, cardURL, id
         const tempDeck = [];
         post.deck.cards.forEach((card) => {
-            const id = card._id;
+            console.log("Card:");
+            console.log(card);
+            const id = card.cardID;
             const cardURL = card.cardURL;
             const cardName = card.cardName;
             const output = {
@@ -172,6 +180,7 @@ export default class ViewPosts extends React.Component {
             // PUT request to API: 1st param is url, second param is body
             const updateResponse = await axios.put(`${BASE_API}posts/${this.state.currentPostID}`,{
                 // save cards for later / cards: this.getCardIDs(),
+                cards: this.getCardIDs(),
                 name: this.state.updatedName,
                 date: this.state.updatedDate,
                 archetype: this.state.updatedArchetype,
