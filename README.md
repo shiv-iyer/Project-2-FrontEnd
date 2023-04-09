@@ -18,15 +18,19 @@ Fluff Finder enables easy and near-instantaneous access to crucial information -
 
 ## UI/UX Elements
 
-### Structure
+### Structure & Wireframes
 ![Structure Diagram image](assets/resources/structure.png)
+
+[!Wireframe image](assets/resources/wireframes.png)
 
 ### Design Decisions
 
 #### Color Scheme
 ![Color Scheme image](assets/resources/color-palette.jpg)
 
-The main color scheme of the project revolves around a light background (a beige-wheat gradient), with a lavender accent for the header. The items within the main content box are backed by a smooth snowy base. These light colors evoke a sense of calm and tranquility, while maintaining an elegant touch. Light colors are also easy on the eyes, avoiding any jarring effects and creating an affable atmosphere. The lavender color also represents a sense of elegance and sophistication. Mint green highlighting is also used to directly complement the lavender header color. All in all, these colors come together to present the website in a professional yet friendly manner.
+The main color scheme of the website revolves around cream & beige-colored components and forms, with additional accents of gold and blue. The cream and beige colors provide a clean, light look to the website, allowing for clear, coherent elements. These light colors are also easy on the eyes, avoiding any jarring effects and creating an affable atmosphere to the website. The chosen gold and blue colors were directly extracted from the [official Clash Royale Logo](https://clashroyale.com/), helping link the website to the game and its theme. The rich gold navigation bar exudes a sense of luxury, royalty and fortune, providing a strong, bold presence to establish the top of every page. The blue gradient that backs every page evokes feelings of calmness, imagination and inspiration, supplying a strong sense of emotion to each page. These colors also come together to complement each other nicely, allowing for the website to maintain a sense of interconnectedness while staying true to the Clash Royale theme.
+
+Other colors were also used subtly across the website, either for accentuating visual effects or providing delicate details to various components. Ultimately, this makes the website very colorful in nature, which is in line with the goal of presenting the website in a fun, friendly manner for its target audience.
 
 #### Fonts
 
@@ -36,6 +40,10 @@ The main color scheme of the project revolves around a light background (a beige
 - *Alkatra* and *Kanit* were selected as bonus fonts to style the additional 'Cards' page. Alkatra utilizes the alphabets of four different languages: Bangla, Devanagari, Odia and Latin. It draws inspiration from wall graffitis in Bengal, India, which in turn provides a beautiful and captivating header text for each card's display body header. Kanit combines concepts and designs from Thai and Latin typefaces, as well as the Sans Serif Motif, to allow for a contemporary and futuristic display.. Special care has been taken when designing this font, allowing for decreased spacing between letters while preserving legibility. This font suits the card display body text, differentiating it from other pages on the website while maintaining a smooth and stylish appearance.
 
 All in all, the selected fonts are directly in-line with the goal of making the website modern and gamified, while maintaining a clean and professional feeling.
+
+#### Other Design Elements
+
+The website features a range of animations to make it more interactive and engaging.
 
 ---
 
