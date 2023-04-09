@@ -44,6 +44,13 @@
     margin: 1rem;
   }
 
+  .postContainer:hover {
+    border: 3px solid #74ab4c;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    transition: all 0.3s ease-in-out;
+  }
+
   .postButton {
     border: 2px solid black;
   }
