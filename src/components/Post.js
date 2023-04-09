@@ -7,6 +7,9 @@ import Button from 'react-bootstrap/Button';
 import "../pages.css";
 import "../assets/post.css"
 
+// react-icons
+import { BsPencilSquare, BsEraser } from "react-icons/bs"
+
 // create the component: extend React.Component to have all the functionality of a react component
 export default class Post extends React.Component {
     // state?
@@ -51,14 +54,14 @@ export default class Post extends React.Component {
                 <Button
                     variant="warning"
                     className="postButton mb-4 me-2 larger"
-                    onClick={()=> this.props.updatePost(this.props.post)}
-                    >Edit
+                    onClick={()=> this.props.updatePost(this.props.post)}>
+                        <BsPencilSquare/> Edit
                 </Button>
                 <Button
                     variant="danger"
                     className="postButton mb-4 ms-2 larger"
-                    onClick={()=> this.props.deletePost(this.props.post)}
-                    >Delete
+                    onClick={()=> this.props.deletePost(this.props.post)}>
+                        <BsEraser/> Delete
                 </Button>
             </div>
         </React.Fragment>

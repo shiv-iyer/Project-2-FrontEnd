@@ -6,7 +6,11 @@ import {Form, Button, Row, Col, Container} from "react-bootstrap";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
+// stylesheet
 import '../assets/componentStyles.css';
+
+// react-icons
+import { BsSearchHeart } from "react-icons/bs";
 
 // let's try a function-based component
 
@@ -64,7 +68,7 @@ export default function SearchBar(props){
                     </Col>
                     <Col xs={12} md="auto" className="d-flex justify-content-center mt-3 mt-md-0">
                         <Button onClick={props.findResults} className="larger moreBtnStyles">
-                        Find Results
+                        <BsSearchHeart/> Find Results
                         </Button>
                     </Col>
                     </Row>

@@ -14,6 +14,9 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
+// react-icons
+import { BsEnvelopeHeartFill } from "react-icons/bs"
+
 // API and Axios
 import BASE_API from '../components/BaseApi';
 import axios from "axios";
@@ -530,7 +533,7 @@ export default class CreatePost extends React.Component {
                         onClick={this.checkErrors}
                         disabled={!this.state.isValid}
                      >
-                    Submit Post</Button>
+                    <BsEnvelopeHeartFill/> Submit Post</Button>
                 </div>
             </div>
         </React.Fragment>

@@ -139,7 +139,7 @@ The Express server is hosted on and was deployed through [Render](https://render
 
 ### Icons
 
-- [FlatIcon](https://www.flaticon.com/) — Used for map marker icons on the website
+- [React Icons](https://react-icons.github.io/react-icons/) — Used for various icons throughout the website
 
 ### Custom Fonts from Google Fonts
 
