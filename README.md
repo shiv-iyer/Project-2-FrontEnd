@@ -148,4 +148,4 @@ The web application is hosted on and was deployed through [Netlify](https://www.
 - [Excalidraw](https://excalidraw.com/) — Used to create the structure diagram for the website
 - [Coolors](https://coolors.co/) — Used to create the base color palette asset for the website
 
-Thank you so much to Paul, my lecturer, all of my seniors & TAs, as well as my classmates for help, guidance and support throughout this project.
+Thank you so much to my lecturer, Paul, my teaching assistant, Wesley, as well as my classmates for help, guidance and support throughout this project.
