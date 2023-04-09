@@ -17,10 +17,16 @@
   margin-bottom: 1rem;
 }
 
-.sliderContainer {
+.slider-container {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.slider-group {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 .slider {

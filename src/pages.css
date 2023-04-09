@@ -89,7 +89,8 @@
 
     .archetype-container {
         display: block;
-        margin-bottom: 25px;
+        margin-top: 5px;
+        margin-bottom: 15px;
     }
 
     .sliders {

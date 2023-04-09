@@ -156,23 +156,33 @@ export default class CreatePost extends React.Component {
     };
 
     // can refactor these into one function updateSlider later, tried but it didn't work for now so leave it
-    updateRating = (event) => {
-        this.setState({
-            rating: event.target.value
-        })
-    };
+    // for RangeSlider
+    // updateRating = (event) => {
+    //     this.setState({
+    //         rating: event.target.value
+    //     })
+    // };
 
+    // for rc-slider
     handleRatingChange = (value) => {
         this.setState({
             rating: value
         })
     }
 
-    updateDifficulty = (event) => {
+    // for RangeSlider
+    // updateDifficulty = (event) => {
+    //     this.setState({
+    //         difficultyLevel: event.target.value
+    //     });
+    // };
+    
+    // for rc-slider
+    handleDifficultyChange = (value) => {
         this.setState({
-            difficultyLevel: event.target.value
-        });
-    };
+            difficultyLevel: value
+        })
+    }
 
     // check errors first, if no errors then call submit function
     checkErrors = () => {
@@ -460,7 +470,7 @@ export default class CreatePost extends React.Component {
                                     {this.state.archetypeError}
                                 </Form.Control.Feedback>
                             </div>
-                            <div className="sliders rating-container">
+                            <div className="slider-container sliders rating-container">
                                 <h5>Rating</h5>
                                 {/* <RangeSlider
                                      min={1}
@@ -477,14 +487,22 @@ export default class CreatePost extends React.Component {
                                 </Slider>
                                 <div className="sliderValue">{this.state.rating}</div>
                              </div>
-                            <div className="sliders difficulty-container">
+                            <div className="slider-container sliders difficulty-container">
                                 <h5>Difficulty</h5>
-                                <RangeSlider
+                                <Slider
+                                    className="bouncy my-2 customSlider"
+                                    min={1}
+                                    max={5}
+                                    value={this.state.difficultyLevel}
+                                    onChange={this.handleDifficultyChange}>
+                                </Slider>
+                                {/* <RangeSlider
                                     min={1}
                                     max={5}
                                     value={this.state.difficultyLevel}
                                     onChange={this.updateDifficulty}
-                                />
+                                /> */}
+                                <div className="sliderValue">{this.state.difficultyLevel}</div>
                             </div>
                         </div>
                     </Form>
