@@ -1,5 +1,5 @@
 # Royale Raves
-![Mobile-Responsive Mockup image](assets/resources/mockup.png)
+![Mobile-Responsive Mockup image](src/assets/resources/mockup.png)
 
 Live link to demo: [Royale Raves](https://royale-raves.netlify.app/)
 
