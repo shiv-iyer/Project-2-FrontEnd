@@ -19,6 +19,9 @@ import Navbar from 'react-bootstrap/Navbar';
 // stylesheet
 import "./assets/main.css"
 
+// logo!
+import rrLogo from "./assets/royale-raves-logo.png";
+
 // Main will be a class-based component, because the state will be the current page
 // Main will render every page
 
@@ -60,7 +63,7 @@ export default class Main extends React.Component {
                     {/* Navbar.Brand is the main element in the navbar */}
                         <Navbar.Brand href="#home" className="brand">
                             <img
-                            src={logo}
+                            src={rrLogo}
                             width="35"
                             height="35"
                             className="d-inline-block align-center"
