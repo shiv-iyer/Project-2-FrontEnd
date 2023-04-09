@@ -116,12 +116,20 @@ The website features a range of animations to make it more interactive and engag
 --- 
 
 ## Testing
-| Test Case | Steps | Expected Result |
+| Test Case | Test Steps | Expected Results |
 | ----------- | -----------  | ----------- |
-| User searches for results | Select parameters, click on search button | Various markers display on the map |
+| Loading of website and its components (Mobile / Tablet / Desktop) | Go to the website via the URL: https://royale-raves.netlify.app/ | The website should load, with all of the data being loaded from the API (cards for deck builder in create post page & cards page, as well as posts for view posts page) |
 | User inputs erroneous search data | Input invalid data in the results field: special characters or numbers out of the 10-50 range | Error validation and displaying of an error message the map update form |
 | User opens search results pane | Click on search results button after a successful search | Search canvas slides into the page, displaying results in a formatted list |
 | User randomizes dog image | Click on refresh button | A new image is appended to the card |
+
+/* 
+| ----------- | -----------  | ----------- |
+| Loading of website | Select parameters, click on search button | Various markers display on the map |
+| User inputs erroneous search data | Input invalid data in the results field: special characters or numbers out of the 10-50 range | Error validation and displaying of an error message the map update form |
+| User opens search results pane | Click on search results button after a successful search | Search canvas slides into the page, displaying results in a formatted list |
+| User randomizes dog image | Click on refresh button | A new image is appended to the card |
+/*
 
 ---
 
