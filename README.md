@@ -53,12 +53,21 @@ The website features a range of animations to make it more interactive and engag
 
 | Features | Description |
 | ----------- | ----------- |
+| Clash Royale Deck Builder | This feature enables users to create their own custom decks from a pool of available cards, with full interaction and logic implemented. Users can select cards to add to their deck, which will be displayed in a separate section of the deck builder. Users can remove cards from their deck by clicking on the cards in the deck display section, and users cannot select repeat cards or more than 8 cards at any given time. |
+| | |
+| | |
+| | |
+| | |
+
+
+/*
 | Search for pet-friendly locations | This search feature enables users to search for various pet-friendly locations, with the ability to fine-tune their search by entering a name, selecting a category, and choosing the number of results (from 10-50) to display. Every time a successful search is completed, all previous results will be cleared from the map. This functions by matching the selected parameters of the search to the results from the data set, with said results being extracted for processing later on. |
 | Display locations as markers & show location information | Search results are displayed as markers on the map, being easily-accessible by simply clicking on them. Markers are 'clustered' into individual groups based on their categories, and each cluster is organized into its own layer. Upon user click, the marker will display a popup with location information: name, type of location, and exact address. The map will also fly to each marker whenever one is clicked. |
 | Display search results | All search results are displayed in a formatted list that is shown on a side panel, which is toggleable with a button. Upon clicking on a search result, the map will zoom to the corresponding marker on the map, opening its popup to display information. | 
 | Map controls | The map has controls to zoom in and out of the map, as well as a toggleable controller to hide and show any of the category layers at the user's discretion. | 
 | Subscription form | The website features a subscription form, enabling the user to submit their email to receive special updates pertaining to the website. This form has been designed with a few validation rules, which prevent invalid inputs from being submitted. Note: the form submission does not have backend functionality, due to the scope of the project. | 
 | Display randomly-generated dog images | The website's second functional page features two card components with dog facts. The refresh button on the page allows the user to update the cards to display a newly-randomized dog image. | 
+*/
 
 ---
 
