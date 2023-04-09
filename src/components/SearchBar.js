@@ -15,7 +15,7 @@ export default function SearchBar(props){
     return (        
         <React.Fragment>
             <div className="searchSectionWrapper">
-                <Container fluid>
+                <Container fluid className="bodyText">
                     <Row className="my-4 searchBarContainer">
                         <Col xs={12} md={6} className="d-flex justify-content-md-end justify-content-center">
                             <Form.Control
@@ -64,7 +64,7 @@ export default function SearchBar(props){
                         <div className="sliderValue">{props.difficulty}</div>
                     </Col>
                     <Col xs={12} md="auto" className="d-flex justify-content-center mt-3 mt-md-0">
-                        <Button onClick={props.findResults} className="larger">
+                        <Button onClick={props.findResults} className="larger moreBtnStyles">
                         Find Results
                         </Button>
                     </Col>
