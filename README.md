@@ -68,18 +68,11 @@ The website features a range of animations to make it more interactive and engag
 - Available selection of cards
     - The website's deck system (including the deck builder) is centralized around the Cards collection in the MongoDB Database for this project. However, seeing as each card and its info is stored as an individual document manually inputted into the collection, the entire selection of cards in Clash Royale is unavailable. There are 109 total cards in Clash Royale, which means I would have to create 109 different documents. There are 24 fully-fledged cards available in the database at the moment.
     - Champion cards from Clash Royale have also not been implemented with the website and its deck builder. If they were to be included, the logic for the deck builder would have to be updated, as only one Champion card can be included in each deck at any given time.
+- Comments section & functionality
+    - comments backend routes in Express complete
 - Integration with the official Clash Royale API
-
-- Search by user query is rather inaccurate, as FourSquare's search by query has some limitations
-    - Solution: consider using another API, such as OneMap, for more accurate data retrieval based on location-specific searches
-- Marker results displayed aren't fully confined to Singapore, and sometimes bleed over into Malaysia
-    - Solution: consider utilizing the FourSquare radius function to limit the search to Singapore's geographical boundaries.
-- Randomized dog images have some issues: their height doesn't perfectly match the parent container, and sometimes an invalid file format is returned, causing the feature to break
-    - Solution: consider adding more styling rules to better match the image to the parent container, as well as implement further validation rules to only pass in selected image file formats
-- More pages were planned, but aren't implemented for the website yet
-    - Animal Statistics page: could display data using charts
-    - About Us & Contact Us pages
-
+    - Clash Royale provides an [official API for developers](https://developer.clashroyale.com/), which can be used to retrieve data and various statistics from the game & its players. 
+    
 ---
 
 ## Technologies Used
