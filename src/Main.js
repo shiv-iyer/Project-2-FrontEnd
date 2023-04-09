@@ -58,7 +58,7 @@ export default class Main extends React.Component {
                     <Navbar expand="md" id="main-navbar">
                     <Container>
                     {/* Navbar.Brand is the main element in the navbar */}
-                        <Navbar.Brand href="#home">
+                        <Navbar.Brand href="#home" className="brand">
                             <img
                             src={logo}
                             width="35"

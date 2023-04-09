@@ -4,8 +4,12 @@
     box-shadow: 0px 5px 5px #545454;
 }
 
+.brand {
+    font-family: 'Yusei Magic', sans-serif;
+}
+
 .navItem {
-    font-family: 'Alkatra', cursive;
+    font-family: 'Yusei Magic', sans-serif;
 }
 
 .navItem:hover {
