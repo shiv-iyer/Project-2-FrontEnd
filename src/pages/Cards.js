@@ -101,28 +101,32 @@ export default class Cards extends React.Component {
     render(){
         return (
             <React.Fragment>
-                <h5 className="deckHeader my-3">View Cards</h5>
-                <CardGrid cards={this.state.cards} click={this.loadCardPopup}/>
-                <Modal show={this.state.showingPopup} onHide={this.hideCardPopup}>
-                    <Modal.Header className="header modalMain">
-                        <Modal.Title>{this.state.currentCard}</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="modalBody">
-                        {/* conditional rendering: if the current card render URL exists, display it as an image, else don't display anything */}
-                        {/* split the current card categories by a comma anad a space, in the event that there are multiple values (ex. Xbow) */}
-                        {this.state.currentCardRenderURL ? <img src={this.state.currentCardRenderURL} alt={this.state.currentCard} className="renderImg largeish"/> : null}
-                        <div className="infoBody largeish">
-                            <p>{this.state.currentCardDescription}</p>
-                            <p>Rarity: {this.state.currentCardRarity}</p>
-                            <p>Card categories: {this.state.currentCardCategories.join(", ")}</p>
-                        </div>
-                    </Modal.Body>
-                    <Modal.Footer className="modalMain">
-                        <Button variant="primary" className="moreBtnStyles larger" onClick={this.hideCardPopup}>
-                            Cool!
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
+                <div className="page-container">
+                    <h1 className="headerText p-3">View All Cards</h1>
+                    <div className="cardGridContainer mx-3 my-1">
+                        <CardGrid cards={this.state.cards} click={this.loadCardPopup}/>
+                        <Modal show={this.state.showingPopup} onHide={this.hideCardPopup}>
+                            <Modal.Header className="header modalMain">
+                                <Modal.Title>{this.state.currentCard}</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body className="modalBody">
+                                {/* conditional rendering: if the current card render URL exists, display it as an image, else don't display anything */}
+                                {/* split the current card categories by a comma anad a space, in the event that there are multiple values (ex. Xbow) */}
+                                {this.state.currentCardRenderURL ? <img src={this.state.currentCardRenderURL} alt={this.state.currentCard} className="renderImg largeish"/> : null}
+                                <div className="infoBody largeish">
+                                    <p>{this.state.currentCardDescription}</p>
+                                    <p>Rarity: {this.state.currentCardRarity}</p>
+                                    <p>Card categories: {this.state.currentCardCategories.join(", ")}</p>
+                                </div>
+                            </Modal.Body>
+                            <Modal.Footer className="modalMain">
+                                <Button variant="primary" className="moreBtnStyles larger" onClick={this.hideCardPopup}>
+                                    Cool!
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
+                    </div>
+                </div>
             </React.Fragment>
         );
     }

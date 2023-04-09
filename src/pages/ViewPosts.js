@@ -368,7 +368,7 @@ export default class ViewPosts extends React.Component {
         return (
             <React.Fragment>
                 <div className="page-container">
-                    <h1 className="headerText centered p-3">View all posts</h1>
+                    <h1 className="headerText centered p-3">View All Posts</h1>
                     {/* pass in the relevant values as props */}
                     <SearchBar
                         search={this.state.search}
@@ -568,10 +568,10 @@ export default class ViewPosts extends React.Component {
                         </div>
                     </Modal.Body>
                     <Modal.Footer className="modalBG">
-                        <Button variant="secondary" onClick={this.cancelEdit}>
+                        <Button variant="secondary" className="moreBtnStyles larger" onClick={this.cancelEdit}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={this.submitEdit}>
+                        <Button variant="primary" className="moreBtnStyles larger" onClick={this.submitEdit}>
                             Save Changes
                         </Button>
                     </Modal.Footer>
@@ -579,7 +579,7 @@ export default class ViewPosts extends React.Component {
 
                 {/* Modal for deleting post */}
                 <Modal show={this.state.deletingPost} onHide={this.cancelDeletion}>
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className="modalBG">
                         <Modal.Title>Delete Post</Modal.Title>
                     </Modal.Header>
                     {/* main body of the modal popup */}
@@ -589,11 +589,11 @@ export default class ViewPosts extends React.Component {
                             <p>ARE YOU SURE? Deletion is permanent!</p>
                         </div>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="primary" onClick={this.cancelDeletion}>
+                    <Modal.Footer className="modalBG">
+                        <Button variant="primary" className="moreBtnStyles larger" onClick={this.cancelDeletion}>
                                 Don't Delete
                         </Button>
-                        <Button variant="danger" onClick={this.deletePost}>
+                        <Button variant="danger" className="moreBtnStyles larger" onClick={this.deletePost}>
                             Delete
                         </Button>
                     </Modal.Footer>

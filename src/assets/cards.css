@@ -31,3 +31,11 @@
     transform: scale(1.05);
     transition: all 0.3s ease;
 }
+
+.cardGridContainer {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 1rem;
+    background-color: rgba(254,251,234, 0.3);
+    font-family: 'Play', sans-serif;
+}
