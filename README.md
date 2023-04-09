@@ -116,20 +116,21 @@ The website features a range of animations to make it more interactive and engag
 --- 
 
 ## Testing
-| Test Case | Test Steps | Expected Results |
+| Test Case / Page | Test Steps | Expected Results |
 | ----------- | -----------  | ----------- |
 | Loading of website and its components (Mobile / Tablet / Desktop) | Go to the website via the URL: https://royale-raves.netlify.app/ | The website should load, with all of the data being loaded from the API (cards for deck builder in create post page & cards page, as well as posts for view posts page) |
-| User inputs erroneous search data | Input invalid data in the results field: special characters or numbers out of the 10-50 range | Error validation and displaying of an error message the map update form |
-| User opens search results pane | Click on search results button after a successful search | Search canvas slides into the page, displaying results in a formatted list |
-| User randomizes dog image | Click on refresh button | A new image is appended to the card |
-
-/* 
-| ----------- | -----------  | ----------- |
-| Loading of website | Select parameters, click on search button | Various markers display on the map |
-| User inputs erroneous search data | Input invalid data in the results field: special characters or numbers out of the 10-50 range | Error validation and displaying of an error message the map update form |
-| User opens search results pane | Click on search results button after a successful search | Search canvas slides into the page, displaying results in a formatted list |
-| User randomizes dog image | Click on refresh button | A new image is appended to the card |
-/*
+| Home --> Create a Post | Input invalid data in the results field: special characters or numbers out of the 10-50 range | Error validation and displaying of an error message the map update form |
+| Create a Post: Deck Builder | e | e |
+| Create a Post: Error Validation | Click on search results button after a successful search | Search canvas slides into the page, displaying results in a formatted list |
+| Create a Post: Submit Post | e | e |
+| Home --> View Posts | e | e |
+| View Posts: Search Filter | e | e |
+| View Posts: Edit a Post | e | e |
+| View Posts: Edit Post Deck Builder | e | e |
+| View Posts: Edit Post Validation | e | e |
+| View Posts: Delete a Post | e | e |
+| Home --> Cards | e | e |
+| Cards: Click on a Card | e | e |
 
 ---
 
