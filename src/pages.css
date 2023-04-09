@@ -195,9 +195,9 @@
 }
 
 .headerText:hover {
+    /* nice pink #e23d71; */
     text-decoration: underline;
-    text-decoration-color:#e23d71;
-    text-decoration-style:dashed;
+    text-decoration-color:#1919d8;
     text-decoration-thickness: 4px;
     transition: 1s;
 }
