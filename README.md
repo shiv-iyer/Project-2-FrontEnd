@@ -45,7 +45,7 @@ All in all, the selected fonts are directly in-line with the goal of making the 
 
 #### Other Design Elements
 
-The website features a range of animations to make it more interactive and engaging.
+The website features a range of animations to make it more interactive and engaging. Said animations were implemented to stay in line with the goal of making the website captivating and alluring to the target audience, as fun animations would appeal to gamers and hold their attention.
 
 ---
 
