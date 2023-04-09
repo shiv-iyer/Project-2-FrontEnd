@@ -1,6 +1,8 @@
+// react imports
 import logo from './logo.svg';
-import './App.css';
 import React from "react";
+
+// bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import all of the page components
@@ -13,6 +15,9 @@ import Cards from './pages/Cards';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+
+// stylesheet
+import "./assets/main.css"
 
 // Main will be a class-based component, because the state will be the current page
 // Main will render every page

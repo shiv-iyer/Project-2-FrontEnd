@@ -1,0 +1,16 @@
+#main-navbar{
+    background: linear-gradient(#ffe568, #ffd142, #ffb855);
+    /* box-shadow params: offset-x / offset-y; blur-radius; color */
+    box-shadow: 0px 5px 5px #545454;
+  }
+  
+  /* some important clash royale colors, from the logo itself
+  * #4082cd: blue
+  * #2a5195: darker blue
+  * #ffe568: light yellow
+  * #ffd142: darker yellow
+  * #ffb855: medium orange
+  * #fc9e20: darker orange
+  * #5b2500: darkest base (drop shadow of the logo)
+  */
+

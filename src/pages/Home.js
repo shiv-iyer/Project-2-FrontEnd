@@ -22,9 +22,9 @@ export default class Home extends React.Component {
                         <h1 className="headerText">Welcome to Royale Raves</h1>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     <p>Discover the latest and most popular user-submitted decks in Clash Royale, and find out what everyone is saying about them!</p>
-                </div> 
+                </div>  */}
             </React.Fragment>
         );
     }
