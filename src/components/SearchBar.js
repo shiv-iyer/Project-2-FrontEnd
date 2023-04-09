@@ -1,7 +1,6 @@
 // imports
 import React from 'react';
 import {Form, Button, Row, Col, Container} from "react-bootstrap";
-import RangeSlider from "react-bootstrap-range-slider";
 
 // trying rc slider
 import Slider from 'rc-slider';

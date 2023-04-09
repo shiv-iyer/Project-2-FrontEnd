@@ -3,12 +3,6 @@ import React from "react";
 // react-bootstrap components
 // can just do it in one line!
 import {Form, Row, Col, Button, InputGroup} from "react-bootstrap";
-// import Form from "react-bootstrap/Form";
-// import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-// import Button from "react-bootstrap/Button";
-// import InputGroup from "react-bootstrap/InputGroup";
 
 // bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -366,8 +360,8 @@ export default class CreatePost extends React.Component {
                         {/* map the labels object, creating a clickable card based on the card name and its corresponding image URL */}
                         {/* we avoid hardcoding by mapping everything in this.state.labels. */}
                         {this.state.labels.map((card, index) => {
-                            {/* conditional styling based on if selected or not, using the ternary operator */}
-                            {/* isSelected = this.state.selectedCards.includes(card) */}
+                            {/* conditional styling based on if selected or not, using the ternary operator:
+                            condition is <isSelected = this.state.selectedCards.includes(card)> */}
                             return (
                                 <div key={index} className="clashCard customClashCard larger"
                                  onClick={() => this.selectCard(card)}
