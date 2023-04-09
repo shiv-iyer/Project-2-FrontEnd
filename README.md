@@ -142,13 +142,9 @@ The web application is hosted on and was deployed through [Netlify](https://www.
 #### Custom Fonts from Google Fonts
 
 - [Play](https://fonts.google.com/specimen/Play)
-
 - [Roboto Condensed](https://fonts.google.com/specimen/Roboto+Condensed)
-
 - [Yusei Magic](https://fonts.google.com/specimen/Yusei+Magic)
-
 - [Alkatra](https://fonts.google.com/specimen/Alkatra)
-
 - [Kanit](https://fonts.google.com/specimen/Kanit)
 
 ### Assets
