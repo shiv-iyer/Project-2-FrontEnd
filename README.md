@@ -119,18 +119,18 @@ The website features a range of animations to make it more interactive and engag
 | Test Case / Page | Test Steps | Expected Results |
 | ----------- | -----------  | ----------- |
 | Loading of website and its components (Mobile / Tablet / Desktop) | Go to the website via the URL: https://royale-raves.netlify.app/ | The website should load, with all of the data being loaded from the API (cards for deck builder in create post page & cards page, as well as posts for view posts page) |
-| Home --> Create a Post | Input invalid data in the results field: special characters or numbers out of the 10-50 range | Error validation and displaying of an error message the map update form |
-| Create a Post: Deck Builder | e | e |
+| Home --> Create a Post | Click on the "Create a Post" navigation link in the navbar (from any page other than the page itself) | The website should be redicted to the Create a Post page |
+| Create a Post: Deck Builder | Navigate to the deck builder component, and click on various cards from the pool of available cards ("Card Selector" section). Once some cards have been selected, click on various cards from the "Selected Deck" section. | Selected cards from the card pool should be highlighted (with a border) upon selection, as well as automatically appear in the "Selected Deck" section. Clicking on a card that is already selected should not duplicate its selection. Cards clicked from the "Selected Deck" section should automatically disappear from the section, getting unselected and losing their highlighting. Overall, a maximum of 8 cards should be able to be chosen for any given deck, and attempting to select any other cards once the deck is full should not provide any results. |
 | Create a Post: Error Validation | Click on search results button after a successful search | Search canvas slides into the page, displaying results in a formatted list |
 | Create a Post: Submit Post | e | e |
-| Home --> View Posts | e | e |
-| View Posts: Search Filter | e | e |
+| Home --> View Posts | Click on the "View Posts" navigation link in the navbar (from any page other than the page itself) | The website should be redicted to the View Posts page |
+| View Posts: Search Filter | Navigate to the search options component, and fill in the filter options. Subsequently, click on the "Find Results" button. | Different posts should appear based on the filter options selected; for example, posts whose titles contain the text of the input in the search bar. If no search filter options were selected, all of the posts should appear, as normal. |
 | View Posts: Edit a Post | e | e |
 | View Posts: Edit Post Deck Builder | e | e |
 | View Posts: Edit Post Validation | e | e |
-| View Posts: Delete a Post | e | e |
-| Home --> Cards | e | e |
-| Cards: Click on a Card | e | e |
+| View Posts: Delete a Post | Click on the "Delete" button at the bottom of the post, then click on the "Delete" button at the resulting modal popup window to confirm deletion. | The website should send an API request to the server, successfully deleting the post from the database based on its ID. The website should return to the View Posts page, and the deleted post should not be visible anymore. |
+| Home --> Cards | Click on the "Cards" navigation link in the navbar (from any page other than the page itself) | The website should be redicted to the Cards page |
+| Cards: Card Interaction | Click on any of the cards in the displayed card grid. | A modal popup window should appear, displaying various details of the card that was clicked on, including its name, a render image (if available), a card description, the card rarity, and the card categories. |
 
 ---
 
