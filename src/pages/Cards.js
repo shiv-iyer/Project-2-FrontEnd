@@ -33,7 +33,6 @@ export default class Cards extends React.Component {
         const cardsResponse = await axios.get(`${BASE_API}cards`);
         // store the data in a separate object
         const dataObj = cardsResponse.data.listings;
-        console.log(dataObj);
         // create a temporary array to store the new objects in first, will setState with it later
         const tempCards = []
         // run through the object and extract all the info to be saved for displaying later
@@ -60,9 +59,6 @@ export default class Cards extends React.Component {
         this.setState({
             cards: tempCards
         })
-
-        console.log("This.state.cards");
-        console.log(this.state.cards);
     }
 
     loadCardPopup = (card, cardName, cardURL, cardDescription, cardElixirCost, cardRarity, cardCategories) => {
@@ -75,7 +71,6 @@ export default class Cards extends React.Component {
             currentCardRarity: cardRarity,
             currentCardCategories: cardCategories
         })
-        console.log(card);
     }
 
     hideCardPopup = () => {

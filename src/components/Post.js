@@ -19,9 +19,6 @@ export default class Post extends React.Component {
     }
 
     render(){
-
-        console.log(this.props.post);
-
         return <React.Fragment>
             <div className="postContainer">
                 <div className="postHeaderContainer">

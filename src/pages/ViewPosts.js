@@ -63,7 +63,6 @@ export default class ViewPosts extends React.Component {
     // componentDidMount() will probably call the axios get request
 
     updateFormField = (event) => {
-        console.log("Event target name: " + event.target.name);
         this.setState({
             [event.target.name]: event.target.value
             //setState has two functions: second one can be a function to be called after state is set
@@ -82,14 +81,11 @@ export default class ViewPosts extends React.Component {
 
     // function for selecting a card
     selectCard = (card) => {
-        console.log("Card was selected");
-        console.log("state: " + this.state.selectedCards);
         if (this.state.selectedCards.length < 8 && !this.state.selectedCards.includes(card)){
             this.setState({
                 selectedCards: [...this.state.selectedCards, card]
             })
         }
-        console.log("State after edit: " + this.state.selectedCards[0]);
     }
     
     // function for unselecting a card
@@ -98,23 +94,14 @@ export default class ViewPosts extends React.Component {
         this.setState({
             selectedCards: filteredArray
         })
-        console.log("State after edit: " + this.state.selectedCards);
     }
 
     getCardIDs = () => {
-        console.log("Get card IDs was reached");
-        console.log("this.state.selected cards: ");
-        console.log(this.state.selectedCards);
-        let x = 0;
         const documentIDs = [];
         this.state.selectedCards.forEach((card) => {
             // push the card's MongoDB Document ID for the API post request
             documentIDs.push(card.id);
-            x++;
-            console.log("card ID #" + x + " : " + card.id);
         })
-        console.log("documet\ntIDs:");
-        console.log(documentIDs);
         return documentIDs;
     };
 
@@ -126,14 +113,10 @@ export default class ViewPosts extends React.Component {
         const currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
         // retrieve all selected cards from the existing post...
-        console.log("Current post info: ");
-        console.log(post);
 
         // cardName, cardURL, id
         const tempDeck = [];
         post.deck.cards.forEach((card) => {
-            console.log("Card:");
-            console.log(card);
             const id = card.cardID;
             const cardURL = card.cardURL;
             const cardName = card.cardName;
@@ -144,8 +127,6 @@ export default class ViewPosts extends React.Component {
             }
             tempDeck.push(output)
         });
-
-        console.log(tempDeck);
 
         // first step: setState so existing post info isn't lost
         this.setState({
@@ -162,9 +143,6 @@ export default class ViewPosts extends React.Component {
             // selected cards...
             selectedCards: tempDeck
         });
-
-        console.log(post);
-
     }
 
     cancelEdit = () => {
@@ -189,9 +167,6 @@ export default class ViewPosts extends React.Component {
                 rating: this.state.updatedRating,
                 difficultyLevel: this.state.updatedDifficultyLevel
             });
-    
-            console.log("Result data...");
-            console.log(updateResponse.data);
 
             this.setState({editingPost: false});
             this.loadPosts();
@@ -216,8 +191,6 @@ export default class ViewPosts extends React.Component {
     deletePost = async () => {
         try {
             const deleteResponse = await axios.delete(`${BASE_API}posts/${this.state.currentPostID}`)
-            console.log("Result data...");
-            console.log(deleteResponse.data);
 
             this.setState({deletingPost: false});
             this.loadPosts();
@@ -239,12 +212,7 @@ export default class ViewPosts extends React.Component {
         this.setState({
             // postsResponse.data.posts
             posts: postsResponse.data.listings
-        })
-
-        // console log out to test
-        console.log("posts: ");
-        console.log(this.state.posts);
-        
+        })  
     }
 
     loadCards = async () => {
@@ -276,10 +244,6 @@ export default class ViewPosts extends React.Component {
             // postsResponse.data.posts
             cards: cardsResponse.data.listings
         })
-    
-        // console log out to test
-        console.log("cards: ");
-        console.log(this.state.cards);
     }
 
     validateName = () => {

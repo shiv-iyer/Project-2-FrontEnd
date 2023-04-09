@@ -63,10 +63,8 @@ export default class CreatePost extends React.Component {
     // functions
 
     errorValidation = () => {
-        console.log("error checking")
         const {name, overview, strategy, archetype, userThatPosted, password } = this.state;
         if (!name || !overview || !strategy || !archetype || !userThatPosted || !password) {
-            console.log(name, overview, strategy, archetype, userThatPosted, password)
             this.setState(
                 {
                     isValid: false,
@@ -84,7 +82,6 @@ export default class CreatePost extends React.Component {
 
     // for text fields, can use event.target.name to use one function to perform the updation for all.
     updateFormField = (event) => {
-        console.log("Event target name: " + event.target.name);
         this.errorValidation();
         this.setState({
             [event.target.name]: event.target.value
@@ -103,8 +100,6 @@ export default class CreatePost extends React.Component {
     };
 
     updateCards = (event) => {
-        console.log("card was updated");
-        console.log(event.target.value);
         // dealing with arrays in the state React: you must use setState, cannont just arrayName.push()
         // arrays in the state are immutable. Therefore, we need to clone the array and setState with a modified version of it.
         
@@ -203,7 +198,6 @@ export default class CreatePost extends React.Component {
         const date = new Date();
         // date.getMonth() starts from 0, so we need to add 1 to get the current month
         const currentDate = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
-        console.log("Current date: " + currentDate);
 
         // don't submit if the user has not selected a deck of 8 cards
         if (this.state.selectedCards.length !== 8){
@@ -224,14 +218,6 @@ export default class CreatePost extends React.Component {
                 rating: this.state.rating,
                 difficultyLevel: this.state.difficultyLevel
             });
-            console.log("Result data...");
-            console.log(result.data);
-            console.log("post name: " + this.state.name);
-            console.log("deck overview: " + this.state.overview);
-            console.log("deck strategy: " + this.state.strategy);
-            console.log("deck archetype: " + this.state.archetype);
-            console.log("deck rating: " + this.state.rating);
-            console.log("deck difficulty level: " + this.state.difficultyLevel);
         }
     };
 
@@ -273,25 +259,15 @@ export default class CreatePost extends React.Component {
             // postsResponse.data.posts
             cards: cardsResponse.data.listings
         })
-    
-        // console log out to test
-        console.log("cards: ");
-        console.log(this.state.cards);
     }
 
     // function for selecting a card
     selectCard = (card) => {
-        console.log("Card was selected");
-        console.log("state: " + this.state.selectedCards);
         if (this.state.selectedCards.length < 8 && !this.state.selectedCards.includes(card)){
             this.setState({
                 selectedCards: [...this.state.selectedCards, card]
             })
         }
-        console.log("State after edit: " + this.state.selectedCards[0]);
-
-        console.log("doing card ids function");
-        this.getCardIDs();
     }
 
     // function for unselecting a card
