@@ -539,7 +539,7 @@ export default class ViewPosts extends React.Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.cancelEdit}>
-                                Close
+                            Close
                         </Button>
                         <Button variant="primary" onClick={this.submitEdit}>
                             Save Changes
