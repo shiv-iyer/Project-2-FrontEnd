@@ -22,63 +22,63 @@
     font-family: 'Play', sans-serif;
 }
 
-  /* .cardImg {
-    width: 100%;
-    height: auto
-  } */
+/* .cardImg {
+  width: 100%;
+  height: auto
+} */
 
-    /* media query to ensure that the deck expands on larger devices */
-    @media (min-width: 768px) {
-        .deckGrid {
-          max-width: 50%;
-        }
-      }
+/* media query to ensure that the deck expands on larger devices */
+@media (min-width: 768px) {
+    .deckGrid {
+      max-width: 50%;
+    }
+  }
 
-      /* added gap 10px to ensure card spacing no matter what */
-      .cardGrid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-      }
+  /* added gap 10px to ensure card spacing no matter what */
+  .cardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
 
-      /* custom sizing and media queries for mobile-responsiveness */
+  /* custom sizing and media queries for mobile-responsiveness */
+  
+  /* divide width: 100%/8 for 8 columns, and then subtracting 10px for spacing (and gap 10px) */
+  /* border-box ensures that border and padding are included within the width of the element */
+  .customClashCard {
+    width: calc(100% / 8 - 10px);
+    box-sizing: border-box;
+  }
+  
+  /* retain og spacing for large viewports */
+  @media (max-width: 1200px) {
+    .customClashCard {
+      width: calc(100% / 8 - 10px);
+    }
+  }
+  
+  /* 100% divided by 6 for 6 columns, and -16.67px for additional spacing */
+  @media (max-width: 992px) {
+    .customClashCard {
+      width: calc(100% / 6 - 16.67px);
+    }
+  }
+  
+  /* 100% divided by 4 for 4 columns, and -25px for additional spacing. for small devices up to tablets */
+  @media (max-width: 768px) {
+    .customClashCard {
+      width: calc(100% / 4 - 25px);
+    }
+  }
       
-      /* divide width: 100%/8 for 8 columns, and then subtracting 10px for spacing (and gap 10px) */
-      /* border-box ensures that border and padding are included within the width of the element */
-      .customClashCard {
-        width: calc(100% / 8 - 10px);
-        box-sizing: border-box;
-      }
-      
-      /* retain og spacing for large viewports */
-      @media (max-width: 1200px) {
-        .customClashCard {
-          width: calc(100% / 8 - 10px);
-        }
-      }
-      
-      /* 100% divided by 6 for 6 columns, and -16.67px for additional spacing */
-      @media (max-width: 992px) {
-        .customClashCard {
-          width: calc(100% / 6 - 16.67px);
-        }
-      }
-      
-      /* 100% divided by 4 for 4 columns, and -25px for additional spacing. for small devices up to tablets */
-      @media (max-width: 768px) {
-        .customClashCard {
-          width: calc(100% / 4 - 25px);
-        }
-      }
-          
-      .cardImg {
-        max-width: 100%;
-        height: auto;
-      }
+  .cardImg {
+    max-width: 100%;
+    height: auto;
+  }
 
 
-.deckHeader {
+/* .deckHeader {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 1.75rem;
@@ -86,13 +86,13 @@
     text-align: center;
     color: #333;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
+} */
 
-.deckHeader::after {
+/* .deckHeader::after {
     content: "";
     display: block;
     width: 60%;
     height: 3px;
     background-color: #333;
     margin: 0.5rem auto;
-  }
+  } */
