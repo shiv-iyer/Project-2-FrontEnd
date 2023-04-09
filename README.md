@@ -30,7 +30,7 @@ On the design end of the website, users should be able to engage in full CRUD fu
 #### Color Scheme
 ![Color Scheme image](assets/resources/color-palette.jpg)
 
-The main color scheme of the website revolves around cream & beige-colored components and forms, with additional accents of gold and blue. The cream and beige colors provide a clean, light look to the website, allowing for clear, coherent elements. These light colors are also easy on the eyes, avoiding any jarring effects and creating an affable atmosphere to the website.
+The main color scheme of the website revolves around cream/bisque & beige-colored components and forms, with additional accents of gold and blue. The cream and beige colors provide a clean, light look to the website, allowing for clear, coherent elements. These light colors are also easy on the eyes, avoiding any jarring effects and creating an affable atmosphere to the website.
 
 The chosen gold and blue colors were directly extracted from the [official Clash Royale Logo](https://clashroyale.com/), helping link the website to the game and its theme. The rich gold navigation bar exudes a sense of luxury, royalty and fortune, providing a strong, bold presence to establish the top of every page. The blue gradient that backs every page evokes feelings of calmness, imagination and inspiration, supplying a strong sense of emotion to each page. These colors also come together to complement each other nicely, allowing for the website to maintain a sense of interconnectedness while staying true to the Clash Royale theme.
 
@@ -161,7 +161,7 @@ The Express server is hosted on and was deployed through [Render](https://render
 ### Assets
 
 - [CreateMockup](https://www.createmockup.com/generate/) - Used to create the mobile-responsive mockup for the website
-- [Excalidraw](https://excalidraw.com/) — Used to create the structure diagram for the website
+- [Excalidraw](https://excalidraw.com/) — Used to create the structure diagram & wireframes for the website
 - [Coolors](https://coolors.co/) — Used to create the base color palette asset for the website
 
 Thank you so much to my lecturer, Paul, my teaching assistant, Wesley, as well as my classmates for help, guidance and support throughout this project.
