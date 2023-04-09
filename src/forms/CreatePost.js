@@ -193,8 +193,6 @@ export default class CreatePost extends React.Component {
 
     // starting functionality for POST request.
     submit = async () => {
-        alert("Submit function was reached!");
-
         const date = new Date();
         // date.getMonth() starts from 0, so we need to add 1 to get the current month
         const currentDate = `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`;
@@ -203,7 +201,8 @@ export default class CreatePost extends React.Component {
         if (this.state.selectedCards.length !== 8){
             alert("Please select all 8 cards!");
         } else {
-            alert("Doing post request!");
+            // maybe think of a way to improve alert later
+            alert("Deck has been submitted!");
             // axios.post has two parameters; the api URL, and the request body.
             const result = await axios.post(`${BASE_API}posts`,
             {
