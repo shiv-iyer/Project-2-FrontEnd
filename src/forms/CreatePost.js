@@ -270,7 +270,7 @@ export default class CreatePost extends React.Component {
         // console log out to test
         console.log("cards: ");
         console.log(this.state.cards);
-        }
+    }
 
     // function for selecting a card
     selectCard = (card) => {
@@ -308,7 +308,7 @@ export default class CreatePost extends React.Component {
         return <React.Fragment>
             <div className="container post-form">
                 <h3 className="header-text">Main Post Info</h3>
-                <div className="post-form-group">
+                <div className="post-form-group bodyText">
                     <Form>
                         <Form.Group controlId="inputName">
                             <Form.Label>Post Name</Form.Label>
@@ -336,7 +336,7 @@ export default class CreatePost extends React.Component {
                     </Form>
                 </div>  
                 
-                <div className="mb-3 post-form-group">
+                <div className="mb-3 post-form-group bodyText">
                     <h4>Deck</h4>
 
                     <p>Create your deck! Maximum of 8 cards.</p>
@@ -399,7 +399,7 @@ export default class CreatePost extends React.Component {
                 </div>
 
                 <h3 className="header-text">Deck Info</h3>
-                <div className="post-form-group">
+                <div className="post-form-group bodyText">
                     <Form>
                         <Form.Group className="mb-2" controlId="inputOverview">
                             <Form.Label>Deck Overview</Form.Label>
@@ -493,7 +493,7 @@ export default class CreatePost extends React.Component {
                     </Form>
                 </div>
                 <h3 className="header-text">User Details</h3>
-                <div className="post-form-group">
+                <div className="post-form-group bodyText">
                     <Form>
                         <Row>
                             <Col md="6">
@@ -530,9 +530,9 @@ export default class CreatePost extends React.Component {
                     </Form>
                 </div>
 
-                <div className="centered mt-3">
+                <div className="centered mt-3 bodyText larger">
                     <Button
-                        id="submit-btn"
+                        id="submit-btn moreBtnStyles"
                         onClick={this.checkErrors}
                         disabled={!this.state.isValid}
                      >
