@@ -371,7 +371,7 @@ export default class ViewPosts extends React.Component {
                         handleDifficultyChange={this.handleDifficultyChange}
                         findResults={this.findSearchResults}
                     />
-                    <Container id="postsContainer" className="p-3">
+                    <Container id="postsContainer" className="p-1">
                         <div>{this.state.posts.map(post => (
                             // inside the Post component, to access the value of the post object, it will be this.props.key
                             // we pass in the value of post from the mapping function
@@ -393,7 +393,7 @@ export default class ViewPosts extends React.Component {
                 {/* Modal for editing post */}
                 {/* show is linked to the state: only render when shown */}
                 <Modal show={this.state.editingPost} onHide={this.cancelEdit} fullscreen={true}>
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className="modalBG">
                         <Modal.Title>Update Post</Modal.Title>
                     </Modal.Header>
                     {/* main body of the modal popup */}
@@ -558,7 +558,7 @@ export default class ViewPosts extends React.Component {
                             </Form>
                         </div>
                     </Modal.Body>
-                    <Modal.Footer>
+                    <Modal.Footer className="modalBG">
                         <Button variant="secondary" onClick={this.cancelEdit}>
                             Close
                         </Button>

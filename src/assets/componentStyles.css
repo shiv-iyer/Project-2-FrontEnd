@@ -136,3 +136,11 @@
   .editingModal {
     background-color: beige;
   }
+
+  .modalBG {
+    /* nice linear gradient */
+    /*background: linear-gradient(#a7adba, 	#65737e, 	#4f5b66, #343d46);*/
+    /* darker cream: #D4CAA3; dairy cream: #E9CCA4 */
+    background-color: #FFE4C4;
+    border: 1px dashed gray;
+  }

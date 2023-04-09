@@ -36,3 +36,14 @@
       max-width: 50%;
     }
   }
+  
+  .postContainer {
+    background-color: #FFE4C4;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin: 1rem;
+  }
+
+  .postButton {
+    border: 2px solid black;
+  }
