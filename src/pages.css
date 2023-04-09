@@ -190,4 +190,15 @@
 
 .headerText {
     font-family: 'Yusei Magic', sans-serif;
+    display: block;
+    text-align: center;
+}
+
+.headerText::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 3px;
+    background-color: #333;
+    margin: 0.5rem auto;
 }

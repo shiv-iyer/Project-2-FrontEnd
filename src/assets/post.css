@@ -47,3 +47,7 @@
   .postButton {
     border: 2px solid black;
   }
+
+  .rightAlign {
+    text-align:center;
+  }
