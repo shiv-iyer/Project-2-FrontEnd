@@ -25,7 +25,7 @@ export default class Post extends React.Component {
         return <React.Fragment>
             <div className="postContainer">
                 <div className="postHeaderContainer">
-                    <h1 className="p-3">Post Name: {this.props.post.name}</h1>
+                    <h1 className="p-3 postName">Post Name: {this.props.post.name}</h1>
                     <h3 className="p-1 rightAlign">Posted by: @{this.props.post.userThatPosted}</h3>
                     <h5 className="p-1 rightAlign">Date posted: {this.props.post.dateOfCreation}</h5>
                     

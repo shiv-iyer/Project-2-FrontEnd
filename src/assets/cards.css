@@ -39,3 +39,8 @@
     background-color: rgba(254,251,234, 0.3);
     font-family: 'Play', sans-serif;
 }
+
+.modalTitle:hover {
+    transform: scale(1.15);
+    transition: all 0.3s ease-in;
+}

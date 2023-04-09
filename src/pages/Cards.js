@@ -107,7 +107,7 @@ export default class Cards extends React.Component {
                         <CardGrid cards={this.state.cards} click={this.loadCardPopup}/>
                         <Modal show={this.state.showingPopup} onHide={this.hideCardPopup}>
                             <Modal.Header className="header modalMain">
-                                <Modal.Title>{this.state.currentCard}</Modal.Title>
+                                <Modal.Title className="modalTitle">{this.state.currentCard}</Modal.Title>
                             </Modal.Header>
                             <Modal.Body className="modalBody">
                                 {/* conditional rendering: if the current card render URL exists, display it as an image, else don't display anything */}
