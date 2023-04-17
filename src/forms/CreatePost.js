@@ -217,6 +217,8 @@ export default class CreatePost extends React.Component {
                 rating: this.state.rating,
                 difficultyLevel: this.state.difficultyLevel
             });
+
+            // TODO: clear deck info after making a post
         }
     };
 
