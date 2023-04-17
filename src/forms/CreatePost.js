@@ -267,6 +267,7 @@ export default class CreatePost extends React.Component {
     }
 
     clearPostInfo = () => {
+        console.log("Clearing post info");
         // clear all of the info once a post has been successfully created. This way, a user can create subsequent posts with ease.
         this.setState({
             name: "",
