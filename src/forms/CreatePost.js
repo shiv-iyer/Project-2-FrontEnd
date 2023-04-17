@@ -151,12 +151,6 @@ export default class CreatePost extends React.Component {
     };
 
     // can refactor these into one function updateSlider later, tried but it didn't work for now so leave it
-    // for RangeSlider
-    // updateRating = (event) => {
-    //     this.setState({
-    //         rating: event.target.value
-    //     })
-    // };
 
     // for rc-slider
     handleRatingChange = (value) => {
@@ -164,13 +158,6 @@ export default class CreatePost extends React.Component {
             rating: value
         })
     }
-
-    // for RangeSlider
-    // updateDifficulty = (event) => {
-    //     this.setState({
-    //         difficultyLevel: event.target.value
-    //     });
-    // };
     
     // for rc-slider
     handleDifficultyChange = (value) => {
@@ -218,7 +205,7 @@ export default class CreatePost extends React.Component {
                 difficultyLevel: this.state.difficultyLevel
             });
 
-            // TODO: clear deck info after making a post
+            clearPostInfo();
         }
     };
 
@@ -277,6 +264,21 @@ export default class CreatePost extends React.Component {
         this.setState({
             selectedCards: filteredArray
         })
+    }
+
+    clearPostInfo = () => {
+        // clear all of the info once a post has been successfully created. This way, a user can create subsequent posts with ease.
+        this.setState({
+            name: "",
+            selectedCards: [],
+            overview: "",
+            strategy: "",
+            archetype: "",
+            rating: 5,
+            difficultyLevel: 3,
+            userThatPosted: "",
+            password: "",
+        });
     }
 
     // on componentDidMount, call the function to load the posts
