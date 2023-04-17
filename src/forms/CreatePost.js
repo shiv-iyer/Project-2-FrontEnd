@@ -188,6 +188,8 @@ export default class CreatePost extends React.Component {
         if (this.state.selectedCards.length !== 8){
             alert("Please select all 8 cards!");
         } else {
+            // move it above?
+            clearPostInfo();
             // maybe think of a way to improve alert later
             alert("Deck has been submitted!");
             // axios.post has two parameters; the api URL, and the request body.
@@ -204,8 +206,6 @@ export default class CreatePost extends React.Component {
                 rating: this.state.rating,
                 difficultyLevel: this.state.difficultyLevel
             });
-
-            clearPostInfo();
         }
     };
 
